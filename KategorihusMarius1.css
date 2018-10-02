@@ -1,0 +1,15 @@
+﻿body
+{
+
+}
+
+.grid-wrapper {
+    display:grid;
+    grid-template-columns: 600px 600px;
+    grid-template-rows: 600px 200px;
+    grid-gap: 20px;
+}
+
+h1 {
+    margin-left:400px;
+}
