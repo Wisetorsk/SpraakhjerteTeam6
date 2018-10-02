@@ -30,10 +30,11 @@ function main() {
     for (var i = 0; i < antallKort; i++) {
         kortstokk[i] = new kort(kategorier[randomInt(antKategorier)], 'TEST');
     }
+    document.getElementById('category_text').innerHTML = kategorier[randomInt(antKategorier)];
 }
 
 function randomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-main();
+//main();
