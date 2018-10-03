@@ -2,7 +2,7 @@
 
 var antallKort = 10;
 var kortstokk = [];
-var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy'];
+var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker'];
 
 class hus {
     constructor(kategori) {
@@ -35,5 +35,8 @@ function main() {
     for (var i = 0; i < antallKort; i++) {
         kortstokk[i] = new kort(kategorier[randomInt(kategorier.length)]);
     }
-    document.getElementById('category_text').innerHTML = kategorier[randomInt(kategorier.length)];
+    document.getElementById('kategoriHus1').innerHTML = kategorier[randomInt(kategorier.length)];
+    document.getElementById('kategoriHus2').innerHTML = kategorier[randomInt(kategorier.length)];
+    document.getElementById('kategoriHus3').innerHTML = kategorier[randomInt(kategorier.length)];
+
 }
