@@ -5,7 +5,7 @@ var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy'];
 var antKategorier = kategorier.length;
 
 class kort {
-    constructor(kategori, navn) {
+    constructor(kategori, navn='test') {
         this.width = 70;
         this.height = 70;
         this.kategori = kategori;
@@ -28,7 +28,7 @@ function trekk() {
 
 function main() {
     for (var i = 0; i < antallKort; i++) {
-        kortstokk[i] = new kort(kategorier[randomInt(antKategorier)], 'TEST');
+        kortstokk[i] = new kort(kategorier[randomInt(antKategorier)]);
     }
     document.getElementById('category_text').innerHTML = kategorier[randomInt(antKategorier)];
 }
