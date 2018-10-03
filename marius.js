@@ -30,19 +30,9 @@ class kort {
     }
 }
 
-function trekk() {
-    document.getElementById('korttekst').innerHTML = kortstokk[randomInt(kategorier.length)].kategori;
-}
-
 function main() {
     for (var i = 0; i < antallKort; i++) {
         kortstokk[i] = new kort(kategorier[randomInt(kategorier.length)]);
     }
     document.getElementById('category_text').innerHTML = kategorier[randomInt(kategorier.length)];
 }
-
-function randomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
-//main();
