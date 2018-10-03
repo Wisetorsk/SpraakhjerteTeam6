@@ -3,6 +3,15 @@ var antallKort = 10;
 var kortstokk = [];
 var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy'];
 
+class hus {
+    constructor(kategori) {
+        this.kategori = kategori;
+        this.rom = [[null, null, null],
+                    [null, null, null],
+                    [null, null, null]];
+    }
+}
+
 class kort {
     constructor(kategori, navn='test') {
         this.width = 70;
@@ -17,7 +26,7 @@ class kort {
     }
 
     place() {
-        //
+        // Places card in cell
     }
 }
 
