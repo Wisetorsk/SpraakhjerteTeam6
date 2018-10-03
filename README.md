@@ -1,7 +1,7 @@
-Kategorihus
+ï»¿Kategorihus
 ===========
 
-`Språkhjerte`
+`SprÃ¥khjerte`
 
 
-Språkhjerte kategorihus spill
+SprÃ¥khjerte kategorihus spill
