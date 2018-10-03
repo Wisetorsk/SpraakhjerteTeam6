@@ -1,4 +1,4 @@
-// JavaScript source code
+﻿// JavaScript source code
 
 function trekk() {
     document.getElementById('korttekst').innerHTML = kortstokk[randomInt(kategorier.length)].kategori;

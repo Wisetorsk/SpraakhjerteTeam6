@@ -1,7 +1,8 @@
-// JavaScript source code
+ï»¿// JavaScript source code
+
 var antallKort = 10;
 var kortstokk = [];
-var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy'];
+var kategorier = ['klÃ¦r', 'mat', 'kjÃ¸retÃ¸y', 'skole', 'verktÃ¸y'];
 
 class hus {
     constructor(kategori) {
