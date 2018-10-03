@@ -2,7 +2,6 @@
 var antallKort = 10;
 var kortstokk = [];
 var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy'];
-var antKategorier = kategorier.length;
 
 class kort {
     constructor(kategori, navn='test') {
@@ -23,14 +22,14 @@ class kort {
 }
 
 function trekk() {
-    document.getElementById('demokort').innerHTML = kortstokk[randomInt(antKategorier)].kategori;
+    document.getElementById('korttekst').innerHTML = kortstokk[randomInt(kategorier.length)].kategori;
 }
 
 function main() {
     for (var i = 0; i < antallKort; i++) {
-        kortstokk[i] = new kort(kategorier[randomInt(antKategorier)]);
+        kortstokk[i] = new kort(kategorier[randomInt(kategorier.length)]);
     }
-    document.getElementById('category_text').innerHTML = kategorier[randomInt(antKategorier)];
+    document.getElementById('category_text').innerHTML = kategorier[randomInt(kategorier.length)];
 }
 
 function randomInt(max) {

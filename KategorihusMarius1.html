@@ -5,14 +5,15 @@
     <meta charset="utf-8" />
     <title></title>
     <link rel="stylesheet" type="text/css" href="KategorihusMarius1.css" />
-    <script src="marius.js" type="text/javascript">
-    </script>
+    <script src="marius.js" type="text/javascript" charset="UTF-8"></script>
 </head>
 <body>
-    <h1 id="Overskrift">Kategorihus</h1>
+    
 
-    <div id="meny" class="flex-container">
-        <ul id="navbar">MENY<br />
+    <div id="meny" class="nav_container">
+        <h1 id="Overskrift">Kategorihus</h1>
+        <ul id="navbar">
+            MENY
             <li class="item">entry1</li>
             <li class="item">entry2</li>
         </ul>
@@ -52,7 +53,7 @@
                 det ut fra en random blanding med kort spredt utover bordet. <br />
                 Kortet som velges kan dukke opp i "gården" mellom husene, og brukeren bruker datamusen til å
                 dra kortet inn i riktig hus.
-            <p>
+            </p><p>
                 Kanskje man også kan sette opp spillet slik at det kun er ett hus av gangen, og kortene
                 dukker opp i inngangen til huset, hvis det er innenfor riktig kategori kan brukeren bruke
                 datamusen til å dra kortet inn på ett av de ledige rommene, hvis ikke det stemmer, trykker man
@@ -61,13 +62,20 @@
 
             <br />
             <button name="Trekk" value="TREKK" onclick="trekk()">TREKK</button><br />
-            <svg width="250" height="150">
-                <rect fill="lightblue" x="0" y="0" width="250" height="150"></rect>
-                <text style="fill:black;font-family:Arial Black;font-size:32px;" x="37" y="75" id="demokort">
+
+            <div id="demokort" >
+                <div id="korttekst">
+                    kort
+                </div>
+            </div>
+
+            <!--<svg width="250" height="150">
+                <rect fill="lightblue" x="0" y="0" width="150" height="150"></rect>
+                <text style="fill:black;font-family:Arial Black;font-size:18px;" x="37" y="75" id="demokort">
                     Kort
                 </text>
-            </svg>
-            </p>
+            </svg>-->
+            
         </div>
 
         <div class="grid-footer">
