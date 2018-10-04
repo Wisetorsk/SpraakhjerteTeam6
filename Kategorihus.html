@@ -8,10 +8,17 @@
     <style>
         .grid-container {
             display: grid;
-            grid-template-columns:400px 400px 400px;
-            grid-template-rows:400px 600px;
+            grid-template-columns: 400px 400px 400px;
+            grid-template-rows: 400px 400px;
             grid-gap: 50px;
         }
+
+        .plot {
+            display: grid;
+            grid-template-columns: 400px;
+            grid-template-rows: 100px 400px 100px; 
+        }
+
         .house {
             display: grid;
             grid-template-columns: 70px 70px 70px;
@@ -19,7 +26,7 @@
             grid-gap: 50px;
             background-color: khaki;
             border: solid 2px black;
-            align-content: center;
+            /*align-content: center;*/
             padding: 40px;
         }
         .grid-element {
@@ -30,12 +37,18 @@
         .room {
             background-color: black;
         }
+
+        .kategori {
+            text-align: center;
+        }
+
     </style>
 </head>
+
 <body>
     <h1 id="heading">Kategorihus</h1>
     <p>
-        TEXT
+        PAGE TEXT
     </p>
 
     <div class="grid-container" id="houses">
@@ -44,33 +57,53 @@
     </div>
 
     <script>
-        try {
-            var houses = 0;
-            var housesString = prompt("Hvor mange Hus: (1 - 5)", "3");
-            if (housesString == null || housesString == "") {
-                alert("Error");
-            } else {
-                houses = parseInt(housesString);
-                if (houses > 0 && houses < 6) {
-                    for (var i = 0; i < houses; i++) { showHouse(); }
+        function main() {
+            try {
+                var houses; //Initializing variable
+                var housesString = prompt("Hvor mange Hus: (1 - 5)", "3"); //Prompt user to enter number of houses to generate
+                if (housesString == null || housesString == "") { //Controls if the input is a valid string
+                    throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
                 } else {
-                    throw "Alt for mange eller for få hus"
+                    houses = parseInt(housesString); //Convert from string to integer
+                    if (houses > 0 && houses < 6) {
+                        for (var i = 0; i < houses; i++) { showHouse(); } //Generate houses 
+                    } else {
+                        if (houses <= 0) {
+                            throw "Alt for få hus"; //Throw error
+                        } else {
+                            throw "Alt for mange hus"; //Throw error 
+                        }
+                    }
                 }
             }
-        } catch (err) {
-            console.log(err);
-            document.getElementById('heading').innerHTML = 'Var ikke det litt for mange hus?'
+            catch (err) { //Catch any errors from main code, display content to user in console and main heading
+                console.log(err);
+                document.getElementById('heading').innerHTML = err
+            }
         }
 
-
-
         function showHouse() {
+            /*
+             * House generation function
+             * Assemble html grid elements and insert into houses element
+             */
             houseString = '';
+            houseString += '<div class="plot">';
+            houseString += '<div class="roof">';
+            houseString += '<svg width=400 height=100>';
+            houseString += '<polygon points="50 0, 350 0, 400 100, 0 100"  fill="red" stroke="black" />';
+            houseString += '<polyline points="100 70, 100 20, 150 20, 150 70" stroke="black" stroke-width="5px" fill="red"/>';
+            houseString += '</svg>';
+            houseString += '</div>';
             houseString += '<div class="house">';
             for (var i = 0; i < 9; i++) { houseString += '<div class="room"></div>'; }
             houseString += '</div>';
+            houseString += '<div class="kategori">';
+            houseString += 'KATEGORI';
+            houseString += '</div></div>';
             document.getElementById('houses').innerHTML += houseString;
         }
+        main();
     </script>
 </body>
 </html>
