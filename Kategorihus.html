@@ -44,22 +44,32 @@
     </div>
 
     <script>
-        var houses = 0;
-        var housesString = prompt("Hvor mange Hus: ", "3");
-        if (housesString == null || housesString == "") {
-            alert("Error");
-        } else {
-            houses = parseInt(housesString);
+        try {
+            var houses = 0;
+            var housesString = prompt("Hvor mange Hus: (1 - 5)", "3");
+            if (housesString == null || housesString == "") {
+                alert("Error");
+            } else {
+                houses = parseInt(housesString);
+                if (houses > 0 && houses < 6) {
+                    for (var i = 0; i < houses; i++) { showHouse(); }
+                } else {
+                    throw "Alt for mange eller for få hus"
+                }
+            }
+        } catch (err) {
+            console.log(err);
+            document.getElementById('heading').innerHTML = 'Var ikke det litt for mange hus?'
         }
+
+
+
         function showHouse() {
             houseString = '';
             houseString += '<div class="house">';
             for (var i = 0; i < 9; i++) { houseString += '<div class="room"></div>'; }
             houseString += '</div>';
             document.getElementById('houses').innerHTML += houseString;
-        }
-        for (var i = 0; i < houses; i++) {
-            showHouse();
         }
     </script>
 </body>
