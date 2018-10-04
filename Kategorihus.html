@@ -57,6 +57,20 @@
     </div>
 
     <script>
+
+        class Kort {
+            constructor(kategori, img, navn = 'TEST') {
+                /*
+                 * Kategori: kategori
+                 * img: image url
+                 * navn: card name
+                 */
+                this.kategori = kategori;
+                this.navn = test;
+                this.img = img;
+            }
+        }
+
         function main() {
             try {
                 var houses; //Initializing variable
@@ -87,22 +101,30 @@
              * House generation function
              * Assemble html grid elements and insert into houses element
              */
+            var enddiv = '</div>'; 
+            var endsvg = '</svg>';
+
             houseString = '';
-            houseString += '<div class="plot">';
-            houseString += '<div class="roof">';
+            houseString += div('plot');
+            houseString += div('roof');
             houseString += '<svg width=400 height=100>';
             houseString += '<polygon points="50 0, 350 0, 400 100, 0 100"  fill="red" stroke="black" />';
             houseString += '<polyline points="100 70, 100 20, 150 20, 150 70" stroke="black" stroke-width="5px" fill="red"/>';
-            houseString += '</svg>';
-            houseString += '</div>';
-            houseString += '<div class="house">';
+            houseString += endsvg;
+            houseString += enddiv;
+            houseString += div('house');
             for (var i = 0; i < 9; i++) { houseString += '<div class="room"></div>'; }
-            houseString += '</div>';
-            houseString += '<div class="kategori">';
+            houseString += enddiv;
+            houseString += div('kategori');
             houseString += 'KATEGORI';
-            houseString += '</div></div>';
+            houseString += enddiv + enddiv;
             document.getElementById('houses').innerHTML += houseString;
         }
+
+        function div(cls) {
+            return '<div class="' + cls + '">';
+        }
+
         main();
     </script>
 </body>
