@@ -9,15 +9,26 @@
         .grid-container {
             display: grid;
             grid-template-columns:400px 400px 400px;
-            grid-template-rows:600px 600px;
+            grid-template-rows:400px 600px;
+            grid-gap: 50px;
         }
         .house {
+            display: grid;
+            grid-template-columns: 70px 70px 70px;
+            grid-template-rows: 70px 70px 70px;
+            grid-gap: 50px;
             background-color: khaki;
             border: solid 2px black;
+            align-content: center;
+            padding: 40px;
         }
         .grid-element {
             background-color:lightblue;
             border: dashed 2px black;
+        }
+
+        .room {
+            background-color: black;
         }
     </style>
 </head>
@@ -29,9 +40,48 @@
 
     <div class="grid-container">
 
-        <div class="house">HUS 1</div>
-        <div class="house">HUS 2</div>
-        <div class="house">HUS 3</div>
+        <div class="house">
+            <div class="room"></div>
+            <div class="room"></div>
+            <div class="room"></div>
+
+            <div class="room"></div>
+            <div class="room"></div>
+            <div class="room"></div>
+
+            <div class="room"></div>
+            <div class="room"></div>
+            <div class="room"></div>
+        </div>
+
+        <div class="house">
+            <div class="room"></div>
+            <div class="room"></div>
+            <div class="room"></div>
+
+            <div class="room"></div>
+            <div class="room"></div>
+            <div class="room"></div>
+
+            <div class="room"></div>
+            <div class="room"></div>
+            <div class="room"></div>
+        </div>
+
+        <div class="house">
+            <div class="room"></div>
+            <div class="room"></div>
+            <div class="room"></div>
+
+            <div class="room"></div>
+            <div class="room"></div>
+            <div class="room"></div>
+
+            <div class="room"></div>
+            <div class="room"></div>
+            <div class="room"></div>
+        </div>
+
         <div class="grid-element"></div>
         <div class="grid-element"></div>
         <div class="grid-element"></div>
