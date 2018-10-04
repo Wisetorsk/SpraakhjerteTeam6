@@ -38,58 +38,29 @@
         TEXT
     </p>
 
-    <div class="grid-container">
+    <div class="grid-container" id="houses">
 
-        <div class="house">
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-        </div>
-
-        <div class="house">
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-        </div>
-
-        <div class="house">
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-        </div>
-
-        <div class="grid-element"></div>
-        <div class="grid-element"></div>
-        <div class="grid-element"></div>
 
     </div>
 
     <script>
-
+        var houses = 0;
+        var housesString = prompt("Hvor mange Hus: ", "3");
+        if (housesString == null || housesString == "") {
+            alert("Error");
+        } else {
+            houses = parseInt(housesString);
+        }
+        function showHouse() {
+            houseString = '';
+            houseString += '<div class="house">';
+            for (var i = 0; i < 9; i++) { houseString += '<div class="room"></div>'; }
+            houseString += '</div>';
+            document.getElementById('houses').innerHTML += houseString;
+        }
+        for (var i = 0; i < houses; i++) {
+            showHouse();
+        }
     </script>
 </body>
 </html>
