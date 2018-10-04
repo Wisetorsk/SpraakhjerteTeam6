@@ -11,6 +11,7 @@
             grid-template-columns: 400px 400px 400px;
             grid-template-rows: 400px 400px;
             grid-gap: 50px;
+            grid-row-gap: 150px;
         }
 
         .plot {
@@ -69,7 +70,7 @@
                  * navn: card name
                  */
                 this.kategori = kategori;
-                this.navn = test;
+                this.navn = navn;
                 this.img = img;
             }
         }
@@ -119,6 +120,7 @@
             houseString += kategorier.splice([Math.floor(Math.random()*kategorier.length)], 1); //Chooses a random element in "kategorier", returns it and removes it from the array
             houseString += enddiv + enddiv;
             document.getElementById('houses').innerHTML += houseString;
+            //document.getElementById('kategori').innerHTML = 
         }
 
 

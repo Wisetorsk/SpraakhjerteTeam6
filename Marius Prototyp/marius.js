@@ -40,3 +40,10 @@ function main() {
     document.getElementById('kategoriHus3').innerHTML = kategorier[randomInt(kategorier.length)];
 
 }
+
+function argTest(...args) {
+    
+    for (var x in args) {
+        console.log(args[x]);
+    }
+}
