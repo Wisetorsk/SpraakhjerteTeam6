@@ -57,6 +57,9 @@
     </div>
 
     <script>
+        var enddiv = '</div>';
+        var endsvg = '</svg>';
+        var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker'];
 
         class Kort {
             constructor(kategori, img, navn = 'TEST') {
@@ -101,9 +104,6 @@
              * House generation function
              * Assemble html grid elements and insert into houses element
              */
-            var enddiv = '</div>'; 
-            var endsvg = '</svg>';
-
             houseString = '';
             houseString += div('plot');
             houseString += div('roof');
@@ -116,10 +116,11 @@
             for (var i = 0; i < 9; i++) { houseString += '<div class="room"></div>'; }
             houseString += enddiv;
             houseString += div('kategori');
-            houseString += 'KATEGORI';
+            houseString += kategorier.splice([Math.floor(Math.random()*kategorier.length)], 1); //Chooses a random element in "kategorier", returns it and removes it from the array
             houseString += enddiv + enddiv;
             document.getElementById('houses').innerHTML += houseString;
         }
+
 
         function div(cls) {
             return '<div class="' + cls + '">';
