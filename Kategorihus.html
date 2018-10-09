@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sråkhjerte KategoriHus</title>
-    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.6/lib/draggable.bundle.js%22%3E"></script></script>
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/droppable.js"></script>
+
     <style>
 
         #header {
@@ -269,7 +271,6 @@
 
         function main() {
             console.log('main');
-            
             for (var index = 0; index < antallKort; index++) {
                 kortstokk[index] = new Kort(imagesJson[index].kategori, imagesJson[index].src, imagesJson[index].src.slice(4, -4));
             }
@@ -300,6 +301,8 @@
                     //document.getElementById('heading').innerHTML = err
                 }
             }
+            drawCard();
+
         }
 
         function showHouse() {
