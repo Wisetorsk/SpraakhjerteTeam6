@@ -230,6 +230,14 @@
             { kategori: 'kjøretøy', src: 'img/truck.png' },
             { kategori: 'verktøy', src: 'img/wrench.png' }
         ];
+
+        var hDim = {
+            width: 400,
+            height: 400,
+            roofWidth: 300, //50px added per side to get full width
+            roofHeight: 100
+        };
+
         var antallKort = imagesJson.length;
         var kortstokk = [];
 
@@ -310,11 +318,12 @@
              * House generation function
              * Assemble html grid elements and insert into houses element
              */
+            
             houseString = '';
             houseString += div('plot');
             houseString += div('roof');
             houseString += '<svg width=400 height=100>';
-            houseString += '<polygon points="50 0, 350 0, 400 100, 0 100"  fill="red" stroke="black" />';
+            houseString += '<polygon points="' + corPair(50, 0) + corPair((50 + hDim.roofWidth), 0) + corPair((100 + hDim.roofWidth), hDim.roofHeight) + corPair(0,hDim.roofHeight,true) + '"  fill="red" stroke="black" />';
             houseString += '<polyline points="100 70, 100 20, 150 20, 150 70" stroke="black" stroke-width="5px" fill="red"/>';
             houseString += endsvg;
             houseString += enddiv;
@@ -330,6 +339,17 @@
 
         function div(cls) {
             return '<div class="' + cls + '">';
+        }
+
+        function corPair(x, y, end=false) {
+            var assembledString = '';
+            assembledString += x;
+            assembledString += ' ';
+            assembledString += y;
+            if (!end) {
+                assembledString += ','
+            }
+            return assembledString;
         }
 
         function drawCard() {

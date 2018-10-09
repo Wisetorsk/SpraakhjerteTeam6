@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 # SpraakhjerteTeam6
 Repo for spillforslag 
 
-### Kategorihus i branch *kategorihus*
 =======
 ﻿Kategorihus
 ===========
@@ -14,4 +12,4 @@ Språkhjerte kategorihus spill
 <p>
     Active branch Kategorihus
 </p>
->>>>>>> KategoriHus
+<a href="https://wisetorsk.github.io/SpraakhjerteTeam6/Kategorihus.html">TEST Nettsiden</a>
