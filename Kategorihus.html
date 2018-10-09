@@ -2,22 +2,55 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=5" />
     <title>Sråkhjerte KategoriHus</title>
     
     <style>
-        .grid-container {
+
+        #header {
+            text-align: center;
+
+        }
+
+        #dataPanelHeader {
+            text-align: center; 
+        }
+
+        @media (min-width: 400px) {
+            .grid-container {
+                display: grid;
+                /*grid-template-columns: 400px 400px 400px;*/
+                grid-template-columns: 1fr 1fr 1fr;
+                /*grid-template-rows: 500px 500px;*/
+                grid-template-rows: 1fr;
+                grid-gap: 50px;
+                grid-row-gap: 50px;
+                border: 2px solid black;
+                border-radius: 5px;
+                padding: 20px;
+                
+            }
+
+            .main-wrapper {
+                display: grid;
+                grid-template-columns: 5fr 1fr;
+                /*border: 2px dashed black;*/
+            }
+
+        }
+
+        .dataPanel {
             display: grid;
-            grid-template-columns: 400px 400px 400px;
-            grid-template-rows: 400px 400px;
-            grid-gap: 50px;
-            grid-row-gap: 150px;
+            grid-template-columns: 1fr;
+            grid-template-rows: minmax(100px, max-content);
+            border: 2px solid black;
+            border-radius: 5px;
         }
 
         .plot {
             display: grid;
             grid-template-columns: 400px;
-            grid-template-rows: 100px 400px 100px; 
+            grid-template-rows: 100px 400px 100px;
         }
 
         .house {
@@ -27,11 +60,11 @@
             grid-gap: 50px;
             background-color: khaki;
             border: solid 2px black;
-            /*align-content: center;*/
             padding: 40px;
         }
+
         .grid-element {
-            background-color:lightblue;
+            background-color: lightblue;
             border: dashed 2px black;
         }
 
@@ -41,30 +74,42 @@
 
         .kategori {
             text-align: center;
+            font-family: Calibri;
+            text-transform: uppercase;
+            padding-top: 10px;
+            font-size: 150%;
         }
-
+        
     </style>
 </head>
 
-<body>
-    <h1 id="heading">Kategorihus</h1>
+<body onload="main()">
+    <h1 id="header">Kategorihus</h1>
     <p>
         PAGE TEXT
     </p>
 
-    <div class="grid-container" id="houses">
+    <div class="main-wrapper" id="dynamicContent">
+
+        <div class="grid-container" id="houses">
 
 
+        </div>
+
+        <div class="dataPanel" id="dataPanel">
+            <span id="dataPanelHeader">DATA PANEL</span>
+
+        </div>
     </div>
-
     <script>
         var enddiv = '</div>';
         var endsvg = '</svg>';
         var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker'];
 
         class Kort {
-            constructor(kategori, img, navn = 'TEST') {
+            constructor(kategori, img, navn='TEST', debug=false) {
                 /*
+                 * Kort Object
                  * Kategori: kategori
                  * img: image url
                  * navn: card name
@@ -72,31 +117,57 @@
                 this.kategori = kategori;
                 this.navn = navn;
                 this.img = img;
+                this.debug = debug;
             }
         }
 
+        class Hus {
+            constructor(kategori, debug = false) {
+                /*
+                 * House object
+                 */
+                this.debug = debug;
+            }
+        }
+
+        class Page {
+            constructor(debug = false) {
+                /*
+                 * Main page Object
+                 * Page function handler.
+                 */
+                this.debug = debug;
+
+            }
+
+        }
+
         function main() {
-            try {
-                var houses; //Initializing variable
-                var housesString = prompt("Hvor mange Hus: (1 - 5)", "3"); //Prompt user to enter number of houses to generate
-                if (housesString == null || housesString == "") { //Controls if the input is a valid string
-                    throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
-                } else {
-                    houses = parseInt(housesString); //Convert from string to integer
-                    if (houses > 0 && houses < 6) {
-                        for (var i = 0; i < houses; i++) { showHouse(); } //Generate houses 
+            while (true) {
+                try {
+                    var houses; //Initializing variable
+                    var housesString = prompt("Hvor mange Hus: (1 - 5)", "3"); //Prompt user to enter number of houses to generate
+                    if (housesString == null || housesString == "") { //Controls if the input is a valid string
+                        throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
                     } else {
-                        if (houses <= 0) {
-                            throw "Alt for få hus"; //Throw error
+                        houses = parseInt(housesString); //Convert from string to integer
+                        if (houses > 0 && houses < 6) {
+                            for (var i = 0; i < houses; i++) { showHouse(); } //Generate houses 
+                            break;
                         } else {
-                            throw "Alt for mange hus"; //Throw error 
+                            if (houses <= 0) {
+                                throw "Alt for få hus"; //Throw error
+                            } else {
+                                throw "Alt for mange hus"; //Throw error 
+                            }
                         }
                     }
                 }
-            }
-            catch (err) { //Catch any errors from main code, display content to user in console and main heading
-                console.log(err);
-                document.getElementById('heading').innerHTML = err
+                catch (err) { //Catch any errors from main code, display content to user in console and main heading
+                    console.log(err);
+                    window.alert(err + "Angi 1, 2, 3, 4 eller 5 hus"); //Alert user if given number is too low or too high
+                    //document.getElementById('heading').innerHTML = err
+                }
             }
         }
 
@@ -120,7 +191,6 @@
             houseString += kategorier.splice([Math.floor(Math.random()*kategorier.length)], 1); //Chooses a random element in "kategorier", returns it and removes it from the array
             houseString += enddiv + enddiv;
             document.getElementById('houses').innerHTML += houseString;
-            //document.getElementById('kategori').innerHTML = 
         }
 
 
@@ -128,7 +198,7 @@
             return '<div class="' + cls + '">';
         }
 
-        main();
+        //main();
     </script>
 </body>
 </html>
