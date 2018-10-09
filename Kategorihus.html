@@ -9,7 +9,8 @@
 
         #header {
             text-align: center;
-
+            background-image: url("img/house.png");
+            background-size: auto; /*FIX ME!*/
         }
 
         #dataPanelHeader {
@@ -80,6 +81,22 @@
             font-size: 150%;
         }
         
+        .kortstokk {
+            width: 70px;
+            height: 70px;
+            background-color: none;
+        }
+
+        .kort {
+            width: 70px;
+            height: 70px;
+        }
+
+        .noDecoration {
+            list-style: none;
+        }
+
+
     </style>
 </head>
 
@@ -98,13 +115,65 @@
 
         <div class="dataPanel" id="dataPanel">
             <span id="dataPanelHeader">DATA PANEL</span>
+            <ul class="noDecoration">
+                <li>
+                    <div class="kortstokk" id="kortholder">
+                        <img class="kort" id="trukketKort" src=""/>
+                    </div>
+                </li>
 
+                <li id="trekk"><button id="drawButton" onclick="drawCard()">TREKK</button></li>
+            </ul>
         </div>
     </div>
     <script>
         var enddiv = '</div>';
         var endsvg = '</svg>';
-        var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker'];
+        var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker', 'dyr'];
+        var imagesJson = [
+            { kategori: 'mat', src: 'img/bananas.png' },
+            { kategori: 'dyr', src: 'img/bear.png' },
+            { kategori: 'dyr', src: 'img/beaver.png' },
+            { kategori: 'skole', src: 'img/blackboard.png' },
+            { kategori: 'mennesker', src: 'img/boy.png' },
+            { kategori: 'mat', src: 'img/broccoli.png' },
+            { kategori: 'klær', src: 'img/cap.png' },
+            { kategori: 'kjøretøy', src: 'img/car1.png' },
+            { kategori: 'kjøretøy', src: 'img/car2.png' },
+            { kategori: 'mennesker', src: 'img/carpenter.png' },
+            { kategori: 'mat', src: 'img/carrot.png' },
+            { kategori: 'dyr', src: 'img/chicken.png' },
+            { kategori: 'mat', src: 'img/coconut.png' },
+            { kategori: 'dyr', src: 'img/cow.png' },
+            { kategori: 'dyr', src: 'img/dog.png' },
+            { kategori: 'klær', src: 'img/dress.png' },
+            { kategori: 'dyr', src: 'img/elephant.png' },
+            { kategori: 'kjøretøy', src: 'img/firetruck.png' },
+            { kategori: 'dyr', src: 'img/fox.png' },
+            { kategori: 'skole', src: 'img/geometry.png' },
+            { kategori: 'mat', src: 'img/hamburger.png' },
+            { kategori: 'verktøy', src: 'img/hammer.png' },
+            { kategori: 'klær', src: 'img/hat.png' },
+            { kategori: 'klær', src: 'img/jeans.png' },
+            { kategori: 'kjøretøy', src: 'img/mc.png' },
+            { kategori: 'dyr', src: 'img/mouse.png' },
+            { kategori: 'mat', src: 'img/orange.png' },
+            { kategori: 'dyr', src: 'img/panda.png' },
+            { kategori: 'skole', src: 'img/pencil.png' },
+            { kategori: 'dyr', src: 'img/pig.png' },
+            { kategori: 'mat', src: 'img/radish.png' },
+            { kategori: 'verktøy', src: 'img/screwdriver.png' },
+            { kategori: 'klær', src: 'img/shoes1.png' },
+            { kategori: 'klær', src: 'img/shoes2.png' },
+            { kategori: 'verktøy', src: 'img/spanner.png' },
+            { kategori: 'mat', src: 'img/strawberry.png' },
+            { kategori: 'mat', src: 'img/tomato.png' },
+            { kategori: 'kjøretøy', src: 'img/tractor.png' },
+            { kategori: 'kjøretøy', src: 'img/truck.png' },
+            { kategori: 'verktøy', src: 'img/wrench.png' }
+        ];
+        var antallKort = imagesJson.length;
+        var kortstokk = [];
 
         class Kort {
             constructor(kategori, img, navn='TEST', debug=false) {
@@ -143,6 +212,12 @@
         }
 
         function main() {
+            console.log('main');
+            
+            for (var index = 0; index < antallKort; index++) {
+                kortstokk[index] = new Kort(imagesJson[index].kategori, imagesJson[index].src, imagesJson[index].src.slice(4, -4));
+            }
+
             while (true) {
                 try {
                     var houses; //Initializing variable
@@ -196,6 +271,13 @@
 
         function div(cls) {
             return '<div class="' + cls + '">';
+        }
+
+        function drawCard() {
+            var index = Math.floor(Math.random() * antallKort);
+            console.log('NEW CARD!');
+            document.getElementById('trukketKort').src = kortstokk[index].img;
+            console.log(kortstokk[index]);
         }
 
         //main();
