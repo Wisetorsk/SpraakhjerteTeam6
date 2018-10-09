@@ -1,0 +1,50 @@
+﻿body
+{
+
+}
+
+.grid-wrapper {
+    display:grid;
+    grid-template-columns: 500px 500px 500px 500px;
+    grid-template-rows: 600px 200px;
+    grid-gap: 20px;
+}
+
+h1 {
+    /*margin-left:400px;*/
+    
+
+}
+
+#demokort {
+    background-color: lightblue;
+    width:150px;
+    height:150px;
+}
+
+#korttekst {
+    position: relative;
+    padding-top: 40%;
+    text-align: center; 
+    margin:auto;
+}
+
+#category_text {
+    text-align:center;
+}
+
+
+.nav_container {
+    height: 100px;
+    width: 1000px;
+    align-content: center;
+    text-align: center;
+}
+
+#navbar {
+
+}
+
+.item {
+    display: inline;
+}
