@@ -17,7 +17,33 @@
             text-align: center; 
         }
 
-        @media (min-width: 1024px) {
+
+
+        @media (min-width: 400px) and (max-width: 1024px) { /*Ipad vertical*/
+            .grid-container {
+                display: grid;
+                /*grid-template-columns: 400px 400px 400px;*/
+                grid-template-columns: 1fr 1fr 1fr;
+                /*grid-template-rows: 500px 500px;*/
+                grid-template-rows: 1fr;
+                grid-gap: 50px;
+                grid-row-gap: 0px;
+                border: 2px solid black;
+                border-radius: 5px;
+                padding: 20px;
+                
+            }
+
+            .main-wrapper {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 5fr 1fr;
+                /*border: 2px dashed black;*/
+            }
+
+        }
+
+        @media (min-width: 1024px) { /*HD*/
             .grid-container {
                 display: grid;
                 /*grid-template-columns: 400px 400px 400px;*/
@@ -29,7 +55,6 @@
                 border: 2px solid black;
                 border-radius: 5px;
                 padding: 20px;
-                
             }
 
             .main-wrapper {
@@ -37,7 +62,6 @@
                 grid-template-columns: 5fr 1fr;
                 /*border: 2px dashed black;*/
             }
-
         }
 
         .dataPanel {
