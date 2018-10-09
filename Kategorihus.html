@@ -279,8 +279,8 @@
 
         function main() {
             console.log('main');
-            for (var index = 0; index < antallKort; index++) {
-                kortstokk[index] = new Kort(imagesJson[index].kategori, imagesJson[index].src, imagesJson[index].src.slice(4, -4));
+            for (var index = 0; index < antallKort; index++) { //Building the card deck
+                kortstokk[index] = new Kort(imagesJson[index].kategori, imagesJson[index].src, imagesJson[index].src.slice(4, -4)); //Construct new object based on JSON data in imagesJson
             }
 
             while (true) {
