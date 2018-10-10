@@ -15,7 +15,7 @@
             font-size: 300%;
             background-image: url("img/house.png");
             background-size: 10%; /*FIX ME!*/
-            padding-top: 150px;
+            padding-top: 0px;
             background-repeat: no-repeat;
             background-position-x: center;
             text-transform: uppercase;
@@ -27,7 +27,7 @@
 
 
 
-        @media (height: 768px) and (width: 1024px) { /*Ipad Horizontal*/
+        @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
             .grid-container {
                 display: grid;
                 /*grid-template-columns: 400px 400px 400px;*/
@@ -54,7 +54,7 @@
             }
         }
 
-        @media (width: 768px) and (height: 1024px) { /*Ipad vertical*/
+        @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
             .grid-container {
                 display: grid;
                 /*grid-template-columns: 400px 400px 400px;*/
@@ -160,8 +160,13 @@
             list-style: none;
         }
 
-        #drawButton {
+        .panelButton {
             width: 140px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-size: 200%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 15%;
         }
 
         .drag-drop {
@@ -196,7 +201,8 @@
                         </div>
                     </li>
 
-                    <li id="trekk"><button id="drawButton" onclick="drawCard()">TREKK</button></li>
+                    <li id="trekk"><button class="panelButton" id="drawButton" onclick="drawCard()">TREKK</button></li>
+                    <li id="reset"><button class="panelButton" id="resetButton" onclick="resetHouses()">RESET</button></li>
                 </ul>
             </div>
         </div>
@@ -268,8 +274,11 @@
         var enddiv = '</div>';
         var endsvg = '</svg>';
         var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker', 'dyr'];
+        const kategorier_backup = Array.from(kategorier);
         var antallKort = imagesJson.length;
         var kortstokk = [];
+        var houses;
+
 
         //----------------------------------------------------------------------
         // END Variables
@@ -313,23 +322,32 @@
              * House generation function
              * Assemble html grid elements and insert into houses element
              */
-            
-            houseString = '';
-            houseString += div('plot');
-            houseString += div('roof');
-            houseString += '<svg width=400 height=100>';
-            houseString += '<polygon points="' + corPair(50, 0) + corPair((50 + hDim.roofWidth), 0) + corPair((100 + hDim.roofWidth), hDim.roofHeight) + corPair(0,hDim.roofHeight, true) + '"  fill="red" stroke="black" />';
-            houseString += '<polyline points="' + corPair(100, 70) + corPair(100, 20) + corPair(150, 20) + corPair(150, 70, true) + '" stroke="black" stroke-width="5px" fill="red"/>';     
-            houseString += endsvg;
-            houseString += enddiv;
-            houseString += div('house', houseNumber);
-            for (var i = 0; i < 9; i++) { houseString += '<div class="room dropzone" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
-            houseString += enddiv;
-            houseString += div('kategori');
-            houseString += kategorier.splice([Math.floor(Math.random()*kategorier.length)], 1); //Chooses a random element in "kategorier", returns it and removes it from the array
-            houseString += enddiv + enddiv;
-            document.getElementById('houses').innerHTML += houseString;
+            if (kategorier.length > 0) {
+                houseString = '';
+                houseString += div('plot');
+                houseString += div('roof');
+                houseString += '<svg width=400 height=100>';
+                houseString += '<polygon points="' + corPair(50, 0) + corPair((50 + hDim.roofWidth), 0) + corPair((100 + hDim.roofWidth), hDim.roofHeight) + corPair(0, hDim.roofHeight, true) + '"  fill="red" stroke="black" />';
+                houseString += '<polyline points="' + corPair(100, 70) + corPair(100, 20) + corPair(150, 20) + corPair(150, 70, true) + '" stroke="black" stroke-width="5px" fill="red"/>';
+                houseString += endsvg;
+                houseString += enddiv;
+                houseString += div('house', houseNumber);
+                for (var i = 0; i < 9; i++) { houseString += '<div class="room dropzone" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
+                houseString += enddiv;
+                houseString += div('kategori');
+                houseString += kategorier.splice([Math.floor(Math.random() * kategorier.length)], 1); //Chooses a random element in "kategorier", returns it and removes it from the array
+                houseString += enddiv + enddiv;
+                document.getElementById('houses').innerHTML += houseString;
+            } else {
+                location.reload();
+            }
         }
+
+        /*
+        function resetKategorier() {
+            kategorier = kategorier_backup;
+        }
+        */
 
         function div(cls, identity="") {
             return '<div class="' + cls + '" id="' + identity + '">';
@@ -354,6 +372,12 @@
             console.log(kortstokk[index]);
         }
 
+        function resetHouses() {
+            console.log('Reset houses');
+            document.getElementById('houses').innerHTML = "";
+            for (var i = 0; i < houses; i++) { showHouse(i); }
+        }
+
         //----------------------------------------------------------------------
         // END Page Functions
         //----------------------------------------------------------------------
@@ -363,7 +387,7 @@
         //----------------------------------------------------------------------
 
         interact('.dropzone').dropzone({
-            accept: '.room',
+            accept: '#hus0rom0',
             overlap: 0.75,
             ondropactivate: function (event) {
                 event.target.classList.add('drop-active');
@@ -458,7 +482,6 @@
 
             while (true) {
                 try {
-                    var houses; //Initializing variable
                     var housesString = prompt("Hvor mange Hus: (1 - 5)", "3"); //Prompt user to enter number of houses to generate
                     if (housesString == null || housesString == "") { //Controls if the input is a valid string
                         throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
