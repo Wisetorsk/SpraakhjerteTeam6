@@ -323,7 +323,7 @@
             houseString += endsvg;
             houseString += enddiv;
             houseString += div('house', houseNumber);
-            for (var i = 0; i < 9; i++) { houseString += '<div class="room dropzone"></div>'; }
+            for (var i = 0; i < 9; i++) { houseString += '<div class="room dropzone" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
             houseString += enddiv;
             houseString += div('kategori');
             houseString += kategorier.splice([Math.floor(Math.random()*kategorier.length)], 1); //Chooses a random element in "kategorier", returns it and removes it from the array
