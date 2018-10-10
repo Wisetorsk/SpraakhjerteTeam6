@@ -196,10 +196,11 @@
         </div>
     </div>
     <script>
-        
-        var enddiv = '</div>';
-        var endsvg = '</svg>';
-        var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker', 'dyr'];
+
+        //----------------------------------------------------------------------
+        // Objects
+        //----------------------------------------------------------------------
+
         var imagesJson = [
             { kategori: 'mat', src: 'img/bananas.png' },
             { kategori: 'dyr', src: 'img/bear.png' },
@@ -250,8 +251,27 @@
             roofHeight: 100
         };
 
+        //----------------------------------------------------------------------
+        // END Objects
+        //----------------------------------------------------------------------
+
+        //----------------------------------------------------------------------
+        // Variables
+        //----------------------------------------------------------------------
+
+        var enddiv = '</div>';
+        var endsvg = '</svg>';
+        var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker', 'dyr'];
         var antallKort = imagesJson.length;
         var kortstokk = [];
+
+        //----------------------------------------------------------------------
+        // END Variables
+        //----------------------------------------------------------------------
+
+        //----------------------------------------------------------------------
+        // Object definitions
+        //----------------------------------------------------------------------
 
         class Kort {
             constructor(kategori, img, navn='TEST', debug=false) {
@@ -268,62 +288,19 @@
             }
         }
 
-        class Hus {
-            constructor(kategori, debug = false) {
-                /*
-                 * House object
-                 */
-                this.debug = debug;
-            }
-        }
-
-        class Page {
-            constructor(debug = false) {
-                /*
-                 * Main page Object
-                 * Page function handler.
-                 */
-                this.debug = debug;
-
-            }
-
-        }
-
-        function main() {
-            console.log('main');
+        function buildDeck() {
             for (var index = 0; index < antallKort; index++) { //Building the card deck
                 kortstokk[index] = new Kort(imagesJson[index].kategori, imagesJson[index].src, imagesJson[index].src.slice(4, -4)); //Construct new object based on JSON data in imagesJson
             }
-
-            while (true) {
-                try {
-                    var houses; //Initializing variable
-                    var housesString = prompt("Hvor mange Hus: (1 - 5)", "3"); //Prompt user to enter number of houses to generate
-                    if (housesString == null || housesString == "") { //Controls if the input is a valid string
-                        throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
-                    } else {
-                        houses = parseInt(housesString); //Convert from string to integer
-                        if (houses > 0 && houses < 6) {
-                            for (var i = 0; i < houses; i++) { showHouse(i); } //Generate houses 
-                            break;
-                        } else {
-                            if (houses <= 0) {
-                                throw "Alt for få hus"; //Throw error
-                            } else {
-                                throw "Alt for mange hus"; //Throw error 
-                            }
-                        }
-                    }
-                }
-                catch (err) { //Catch any errors from main code, display content to user in console and main heading
-                    console.log(err);
-                    window.alert(err + "Angi 1, 2, 3, 4 eller 5 hus"); //Alert user if given number is too low or too high
-                    //document.getElementById('heading').innerHTML = err
-                }
-            }
-            drawCard();
-
         }
+
+        //----------------------------------------------------------------------
+        // END Object definitions
+        //----------------------------------------------------------------------
+
+        //----------------------------------------------------------------------
+        // Page functions
+        //----------------------------------------------------------------------
 
         function showHouse(houseNumber) {
             /*
@@ -335,9 +312,8 @@
             houseString += div('plot');
             houseString += div('roof');
             houseString += '<svg width=400 height=100>';
-            houseString += '<polygon points="' + corPair(50, 0) + corPair((50 + hDim.roofWidth), 0) + corPair((100 + hDim.roofWidth), hDim.roofHeight) + corPair(0,hDim.roofHeight,true) + '"  fill="red" stroke="black" />';
-            //houseString += '<polyline points="100 70, 100 20, 150 20, 150 70" stroke="black" stroke-width="5px" fill="red"/>';
-            houseString += '<polyline points="' + corPair(100, 70) + corPair(100, 20) + corPair(150, 20) + corPair(150, 70,true) + '" stroke="black" stroke-width="5px" fill="red"/>';     
+            houseString += '<polygon points="' + corPair(50, 0) + corPair((50 + hDim.roofWidth), 0) + corPair((100 + hDim.roofWidth), hDim.roofHeight) + corPair(0,hDim.roofHeight, true) + '"  fill="red" stroke="black" />';
+            houseString += '<polyline points="' + corPair(100, 70) + corPair(100, 20) + corPair(150, 20) + corPair(150, 70, true) + '" stroke="black" stroke-width="5px" fill="red"/>';     
             houseString += endsvg;
             houseString += enddiv;
             houseString += div('house', houseNumber);
@@ -349,8 +325,8 @@
             document.getElementById('houses').innerHTML += houseString;
         }
 
-        function div(cls, n="") {
-            return '<div class="' + cls + '" id="' + n + '">';
+        function div(cls, identity="") {
+            return '<div class="' + cls + '" id="' + identity + '">';
         }
 
         function corPair(x, y, end=false) {
@@ -371,6 +347,14 @@
             document.getElementById('trukketKort').name = kortstokk[index].kategori;
             console.log(kortstokk[index]);
         }
+
+        //----------------------------------------------------------------------
+        // END Page Functions
+        //----------------------------------------------------------------------
+
+        //----------------------------------------------------------------------
+        // Drag and drop functions
+        //----------------------------------------------------------------------
 
         interact('.dropzone').dropzone({
             accept: '.room',
@@ -451,6 +435,49 @@
             // update the posiion attributes
             target.setAttribute('data-x', x);
             target.setAttribute('data-y', y);
+        }
+
+        //----------------------------------------------------------------------
+        // END Drag and drop functions
+        //----------------------------------------------------------------------
+
+
+        //----------------------------------------------------------------------
+        // MAIN
+        //----------------------------------------------------------------------
+
+        function main() {
+            console.log('main');
+            buildDeck();
+
+            while (true) {
+                try {
+                    var houses; //Initializing variable
+                    var housesString = prompt("Hvor mange Hus: (1 - 5)", "3"); //Prompt user to enter number of houses to generate
+                    if (housesString == null || housesString == "") { //Controls if the input is a valid string
+                        throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
+                    } else {
+                        houses = parseInt(housesString); //Convert from string to integer
+                        if (houses > 0 && houses < 6) {
+                            for (var i = 0; i < houses; i++) { showHouse(i); } //Generate houses 
+                            break;
+                        } else {
+                            if (houses <= 0) {
+                                throw "Alt for få hus"; //Throw error
+                            } else {
+                                throw "Alt for mange hus"; //Throw error 
+                            }
+                        }
+                    }
+                }
+                catch (err) { //Catch any errors from main code, display content to user in console and main heading
+                    console.log(err);
+                    window.alert(err + "Angi 1, 2, 3, 4 eller 5 hus"); //Alert user if given number is too low or too high
+                    //document.getElementById('heading').innerHTML = err
+                }
+            }
+            drawCard();
+
         }
     </script>
 </body>
