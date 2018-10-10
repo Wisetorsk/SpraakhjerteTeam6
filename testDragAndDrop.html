@@ -6,8 +6,192 @@
     <title></title>
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/droppable.js"></script>
+    <style>
+        div.dropZone {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            position: absolute;
+            left: auto;
+            top: 250px;
+        }
+
+        div.draggable {
+            width: 175px;
+            height: 175px;
+            border: 2px dashed red;
+            border-radius: 50%;
+        }
+
+        #draggableContainer, #htmlDragContainer {
+            width: 300px;
+            height: 450px;
+            padding: 10px;
+            border: 2px dashed black;
+            position: relative;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        #dragme {
+            margin: 0 auto;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            background: #05041e;
+            border-radius: 15px;
+            border: outset 5px #42c8f4;
+            cursor: move;
+            span
+
+        {
+            position: relative;
+            padding-right: 0;
+            ;
+            top: 30%;
+            bottom: 30%;
+            left: 15px;
+            color: #fff;
+            font-family: cursive;
+            font-size: 28px;
+        }
+
+        }
+
+        #revert {
+            position: relative;
+            margin-top: 0px;
+        }
+
+        span {
+            font-size: 20px;
+            font-weight: 600;
+            padding-right: 8px;
+            font-family: sans-serif;
+        }
+
+    </style>
 </head>
 <body>
+    <div clss="container" id="content">
 
+        <div id="draggableContainer">
+            <h3>Javascript drag and drop</h3>
+            <div id='dragme'>
+                <span id="y">Drag ME</span>
+            </div>
+            
+        </div>
+
+        <div id="htmlDragContainer">
+            <h3>HTML DRAG & DROP</h3>
+            <div class="draggable" id="htmlDrag" draggable="true" ondragstart="drag(event)"></div>
+            <div class="dropZone" id="htmlZone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+
+    </div>
+
+        <script>
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function drag(ev) {
+                ev.dataTransfer.setData("text", ev.target.id);
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+                var data = ev.dataTransfer.getData("text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+
+
+            //Drag.js
+            onload = adding;
+
+            //==> Define the Variables <== 
+            var body = document.body;
+            var dragme = document.getElementById('dragme');
+            var body_t = document.body;
+            var dragme_t = document.getElementById('dragme');
+            var cs = dragme.style;
+            var height = dragme.offsetHeight;
+            var width = dragme.offsetWidth;
+            var text = document.getElementById('y');
+
+
+            //==> Add Some Event Listener for Mouse & Touch <==
+            function adding() {
+                dragme.addEventListener('mousedown', hold, false);
+                body.addEventListener('mouseup', release, false);
+
+                dragme_t.addEventListener('touchstart', hold, false);
+                body_t.addEventListener('touchend', release, false);
+            }
+
+            //==> On Hold Function <==
+            function hold() {
+                dragme.addEventListener('mousemove', move, true);
+                body.addEventListener('mousemove', move, true);
+
+                dragme_t.addEventListener('touchmove', tmove, true);
+                body_t.addEventListener('touchmove', tmove, true);
+            }
+            //==> On Realease Function <==
+            function release() {
+                dragme.removeEventListener('mousemove', move, true);
+                body.removeEventListener('mousemove', move, true);
+
+                dragme_t.removeEventListener('touchmove', tmove, true);
+                body_t.removeEventListener('touchmove', tmove, true);
+
+                text.innerHTML = "Drag ME";
+                text.style.top = "";
+            }
+
+            //==> On  Mousemove Function <==
+            function move(event) {
+                var epY = event.clientY;
+                var epX = event.clientX;
+
+                if (document.querySelectorAll("input[name='revertxy']:checked").length >= 1) {
+                epY = event.clientX,
+                    epX = event.clientY
+                }
+
+                cs.position = "absolute";
+                cs.top = epY + "px";
+                cs.left = epX + "px";
+                text.style.top = "30px";
+                cs.transform = "translateX(" + -width / 2 + "px ) translateY(" + -height / 2 + "px)";
+                text.innerHTML = "x : " + epX + "px " + " y : " + epY + "px";
+            }
+
+            // ==> On Touchmove Function <==
+            function tmove(touch) {
+                var epY = touch.touches[0].clientY;
+                var epX = touch.touches[0].clientX;
+
+                if (document.querySelectorAll("input[name='revertxy']:checked").length >= 1) {
+                epY = touch.touches[0].pageX,
+                    epX = touch.touches[0].pageY
+                }
+
+                cs.position = "absolute";
+                cs.top = epY + "px";
+                cs.left = epX + "px";
+                text.style.top = "30px";
+                cs.transform = "translateX(" + -width / 2 + "px ) translateY(" + -height / 2 + "px)";
+                text.innerHTML = "x : " + epX + "px " + " y : " + epY + "px";
+            }
+
+            cs.position = "";
+        </script>
 </body>
 </html>
