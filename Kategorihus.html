@@ -144,12 +144,16 @@
         }
 
         .kort {
-            width: 140px;
-            height: 140px;
+            width: auto;
+            height: 100px;
         }
 
         .noDecoration {
             list-style: none;
+        }
+
+        #drawButton {
+            width: 140px;
         }
     </style>
 </head>
@@ -173,7 +177,7 @@
                 <ul class="noDecoration">
                     <li>
                         <div class="kortstokk" id="kortholder">
-                            <img class="kort" id="trukketKort" src="" />
+                            <img class="kort" id="trukketKort" src="" name=""/>
                         </div>
                     </li>
 
@@ -356,8 +360,11 @@
             var index = Math.floor(Math.random() * antallKort);
             console.log('NEW CARD!');
             document.getElementById('trukketKort').src = kortstokk[index].img;
+            document.getElementById('trukketKort').name = kortstokk[index].kategori;
             console.log(kortstokk[index]);
         }
+
+
 
         //main();
     </script>
