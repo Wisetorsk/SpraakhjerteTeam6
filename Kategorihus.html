@@ -153,6 +153,8 @@
         .kort {
             width: auto;
             height: 100px;
+            border: 1px solid black;
+            border-radius: 15px;
         }
 
         .noDecoration {
@@ -172,13 +174,18 @@
             width: 100px;
             height: 100px;
         }
+
+        #beskrivelse {
+            font-size: 200%;
+        }
+
     </style>
 </head>
 
 <body onload="main()">
     <div class="container" id="content">
         <h1 id="header"></h1>
-        <p>
+        <p id="beskrivelse">
             Slik spiller man: 
             Klikk og dra bildet over til ett tomt rom i riktig kategori. Hvis det er riktig kategori, vil kortet flyttes inn i rommet og ett nytt kort dukker opp. Hvis det ikke finner noen hus med riktig kategori, kan du trekke nytt kort ved å trekke på "TREKK""
         </p>
@@ -335,7 +342,7 @@
                 houseString += endsvg;
                 houseString += enddiv;
                 houseString += div('house', currKategori, currKategori);
-                for (var i = 0; i < 9; i++) { houseString += '<div style="" class="dropzone" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
+                for (var i = 0; i < 9; i++) { houseString += '<div style="" class="dropzone empty" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
                 houseString += enddiv;
                 houseString += div('kategori', 'kategori');
                 houseString += currKategori; //Chooses a random element in "kategorier", returns it and removes it from the array
@@ -378,6 +385,7 @@
             console.log('NEW CARD!');
             var card = document.getElementById('trukketKort');
             var drawn = kortstokk[index];
+            resetCardPosition();
             card.src = drawn.img;
             card.name = drawn.kategori;
             //console.log(drawn);
@@ -428,20 +436,25 @@
                 var room = event.target;
                 var roomImg = document.createElement("IMG");
 
-                if (room.parentNode.id == currentCard.kategori) { 
-                console.log('Placed in : ' + room.id);
+                if (room.parentNode.id == currentCard.kategori) {
+                    if (room.classList.contains('empty')) {
+                        room.classList.remove('empty');
+                        console.log('Placed in : ' + room.id);
 
-                roomImg.setAttribute('src', currentCard.img);
-                roomImg.setAttribute('width', '70');
-                roomImg.setAttribute('height', '70');
-                room.appendChild(roomImg);
+                        roomImg.setAttribute('src', currentCard.img);
+                        roomImg.setAttribute('width', '70');
+                        roomImg.setAttribute('height', '70');
+                        room.appendChild(roomImg);
 
-                card.setAttribute('data-x', 0);
-                card.setAttribute('data-y', 0);
-                card.style.transform =
-                    'translate(' + 0 + 'px, ' + 0 + 'px)';
-                drawCard();
-                console.log(room.parentNode.id);
+                        card.setAttribute('data-x', 0);
+                        card.setAttribute('data-y', 0);
+                        card.style.transform =
+                            'translate(' + 0 + 'px, ' + 0 + 'px)';
+                        drawCard();
+                        console.log(room.parentNode.id);
+                    } else {
+                        console.log('Room already occupied');
+                    }
                 } else {
                     console.log('Wrong category');
                 }
@@ -499,6 +512,12 @@
             // update the posiion attributes
             target.setAttribute('data-x', x);
             target.setAttribute('data-y', y);
+        }
+
+        function resetCardPosition() {
+            document.getElementById('kortholder').setAttribute('data-x', 0);
+            document.getElementById('kortholder').setAttribute('data-y', 0);
+            document.getElementById('kortholder').style.transform ='translate(' + 0 + 'px, ' + 0 + 'px)';
         }
 
         //----------------------------------------------------------------------
