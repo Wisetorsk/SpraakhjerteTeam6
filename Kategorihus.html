@@ -405,7 +405,7 @@
             ondragleave: function (event) {
                 event.target.classList.remove('drop-target');
                 event.relatedTarget.classList.remove('can-drop');
-                event.relatedTarget.textContent = 'Dragged out';
+                console.log('Dragged out');
             },
             ondrop: function (event) {
                 event.relatedTarget.textContent = 'Dropped';
@@ -419,7 +419,7 @@
         interact('.drag-drop').draggable({
             inertia: true,
             restrict: {
-                restriction: "#content",
+                restriction: "#dynamicContent",
                 endOnly: true,
                 elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
             },
@@ -433,7 +433,7 @@
                 inertia: false,
                 // keep the element within the area of it's parent
                 restrict: {
-                    restriction: "#content",
+                    restriction: "#dynamicContent",
                     endOnly: true,
                     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
                 },
@@ -444,13 +444,7 @@
                 onmove: dragMoveListener,
                 // call this function on every dragend event
                 onend: function (event) {
-                    var textEl = event.target.querySelector('p');
-
-                    textEl && (textEl.textContent =
-                        'moved a distance of '
-                        + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
-                            Math.pow(event.pageY - event.y0, 2) | 0))
-                            .toFixed(2) + 'px');
+                    console.log('Moved');
                 }
             });
 
