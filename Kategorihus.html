@@ -386,7 +386,7 @@
         //----------------------------------------------------------------------
 
         interact('.dropzone').dropzone({
-            accept: '#hus0rom0',
+            accept: '#kortholder',
             overlap: 0.75,
             ondropactivate: function (event) {
                 event.target.classList.add('drop-active');
@@ -423,7 +423,7 @@
             onmove: dragMoveListener,
         });
 
-        /*interact('.draggable')
+        interact('.draggable')
             .draggable({
                 // enable inertial throwing
                 inertia: false,
@@ -448,7 +448,7 @@
                             Math.pow(event.pageY - event.y0, 2) | 0))
                             .toFixed(2) + 'px');
                 }
-            });*/
+            });
 
         function dragMoveListener(event) {
             var target = event.target,
