@@ -47,7 +47,7 @@
                 /*border: 2px dashed black;*/
             }
 
-            .content {
+            #content {
                 max-width: 1024px;
                 max-height: 768px;
             }
@@ -74,7 +74,7 @@
                 /*border: 2px dashed black;*/
             }
 
-            .content {
+            #content {
                 max-width: 768px;
                 max-height: 1024px;
             }
@@ -176,7 +176,7 @@
 </head>
 
 <body onload="main()">
-    <div class="content">
+    <div class="container" id="content">
         <h1 id="header"></h1>
         <p>
             PAGE TEXT
@@ -396,7 +396,7 @@
                     dropzoneElement = event.target;
                 dropzoneElement.classList.add('drop-target');
                 draggableElement.classList.add('can-drop');
-                draggableElement.textContent = 'Dragged in';
+                console.log('Dragged in');
             },
             ondragleave: function (event) {
                 event.target.classList.remove('drop-target');
@@ -415,7 +415,7 @@
         interact('.drag-drop').draggable({
             inertia: true,
             restrict: {
-                restriction: "parent",
+                restriction: "#content",
                 endOnly: true,
                 elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
             },
@@ -429,7 +429,7 @@
                 inertia: false,
                 // keep the element within the area of it's parent
                 restrict: {
-                    restriction: "parent",
+                    restriction: "#content",
                     endOnly: true,
                     elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
                 },
@@ -501,7 +501,6 @@
                 catch (err) { //Catch any errors from main code, display content to user in console and main heading
                     console.log(err);
                     window.alert(err + "Angi 1, 2, 3, 4 eller 5 hus"); //Alert user if given number is too low or too high
-                    //document.getElementById('heading').innerHTML = err
                 }
             }
             drawCard();
