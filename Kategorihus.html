@@ -194,7 +194,7 @@
                 <ul class="noDecoration">
                     <li>
                         <div class="kortstokk" id="kortstokk">KORTSTOKK
-                            <div class="drag-drop" id="kortholder">Mannskit
+                            <div class="drag-drop" id="kortholder" onclick="select(this)">
                                 <img class="kort" id="trukketKort" src="" name="" />
                             </div>
                         </div>
@@ -207,7 +207,7 @@
         </div>
     </div>
     <script>
-
+        this.touch = "ontouchstart" in window || (window.DocumentTouch && document instanceof DocumentTouch);
         //----------------------------------------------------------------------
         // Objects
         //----------------------------------------------------------------------
@@ -277,7 +277,7 @@
         var antallKort = imagesJson.length;
         var kortstokk = [];
         var houses;
-        var currentCard = NaN;
+        var currentCard, selected = NaN;
         var drawnCards = [];
 
 
@@ -333,7 +333,7 @@
                 houseString += endsvg;
                 houseString += enddiv;
                 houseString += div('house', houseNumber);
-                for (var i = 0; i < 9; i++) { houseString += '<div class="dropzone" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
+                for (var i = 0; i < 9; i++) { houseString += '<div style="" class="dropzone" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
                 houseString += enddiv;
                 houseString += div('kategori');
                 houseString += kategorier.splice([Math.floor(Math.random() * kategorier.length)], 1); //Chooses a random element in "kategorier", returns it and removes it from the array
@@ -368,17 +368,24 @@
         function drawCard() { //Page Function
             var index = Math.floor(Math.random() * antallKort);
             console.log('NEW CARD!');
-            document.getElementById('trukketKort').src = kortstokk[index].img;
-            document.getElementById('trukketKort').name = kortstokk[index].kategori;
-            console.log(kortstokk[index]);
-            currentCard = kortstokk[index];
-            drawnCards.push(kortstokk[index]);
+            var card = document.getElementById('trukketKort');
+            var drawn = kortstokk[index];
+            card.src = drawn.img;
+            card.name = drawn.kategori;
+            console.log(drawn);
+            currentCard = drawn;
+            drawnCards.push(drawn);
         }
 
         function resetHouses() {
             console.log('Reset houses');
             document.getElementById('houses').innerHTML = "";
             for (var i = 0; i < houses; i++) { showHouse(i); }
+        }
+
+        function select(element) {
+            selected = element;
+            console.log(selected);
         }
 
         //----------------------------------------------------------------------
@@ -391,7 +398,7 @@
 
         interact('.dropzone').dropzone({
             accept: '#kortholder',
-            overlap: 0.75,
+            overlap: 0.2,
             ondropactivate: function (event) {
                 event.target.classList.add('drop-active');
             },
@@ -408,7 +415,18 @@
                 console.log('Dragged out');
             },
             ondrop: function (event) {
-                event.relatedTarget.textContent = 'Dropped';
+                var card = event.relatedTarget;
+                var room = event.target;
+                var img = '"url(' + currentCard.img + ')"';
+                var roomImg = document.createElement("IMG");
+
+                console.log('Placed in : ' + room.id);
+                console.log('card: ' + card.id);
+                roomImg.setAttribute('src', img);
+                roomImg.setAttribute('width', '70');
+                roomImg.setAttribute('height', '70');
+                room.appendChild(roomImg);
+                //room.style.backgroundColor = "red";
             },
             ondropactivate: function (event) {
                 event.target.classList.remove('drop-active');
