@@ -25,7 +25,6 @@
         }
 
 
-
         @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
             .grid-container {
                 display: grid;
@@ -318,7 +317,18 @@
         var enddiv = '</div>';
         var endsvg = '</svg>';
         var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker', 'dyr', 'grønnsaker', 'frukt'];
-        const kategorier_backup = Array.from(kategorier);
+        var subkategorier = {
+            'klær': ['sko', 'hatt'],
+            'mat': ['grønnsaker', 'frukt'],
+            'kjøretøy': ['bil', 'lastebil'],
+            'skole': [],
+            'verktøy': [],
+            'mennesker': [],
+            'dyr': [],
+            'grønnsaker': ['mat'],
+            'frukt': ['mat']
+        };
+        var kategorierObj = {};
         var antallKort = imagesJson.length;
         var kortstokk = [];
         var houses;
@@ -333,6 +343,14 @@
         //----------------------------------------------------------------------
         // Object definitions
         //----------------------------------------------------------------------
+
+        class Kategori {
+            constructor(kategori, subkategorier) {
+                this.kategori = kategori;
+                this.subkategorier = subkategorier; //array
+
+            }
+        }
 
         class Kort {
             constructor(kategori, img, navn='TEST',  debug=false) {
@@ -349,12 +367,6 @@
             }
         }
 
-        function buildDeck() {
-            for (var index = 0; index < antallKort; index++) { //Building the card deck
-                kortstokk[index] = new Kort(imagesJson[index].kategori, imagesJson[index].src, imagesJson[index].src.slice(4, -4)); //Construct new object based on JSON data in imagesJson
-            }
-        }
-
         //----------------------------------------------------------------------
         // END Object definitions
         //----------------------------------------------------------------------
@@ -362,6 +374,20 @@
         //----------------------------------------------------------------------
         // Page functions
         //----------------------------------------------------------------------
+        function init() {
+            for (index in kategorier) {
+                var kategorinavn = kategorier[index];
+                kategorierObj[kategorinavn] = new Kategori(kategorinavn, subkategorier[kategorinavn]);
+            }
+            buildDeck();
+        }
+
+        function buildDeck() {
+            for (var index = 0; index < antallKort; index++) { //Building the card deck
+                kortstokk[index] = new Kort(imagesJson[index].kategori, imagesJson[index].src, imagesJson[index].src.slice(4, -4)); //Construct new object based on JSON data in imagesJson
+            }
+        }
+
 
         function showHouse(houseNumber) {
             /*
@@ -390,11 +416,6 @@
             }
         }
 
-        /*
-        function resetKategorier() {
-            kategorier = kategorier_backup;
-        }
-        */
 
         function div(cls, identity = "", name = false) {
             if (name) {
@@ -480,7 +501,7 @@
                 var room = event.target;
                 var roomImg = document.createElement("IMG");
 
-                if (room.parentNode.id === currentCard.kategori) {
+                if (room.parentNode.id === currentCard.kategori || kategorierObj[currentCard.kategori].subkategorier.includes(room.parentNode.id)) {
                     if (room.classList.contains('empty')) {
                         room.classList.remove('empty');
                         console.log('Placed in : ' + room.id);
@@ -571,7 +592,7 @@
 
         function main() {
             console.log('main');
-            buildDeck();
+            init();
 
             while (true) {
                 try {
