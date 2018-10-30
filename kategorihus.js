@@ -5,12 +5,28 @@ this.touch = "ontouchstart" in window || (window.DocumentTouch && document insta
 // Objects
 //----------------------------------------------------------------------
 
+var titleImages = [
+    { kategori: 'klær', src: 'clothesTitle.png' },
+    { kategori: 'mennesker', src: 'peopleTitle.png' },
+    { kategori: 'verktøy', src: 'toolTitle.png'},
+];
+
 var imagesJson = [
     { kategori: 'frukt', src: 'img/bananas.png' },
     { kategori: 'dyr', src: 'img/bear.png' },
     { kategori: 'dyr', src: 'img/beaver.png' },
     { kategori: 'skole', src: 'img/blackboard.png' },
     { kategori: 'mennesker', src: 'img/boy.png' },
+    { kategori: 'mennesker', src: 'img/people.png' },
+    { kategori: 'mennesker', src: 'img/girl2.png' },
+    { kategori: 'mennesker', src: 'img/roman.png' },
+    { kategori: 'mennesker', src: 'img/girl3.png' },
+    { kategori: 'mennesker', src: 'img/dude.png' },
+    { kategori: 'mennesker', src: 'img/greek.png' },
+    { kategori: 'mennesker', src: 'img/fisher.png' },
+    { kategori: 'mennesker', src: 'img/belgian.png' },
+    { kategori: 'verktøy', src: 'wheelbarrow.png'},
+    { kategori: 'klær', src: 'img/jumper.png' },
     { kategori: 'grønnsaker', src: 'img/broccoli.png' },
     { kategori: 'klær', src: 'img/cap.png' },
     { kategori: 'kjøretøy', src: 'img/car1.png' },
@@ -212,12 +228,6 @@ function div(cls, identity = "", name = false) {
     return DivStr;
 }
 
-/*
-function shortDiv(cls, identity="", name=false) {
-    var DivStr = (name) ? '<div class="' + cls + '" id="' + identity + '" value = "' + name + '">' : '<div class="' + cls + '" id="' + identity + '">';
-    return DivStr;
-}
- */
 
 function corPair(x, y, end = false) {
     var assembledString = '';
@@ -238,7 +248,6 @@ function drawCard() { //Page Function
     resetCardPosition();
     card.src = drawn.img;
     card.name = drawn.kategori;
-    //console.log(drawn);
     currentCard = drawn;
     drawnCards.push(drawn);
 }
@@ -251,7 +260,6 @@ function resetHouses() {
 
 function select(element) {
     selected = element;
-    //console.log(selected);
 }
 
 //----------------------------------------------------------------------
