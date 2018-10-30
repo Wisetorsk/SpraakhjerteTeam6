@@ -381,12 +381,12 @@ function main() {
 
     while (true) {
         try {
-            var housesString = prompt("Hvor mange Hus: (1 - 5)", "3"); //Prompt user to enter number of houses to generate
+            var housesString = prompt("Hvor mange Hus: (1 - 6)", "3"); //Prompt user to enter number of houses to generate
             if (housesString == null || housesString == "") { //Controls if the input is a valid string
                 throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
             } else {
                 houses = parseInt(housesString); //Convert from string to integer
-                if (houses > 0 && houses < 6) {
+                if (houses > 0 && houses < 7) {
                     for (var i = 0; i < houses; i++) { showHouse(i); } //Generate houses 
                     break;
                 } else {
