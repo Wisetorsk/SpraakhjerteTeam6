@@ -53,7 +53,7 @@ var imagesJson = [
     { kategori: 'people', src: 'img/carpenter.png', name: { nor: 'Snekker', eng: 'Carpenter' }, audio: ''  },
     { kategori: 'vegetables', src: 'img/carrot.png', name: { nor: 'Gulrot', eng: 'Carrot' }, audio: ''  },
     { kategori: 'animal', src: 'img/chicken.png', name: { nor: 'H\u00F8ne', eng: 'Chicken' }, audio: ''  },
-    { kategori: 'fruit', src: 'img/coconut.png', name: { nor: 'Kokosnøtt', eng: 'Coconut' }, audio: ''  },
+    { kategori: 'fruit', src: 'img/coconut.png', name: { nor: 'Kokosn\u00F8tt', eng: 'Coconut' }, audio: ''  },
     { kategori: 'animal', src: 'img/cow.png', name: { nor: 'Ku', eng: 'Cow' }, audio: ''  },
     { kategori: 'animal', src: 'img/dog.png', name: { nor: 'Hund', eng: 'Dog' }, audio: ''  },
     { kategori: 'clothes', src: 'img/dress.png', name: { nor: 'Kjole', eng: 'Dress' }, audio: ''  },
