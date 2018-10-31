@@ -223,12 +223,12 @@ interact('.dropzone').dropzone({
             dropzoneElement = event.target;
         dropzoneElement.classList.add('drop-target');
         draggableElement.classList.add('can-drop');
-        console.log('Dragged in');
+        //console.log('Dragged in');
     },
     ondragleave: function (event) {
         event.target.classList.remove('drop-target');
         event.relatedTarget.classList.remove('can-drop');
-        console.log('Dragged out');
+        //console.log('Dragged out');
     },
     ondrop: function (event) {
 
@@ -290,7 +290,7 @@ interact('.draggable')
         autoScroll: true,
         onmove: dragMoveListener,
         onend: function (event) {
-            console.log('Moved');
+            //console.log('Moved');
         }
     });
 
@@ -314,6 +314,10 @@ function resetCardPosition() {
     document.getElementById('kortholder').setAttribute('data-x', 0);
     document.getElementById('kortholder').setAttribute('data-y', 0);
     document.getElementById('kortholder').style.transform = 'translate(' + 0 + 'px, ' + 0 + 'px)';
+}
+
+function checkFull() {
+    /*Checks if any of the houses are full*/
 }
 
 //----------------------------------------------------------------------

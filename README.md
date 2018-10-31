@@ -24,6 +24,7 @@ Språkhjerte kategorihus spill
 - [ ] Opplesing  av korttittel
 - [ ] Lyd som feedback
 - [ ] Testing på Ipad
+- [ ] Endre strukturen på katekorisystemet slik at hvert kort inneholder mer informasjon om seg selv
 
 ## Problemer som må fikses:
 - [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres
