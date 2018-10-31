@@ -1,8 +1,4 @@
-# SpraakhjerteTeam6
-Repo for spillforslag 
-
-
-﻿Kategorihus
+Kategorihus
 ===========
 
 `Språkhjerte`
@@ -18,7 +14,8 @@ Språkhjerte kategorihus spill
 - [x] Generere hus
 - [ ] Ferdigstille/videreutvikle dynamisk css for mobile enheter
 - [x] Kategoribilde på hustak
-- [ ] Tekst og ramme rundt kortene
+- [x] Korttekst 
+- [ ] Ramme rundt kortene
 - [ ] Symbol i tilegg til tekst på "trekk-knappen"
 - [ ] Visuell forklaring av hvordan man spiller
 - [ ] Opplesing  av korttittel
@@ -29,3 +26,7 @@ Språkhjerte kategorihus spill
 ## Problemer som må fikses:
 - [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres
 - [ ] Det er mulig å plassere kort med hovedkategori "food" i hus med kategori grønnsaker og frukt.
+
+## Updates:
+- Lagt til mer informasjon i imgJson
+- Lagt til mulighet for flere språk. Norsk og Engelsk er 90% implementert.
