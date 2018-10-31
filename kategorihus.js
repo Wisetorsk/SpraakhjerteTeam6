@@ -200,6 +200,7 @@ function drawCard() {
     card.name = drawn.kategori;
     currentCard = drawn;
     drawnCards.push(drawn);
+    checkFull();
 }
 
 function resetHouses() {
@@ -317,6 +318,19 @@ function resetCardPosition() {
 
 function checkFull() {
     /*Checks if any of the houses are full*/
+    var houses = document.getElementsByClassName("house");
+    for (var house = 0; house < houses.length; house++) {
+        console.log(houses[house]);
+        var rooms = houses[house].getElementsByClassName("empty");
+        if (rooms.length === 0) {
+            console.log("FULL HOUSE");
+            console.log("Hus: " + houses[house].id + " Full");
+        }
+    }
+}
+
+function selectLanguage() {
+    language = (confirm('Norsk?')) ? 'norwegian' : 'english';
 }
 
 //----------------------------------------------------------------------
@@ -324,6 +338,7 @@ function checkFull() {
 //----------------------------------------------------------------------
 
 function main() {
+    selectLanguage();
     console.log('main');
     init();
 
