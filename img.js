@@ -1,10 +1,30 @@
 // JavaScript source code
-var titleImages = [
-    { kategori: 'clothes', src: 'clothesTitle.png' },
-    { kategori: 'people', src: 'peopleTitle.png' },
-    { kategori: 'tools', src: 'toolTitle.png' },
-    { kategori: 'animal', src: 'animalsTitle.png' }
-];
+var titleImages =
+{
+    clothes: 'img/clothesTitle.png'
+    ,
+
+    people: 'img/peopleTitle.png'
+    ,
+
+    tools: 'img/toolTitle.png'
+    ,
+
+    animal: 'img/animalsTitle.png'
+    ,
+
+    fruit: 'img/fruitTitle.jpg'
+    ,
+
+    school: 'img/schoolTitle.png'
+    ,
+
+    vegetables: 'img/vegetablesTitle.png'
+    ,
+
+    vehicle: 'img/vehicleTitle.png'
+};
+
 
 var imagesJson = [
     { kategori: 'fruit', src: 'img/bananas.png' },

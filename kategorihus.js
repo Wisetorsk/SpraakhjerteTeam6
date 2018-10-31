@@ -132,10 +132,13 @@ function showHouse(houseNumber) {
         houseString = '';
         houseString += div('plot');
         houseString += div('roof');
-        houseString += '<svg width=400 height=100>';
+        houseString += '<svg class="roofSVG" width=400 height=100>';
         houseString += '<polygon points="' + corPair(50, 0) + corPair((50 + hDim.roofWidth), 0) + corPair((100 + hDim.roofWidth), hDim.roofHeight) + corPair(0, hDim.roofHeight, true) + '"  fill="red" stroke="black" />';
         houseString += '<polyline points="' + corPair(100, 70) + corPair(100, 20) + corPair(150, 20) + corPair(150, 70, true) + '" stroke="black" stroke-width="5px" fill="red"/>';
         houseString += endsvg;
+        console.log(currKategori);
+        console.log(titleImages[currKategori]);
+        houseString += '<img class="titleImg" src="' + titleImages[currKategori] + '" width="200px" height="auto"/>';
         houseString += enddiv;
         houseString += div('house', currKategori, currKategori);
         for (var i = 0; i < 9; i++) { houseString += '<div style="" class="dropzone empty" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }

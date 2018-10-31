@@ -161,3 +161,16 @@
 #beskrivelse {
     font-size: 200%;
 }
+
+#roof {
+}
+
+#titleImg {
+    position: absolute;
+    z-index: 1;
+}
+
+#roofSVG {
+    position: absolute;
+    z-index: -1;
+}
