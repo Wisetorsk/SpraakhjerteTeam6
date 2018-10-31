@@ -1,10 +1,9 @@
 ﻿// JavaScript source code
-this.touch = "ontouchstart" in window || (window.DocumentTouch && document instanceof DocumentTouch);
+//this.touch = "ontouchstart" in window || (window.DocumentTouch && document instanceof DocumentTouch);
 
 //----------------------------------------------------------------------
 // Objects
 //----------------------------------------------------------------------
-
 
 var hDim = {
     width: 400,
@@ -13,6 +12,31 @@ var hDim = {
     roofHeight: 100
 };
 
+var subkategorier = {
+    'clothes': [''],
+    'food': ['vegetables', 'fruit'],
+    'vehicle': [''],
+    'school': [''],
+    'tools': [''],
+    'people': [''],
+    'animal': [''],
+    'vegetables': ['food'],
+    'fruit': ['food']
+};
+
+var kategorierObj = {};
+
+var dict = {
+    'clothes': { eng: 'clothes', nor: 'klær' },
+    'food': { eng: 'food', nor: 'mat' },
+    'vehicle': { eng: 'vehicle', nor: 'kjøretøy' },
+    'school': { eng: 'school', nor: 'skole' },
+    'tools': { eng: 'tools', nor: 'verktøy' },
+    'people': { eng: 'people', nor: 'mennesker' },
+    'animal': { eng: 'animal', nor: 'dyr' },
+    'vegetables': { eng: 'vegetables', nor: 'grønnsaker' },
+    'fruit': { eng: 'fruit', nor: 'frukt' }    
+}
 //----------------------------------------------------------------------
 // END Objects
 //----------------------------------------------------------------------
@@ -21,27 +45,15 @@ var hDim = {
 // Variables
 //----------------------------------------------------------------------
 
+var language = 'english'; // Angi språk.
 var enddiv = '</div>';
 var endsvg = '</svg>';
-var kategorier = ['klær', 'mat', 'kjøretøy', 'skole', 'verktøy', 'mennesker', 'dyr', 'grønnsaker', 'frukt'];
-var subkategorier = {
-    'klær': ['sko', 'hatt'],
-    'mat': ['grønnsaker', 'frukt'],
-    'kjøretøy': ['bil', 'lastebil'],
-    'skole': [],
-    'verktøy': [],
-    'mennesker': [],
-    'dyr': [],
-    'grønnsaker': ['mat'],
-    'frukt': ['mat']
-};
-var kategorierObj = {};
+var kategorier = ['clothes', 'food', 'vehicle', 'school', 'tools', 'people', 'animal', 'vegetables', 'fruit'];
 var antallKort = imagesJson.length;
 var kortstokk = [];
 var houses;
 var currentCard, selected = NaN;
 var drawnCards = [];
-
 
 //----------------------------------------------------------------------
 // END Variables
@@ -82,6 +94,7 @@ class Kort {
 // Page functions
 //----------------------------------------------------------------------
 function init() {
+    initPage();
     for (index in kategorier) {
         var kategorinavn = kategorier[index];
         kategorierObj[kategorinavn] = new Kategori(kategorinavn, subkategorier[kategorinavn]);
@@ -95,6 +108,26 @@ function buildDeck() {
     }
 }
 
+function initPage() {
+    switch (language) {
+        case 'norwegian':
+            document.getElementById('beskrivelse').innerHTML = 'Slik spiller man: Klikk og dra bildet over til ett tomt rom i riktig kategori.Hvis det er riktig kategori, vil kortet flyttes inn i rommet og ett nytt kort dukker opp.Hvis det ikke finner noen hus med riktig kategori, kan du trekke nytt kort ved å trekke på "TREKK"';
+            document.getElementById('kortstokkSpan').innerHTML = 'Kortstokk';
+            document.getElementById('drawButton').innerHTML = 'TREKK';
+            document.getElementById('resetButton').innerHTML = 'RESET';
+            break;
+        case 'english':
+            document.getElementById('beskrivelse').innerHTML = 'How to play: Click and drag the card over to a vacant room in the house with the same category as the card. If it\'s the correct house and the room is vacant, the card will drop into the room. If there are no houses with a category that matches the card, you can draw a new card by pressing the button labelled "DRAW".';
+            document.getElementById('kortstokkSpan').innerHTML = 'Deck';
+            document.getElementById('drawButton').innerHTML = 'DRAW';
+            document.getElementById('resetButton').innerHTML = 'RESET';
+            break;
+        default:
+            console.log("Invalid language selection");
+            throw "ERROR";
+            break;
+    }
+}
 
 function showHouse(houseNumber) {
     /*
@@ -102,7 +135,7 @@ function showHouse(houseNumber) {
      * Assemble html grid elements and insert into houses element
      */
     if (kategorier.length > 0) {
-        var currKategori = kategorier.splice([Math.floor(Math.random() * kategorier.length)], 1);
+        var currKategori = kategorier.splice([Math.floor(Math.random() * kategorier.length)], 1); //Chooses a random element in "kategorier", returns it and removes it from the array
         houseString = '';
         houseString += div('plot');
         houseString += div('roof');
@@ -115,7 +148,18 @@ function showHouse(houseNumber) {
         for (var i = 0; i < 9; i++) { houseString += '<div style="" class="dropzone empty" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
         houseString += enddiv;
         houseString += div('kategori', 'kategori');
-        houseString += currKategori; //Chooses a random element in "kategorier", returns it and removes it from the array
+        switch (language) {
+            case 'norwegian':
+                houseString += dict[currKategori].nor;
+                break;
+            case 'english':
+                houseString += dict[currKategori].eng;
+                break;
+            default:
+                console.log("Invalid language selection");
+                break;
+        }
+        
         houseString += enddiv + enddiv;
         document.getElementById('houses').innerHTML += houseString;
     } else {
@@ -199,15 +243,15 @@ interact('.dropzone').dropzone({
         var card = event.relatedTarget;
         var room = event.target;
         var roomImg = document.createElement("IMG");
-
         if (room.parentNode.id === currentCard.kategori || kategorierObj[currentCard.kategori].subkategorier.includes(room.parentNode.id)) {
             if (room.classList.contains('empty')) {
                 room.classList.remove('empty');
                 console.log('Placed in : ' + room.id);
 
                 roomImg.setAttribute('src', currentCard.img);
-                roomImg.setAttribute('width', '70');
-                roomImg.setAttribute('height', '70');
+                roomImg.setAttribute('width', '80');
+                roomImg.setAttribute('height', 'auto');
+                roomImg.setAttribute('object-fit', 'cover');
                 room.appendChild(roomImg);
 
                 card.setAttribute('data-x', 0);

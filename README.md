@@ -24,3 +24,7 @@ Språkhjerte kategorihus spill
 - [ ] Opplesing  av korttittel
 - [ ] Lyd som feedback
 - [ ] Testing på Ipad
+
+## Problemer som må fikses:
+- [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres
+- [ ] Det er mulig å plassere kort med hovedkategori "food" i hus med kategori grønnsaker og frukt.
