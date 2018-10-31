@@ -23,6 +23,9 @@ var titleImages =
     ,
 
     vehicle: 'img/vehicleTitle.png'
+    ,
+
+    food: 'img/foodTitle.png'
 };
 
 

@@ -138,7 +138,7 @@ function showHouse(houseNumber) {
         houseString += endsvg;
         console.log(currKategori);
         console.log(titleImages[currKategori]);
-        houseString += '<img class="titleImg" src="' + titleImages[currKategori] + '" width="200px" height="auto"/>';
+        houseString += '<img class="titleImg" src="' + titleImages[currKategori] + '" width="auto" height="100px"/>';
         houseString += enddiv;
         houseString += div('house', currKategori, currKategori);
         for (var i = 0; i < 9; i++) { houseString += '<div style="" class="dropzone empty" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
