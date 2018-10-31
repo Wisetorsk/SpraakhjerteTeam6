@@ -162,17 +162,17 @@
     font-size: 200%;
 }
 
-#roof {
+.roof {
     position: absolute;
     display: block;
 }
 
-#titleImg {
+.titleImg {
     position: relative;
     z-index: 1;
 }
 
-#roofSVG {
+.roofSVG {
     position: relative;
     z-index: -1;
 }

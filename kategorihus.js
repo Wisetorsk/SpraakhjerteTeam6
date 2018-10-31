@@ -42,7 +42,7 @@ var dict = {
 // Variables
 //----------------------------------------------------------------------
 
-var language = 'english'; // Angi språk.
+var language = 'norwegian'; //'english'; // Angi språk.
 var enddiv = '</div>';
 var endsvg = '</svg>';
 var kategorier = ['clothes', 'food', 'vehicle', 'school', 'tools', 'people', 'animal', 'vegetables', 'fruit'];
