@@ -69,15 +69,15 @@ class Kategori {
 }
 
 class Kort {
-    constructor(kategori, img, navn = 'TEST', debug = false) {
+    constructor(params, debug=false) {
         /** :Object: Kort
          * :param Kategori: kategori
          * :param img: image url
          * :param navn: card name
          */
-        this.kategori = kategori;
-        this.navn = navn;
-        this.img = img;
+        this.kategori = params.kategori;
+        this.navn = params.name[language.slice(0,3)];
+        this.img = params.src;
         this.debug = debug;
     }
 }
@@ -97,7 +97,8 @@ function init() {
 
 function buildDeck() {
     for (var index = 0; index < antallKort; index++) { //Building the card deck
-        kortstokk[index] = new Kort(imagesJson[index].kategori, imagesJson[index].src, imagesJson[index].src.slice(4, -4)); //Construct new object based on JSON data in imagesJson
+        console.log(imagesJson[index]);
+        kortstokk[index] = new Kort(imagesJson[index]); //Construct new object based on JSON data in imagesJson
     }
 }
 
@@ -138,7 +139,7 @@ function showHouse(houseNumber) {
         houseString += endsvg;
         console.log(currKategori);
         console.log(titleImages[currKategori]);
-        houseString += '<img class="titleImg" src="' + titleImages[currKategori] + '" width="auto" height="100px"/>';
+        houseString += '<img class="titleImg" src="' + titleImages[currKategori] + '" width="auto" height="90px"/>';
         houseString += enddiv;
         houseString += div('house', currKategori, currKategori);
         for (var i = 0; i < 9; i++) { houseString += '<div style="" class="dropzone empty" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
@@ -190,9 +191,12 @@ function drawCard() {
     var index = Math.floor(Math.random() * antallKort);
     console.log('NEW CARD!');
     var card = document.getElementById('trukketKort');
+    var cardName = document.getElementById('kortstokkSpan');
     var drawn = kortstokk[index];
+    console.log(drawn);
     resetCardPosition();
     card.src = drawn.img;
+    cardName.innerHTML = drawn.navn;
     card.name = drawn.kategori;
     currentCard = drawn;
     drawnCards.push(drawn);
@@ -223,15 +227,12 @@ interact('.dropzone').dropzone({
             dropzoneElement = event.target;
         dropzoneElement.classList.add('drop-target');
         draggableElement.classList.add('can-drop');
-        //console.log('Dragged in');
     },
     ondragleave: function (event) {
         event.target.classList.remove('drop-target');
         event.relatedTarget.classList.remove('can-drop');
-        //console.log('Dragged out');
     },
     ondrop: function (event) {
-
         var card = event.relatedTarget;
         var room = event.target;
         var roomImg = document.createElement("IMG");
@@ -239,13 +240,11 @@ interact('.dropzone').dropzone({
             if (room.classList.contains('empty')) {
                 room.classList.remove('empty');
                 console.log('Placed in : ' + room.id);
-
                 roomImg.setAttribute('src', currentCard.img);
                 roomImg.setAttribute('width', '80');
                 roomImg.setAttribute('height', 'auto');
                 roomImg.setAttribute('object-fit', 'cover');
                 room.appendChild(roomImg);
-
                 card.setAttribute('data-x', 0);
                 card.setAttribute('data-y', 0);
                 card.style.transform =

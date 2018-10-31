@@ -17,14 +17,14 @@ Språkhjerte kategorihus spill
 ## Fremdriftsplan:
 - [x] Generere hus
 - [ ] Ferdigstille/videreutvikle dynamisk css for mobile enheter
-- [ ] Kategoribilde på hustak
+- [x] Kategoribilde på hustak
 - [ ] Tekst og ramme rundt kortene
 - [ ] Symbol i tilegg til tekst på "trekk-knappen"
 - [ ] Visuell forklaring av hvordan man spiller
 - [ ] Opplesing  av korttittel
 - [ ] Lyd som feedback
 - [ ] Testing på Ipad
-- [ ] Endre strukturen på katekorisystemet slik at hvert kort inneholder mer informasjon om seg selv
+- [ ] Endre strukturen på katekorisystemet slik at hvert kort inneholder mer informasjon om seg selv. (kategoriliste/classList)
 
 ## Problemer som må fikses:
 - [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres

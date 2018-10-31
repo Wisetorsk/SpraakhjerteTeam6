@@ -171,10 +171,14 @@
     position: relative;
     z-index: 1;
     top: -100px;
-    left: 150px;
+    left: 160px;
 }
 
 .roofSVG {
     position: relative;
     z-index: -1;
+}
+
+#kortstokkSpan {
+    font-size: 150%;
 }
