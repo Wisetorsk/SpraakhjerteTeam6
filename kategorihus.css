@@ -163,14 +163,16 @@
 }
 
 #roof {
+    position: absolute;
+    display: block;
 }
 
 #titleImg {
-    position: absolute;
+    position: relative;
     z-index: 1;
 }
 
 #roofSVG {
-    position: absolute;
+    position: relative;
     z-index: -1;
 }
