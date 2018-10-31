@@ -97,7 +97,6 @@ function init() {
 
 function buildDeck() {
     for (var index = 0; index < antallKort; index++) { //Building the card deck
-        console.log(imagesJson[index]);
         kortstokk[index] = new Kort(imagesJson[index]); //Construct new object based on JSON data in imagesJson
     }
 }
@@ -193,7 +192,7 @@ function drawCard() {
     var card = document.getElementById('trukketKort');
     var cardName = document.getElementById('kortstokkSpan');
     var drawn = kortstokk[index];
-    console.log(drawn);
+    console.table(drawn);
     resetCardPosition();
     card.src = drawn.img;
     cardName.innerHTML = drawn.navn;
@@ -320,7 +319,6 @@ function checkFull() {
     /*Checks if any of the houses are full*/
     var houses = document.getElementsByClassName("house");
     for (var house = 0; house < houses.length; house++) {
-        console.log(houses[house]);
         var rooms = houses[house].getElementsByClassName("empty");
         if (rooms.length === 0) {
             console.log("FULL HOUSE");
