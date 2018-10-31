@@ -37,9 +37,6 @@ var dict = {
     'vegetables': { eng: 'vegetables', nor: 'grønnsaker' },
     'fruit': { eng: 'fruit', nor: 'frukt' }    
 }
-//----------------------------------------------------------------------
-// END Objects
-//----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
 // Variables
@@ -56,15 +53,15 @@ var currentCard, selected = NaN;
 var drawnCards = [];
 
 //----------------------------------------------------------------------
-// END Variables
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
 // Object definitions
 //----------------------------------------------------------------------
 
 class Kategori {
     constructor(kategori, subkategorier) {
+        /** :Object: Kategori
+         * :param kategori: kategori
+         * :param subkategorier: subcategories under kategori in array
+         */
         this.kategori = kategori;
         this.subkategorier = subkategorier; //array
 
@@ -73,11 +70,10 @@ class Kategori {
 
 class Kort {
     constructor(kategori, img, navn = 'TEST', debug = false) {
-        /*
-         * Kort Object
-         * Kategori: kategori
-         * img: image url
-         * navn: card name
+        /** :Object: Kort
+         * :param Kategori: kategori
+         * :param img: image url
+         * :param navn: card name
          */
         this.kategori = kategori;
         this.navn = navn;
@@ -87,12 +83,9 @@ class Kort {
 }
 
 //----------------------------------------------------------------------
-// END Object definitions
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
 // Page functions
 //----------------------------------------------------------------------
+
 function init() {
     initPage();
     for (index in kategorier) {
@@ -130,7 +123,7 @@ function initPage() {
 }
 
 function showHouse(houseNumber) {
-    /*
+    /**
      * House generation function
      * Assemble html grid elements and insert into houses element
      */
@@ -190,7 +183,7 @@ function corPair(x, y, end = false) {
     return assembledString;
 }
 
-function drawCard() { //Page Function
+function drawCard() { 
     var index = Math.floor(Math.random() * antallKort);
     console.log('NEW CARD!');
     var card = document.getElementById('trukketKort');
@@ -211,10 +204,6 @@ function resetHouses() {
 function select(element) {
     selected = element;
 }
-
-//----------------------------------------------------------------------
-// END Page Functions
-//----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
 // Drag and drop functions
@@ -323,11 +312,6 @@ function resetCardPosition() {
     document.getElementById('kortholder').setAttribute('data-y', 0);
     document.getElementById('kortholder').style.transform = 'translate(' + 0 + 'px, ' + 0 + 'px)';
 }
-
-//----------------------------------------------------------------------
-// END Drag and drop functions
-//----------------------------------------------------------------------
-
 
 //----------------------------------------------------------------------
 // MAIN
