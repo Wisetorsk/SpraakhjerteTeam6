@@ -16,7 +16,7 @@ Språkhjerte kategorihus spill
 - [x] Kategoribilde på hustak
 - [x] Korttekst 
 - [ ] Ramme rundt kortene
-- [ ] Symbol i tilegg til tekst på "trekk-knappen" (kort)
+- [x] Symbol i tilegg til tekst på "trekk-knappen" (kort)
 - [ ] Visuell forklaring av hvordan man spiller
 - [ ] Opplesing  av korttittel
 - [ ] Lyd som feedback
