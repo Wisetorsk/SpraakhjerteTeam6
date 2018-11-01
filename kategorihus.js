@@ -51,7 +51,7 @@ var kortstokk = [];
 var houses;
 var currentCard, selected = NaN;
 var drawnCards = [];
-var debug = false;
+var debug = true;
 
 //----------------------------------------------------------------------
 // Object definitions
@@ -87,6 +87,11 @@ class Kort {
 //----------------------------------------------------------------------
 // Page functions
 //----------------------------------------------------------------------
+
+function setLanguage(lang) {
+    language = lang;
+    main();
+}
 
 function init() {
     initPage();
@@ -353,7 +358,7 @@ function selectLanguage() {
 //----------------------------------------------------------------------
 
 function main() {
-    selectLanguage();
+    //selectLanguage();
     if(debug) console.log('main');
     init();
 
