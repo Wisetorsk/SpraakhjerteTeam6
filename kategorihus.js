@@ -107,12 +107,14 @@ function initPage() {
         case 'norwegian':
             document.getElementById('beskrivelse').innerHTML = 'Slik spiller man: Klikk og dra bildet over til ett tomt rom i riktig kategori.Hvis det er riktig kategori, vil kortet flyttes inn i rommet og ett nytt kort dukker opp.Hvis det ikke finner noen hus med riktig kategori, kan du trekke nytt kort ved å trekke på "TREKK"';
             document.getElementById('kortstokkSpan').innerHTML = 'Kortstokk';
+            document.getElementById('dataPanelHeader').innerHTML = 'KORTSTOKK';
             document.getElementById('drawButton').innerHTML = 'TREKK';
             document.getElementById('resetButton').innerHTML = 'RESET';
             break;
         case 'english':
             document.getElementById('beskrivelse').innerHTML = 'How to play: Click and drag the card over to a vacant room in the house with the same category as the card. If it\'s the correct house and the room is vacant, the card will drop into the room. If there are no houses with a category that matches the card, you can draw a new card by pressing the button labelled "DRAW".';
             document.getElementById('kortstokkSpan').innerHTML = 'Deck';
+            document.getElementById('dataPanelHeader').innerHTML = 'DECK';
             document.getElementById('drawButton').innerHTML = 'DRAW';
             document.getElementById('resetButton').innerHTML = 'RESET';
             break;
