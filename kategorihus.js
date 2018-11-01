@@ -105,7 +105,7 @@ function buildDeck() {
 function initPage() {
     switch (language) {
         case 'norwegian':
-            document.getElementById('beskrivelse').innerHTML = 'Slik spiller man: Klikk og dra bildet over til ett tomt rom i riktig kategori.Hvis det er riktig kategori, vil kortet flyttes inn i rommet og ett nytt kort dukker opp.Hvis det ikke finner noen hus med riktig kategori, kan du trekke nytt kort ved å trekke på "TREKK"';
+            document.getElementById('beskrivelse').innerHTML = 'Slik spiller man: Klikk og dra bildet over til ett tomt rom i riktig kategori.Hvis det er riktig kategori, vil kortet flyttes inn i rommet og ett nytt kort dukker opp. Hvis det ikke finner noen hus med riktig kategori, kan du trekke nytt kort ved å trekke på "TREKK"';
             document.getElementById('kortstokkSpan').innerHTML = 'Kortstokk';
             document.getElementById('dataPanelHeader').innerHTML = 'KORTSTOKK';
             document.getElementById('drawButton').innerHTML = 'TREKK';

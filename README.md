@@ -22,6 +22,7 @@ Språkhjerte kategorihus spill
 - [ ] Lyd som feedback
 - [ ] Testing på Ipad
 - [ ] Endre strukturen på katekorisystemet slik at hvert kort inneholder mer informasjon om seg selv. (kategoriliste/classList)
+- [ ] Endre fra pop-up prompts til knapper på nettsiden for valg av språk og hus
 
 ## Problemer som må fikses:
 - [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres
