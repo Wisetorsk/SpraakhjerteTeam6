@@ -51,6 +51,7 @@ var kortstokk = [];
 var houses;
 var currentCard, selected = NaN;
 var drawnCards = [];
+var debug = false;
 
 //----------------------------------------------------------------------
 // Object definitions
@@ -119,8 +120,7 @@ function initPage() {
             document.getElementById('resetButton').innerHTML = 'RESET';
             break;
         default:
-            console.log("Invalid language selection");
-            throw "ERROR";
+            throw "Invalid language selection";
             break;
     }
 }
@@ -139,8 +139,8 @@ function showHouse(houseNumber) {
         houseString += '<polygon points="' + corPair(50, 0) + corPair((50 + hDim.roofWidth), 0) + corPair((100 + hDim.roofWidth), hDim.roofHeight) + corPair(0, hDim.roofHeight, true) + '"  fill="red" stroke="black" />';
         houseString += '<polyline points="' + corPair(100, 70) + corPair(100, 20) + corPair(150, 20) + corPair(150, 70, true) + '" stroke="black" stroke-width="5px" fill="red"/>';
         houseString += endsvg;
-        console.log(currKategori);
-        console.log(titleImages[currKategori]);
+        if(debug) console.log(currKategori);
+        if(debug) console.log(titleImages[currKategori]);
         houseString += '<img class="titleImg" src="' + titleImages[currKategori] + '" width="auto" height="90px"/>';
         houseString += enddiv;
         houseString += div('house', currKategori, currKategori);
@@ -155,7 +155,7 @@ function showHouse(houseNumber) {
                 houseString += dict[currKategori].eng;
                 break;
             default:
-                console.log("Invalid language selection");
+                throw "Invalid language selection";
                 break;
         }
         
@@ -191,11 +191,11 @@ function corPair(x, y, end = false) {
 
 function drawCard() { 
     var index = Math.floor(Math.random() * antallKort);
-    console.log('NEW CARD!');
+    if(debug) console.log('NEW CARD!');
     var card = document.getElementById('trukketKort');
     var cardName = document.getElementById('kortstokkSpan');
     var drawn = kortstokk[index];
-    console.table(drawn);
+    if(debug) console.table(drawn);
     resetCardPosition();
     card.src = drawn.img;
     cardName.innerHTML = drawn.navn;
@@ -206,7 +206,7 @@ function drawCard() {
 }
 
 function resetHouses() {
-    console.log('Reset houses');
+    if(debug) console.log('Reset houses');
     document.getElementById('houses').innerHTML = "";
     for (var i = 0; i < houses; i++) { showHouse(i); }
 }
@@ -242,7 +242,7 @@ interact('.dropzone').dropzone({
         if (room.parentNode.id === currentCard.kategori || kategorierObj[currentCard.kategori].subkategorier.includes(room.parentNode.id)) {
             if (room.classList.contains('empty')) {
                 room.classList.remove('empty');
-                console.log('Placed in : ' + room.id);
+                if(debug) console.log('Placed in : ' + room.id);
                 roomImg.setAttribute('src', currentCard.img);
                 roomImg.setAttribute('width', '80');
                 roomImg.setAttribute('height', 'auto');
@@ -253,12 +253,12 @@ interact('.dropzone').dropzone({
                 card.style.transform =
                     'translate(' + 0 + 'px, ' + 0 + 'px)';
                 drawCard();
-                console.log(room.parentNode.id); //Prints the house category to console.
+                if(debug) console.log(room.parentNode.id); //Prints the house category to console.
             } else {
-                console.log('Room already occupied');
+                if(debug) console.log('Room already occupied');
             }
         } else {
-            console.log('Wrong category');
+            if(debug) console.log('Wrong category');
         }
 
     },
@@ -324,8 +324,8 @@ function checkFull() {
     for (var house = 0; house < houses.length; house++) {
         var rooms = houses[house].getElementsByClassName("empty");
         if (rooms.length === 0) {
-            console.log("FULL HOUSE");
-            console.log("Hus: " + houses[house].id + " Full");
+            if(debug) console.log("FULL HOUSE");
+            if(debug) console.log("Hus: " + houses[house].id + " Full");
         }
     }
 }
@@ -340,7 +340,7 @@ function selectLanguage() {
 
 function main() {
     selectLanguage();
-    console.log('main');
+    if(debug) console.log('main');
     init();
 
     while (true) {
