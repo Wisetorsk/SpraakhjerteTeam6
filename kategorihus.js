@@ -4,11 +4,22 @@
 // Objects
 //----------------------------------------------------------------------
 
-var audio = new Howl({
-    src: ['click.wav']
+var draw = new Howl({
+    src: ['audio/click.wav']
 
 });
 
+var wrong = new Howl({
+    src: ['audio/wrong.wav']
+});
+
+var correct = new Howl({
+    src: ['audio/correct.wav']
+});
+
+var fullHouse = new Howl({
+    src: ['audio/house.wav']
+});
 
 var hDim = {
     width: 400,
@@ -200,7 +211,7 @@ function corPair(x, y, end = false) {
 }
 
 function drawCard() { 
-    audio.play();
+    draw.play();
     var index = Math.floor(Math.random() * antallKort);
     if(debug) console.log('NEW CARD!');
     var card = document.getElementById('trukketKort');
@@ -252,6 +263,7 @@ interact('.dropzone').dropzone({
         var roomImg = document.createElement("IMG");
         if (room.parentNode.id === currentCard.kategori || kategorierObj[currentCard.kategori].subkategorier.includes(room.parentNode.id)) {
             if (room.classList.contains('empty')) {
+                correct.play();
                 room.classList.remove('empty');
                 if(debug) console.log('Placed in : ' + room.id);
                 roomImg.setAttribute('src', currentCard.img);
@@ -269,7 +281,8 @@ interact('.dropzone').dropzone({
                 if(debug) console.log('Room already occupied');
             }
         } else {
-            if(debug) console.log('Wrong category');
+            if (debug) console.log('Wrong category');
+            wrong.play();
         }
 
     },
@@ -339,6 +352,7 @@ function checkFull() {
                 houses[house].classList.add('full');
                 if (debug) console.log("FULL HOUSE");
                 if (debug) console.log("Hus: " + houses[house].id + " Full");
+                fullHouse.play();
                 switch (language) {
                     case "norwegian":
                         document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">Hus: "' + dict[houses[house].id].nor + '" er fullt!</li>';
