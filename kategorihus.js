@@ -14,7 +14,7 @@ var hDim = {
 
 var subkategorier = {
     'clothes': [''],
-    'food': ['vegetables', 'fruit'],
+    'food': [''],
     'vehicle': [''],
     'school': [''],
     'tools': [''],
@@ -76,7 +76,8 @@ class Kort {
          * :param navn: card name
          */
         this.kategori = params.kategori;
-        this.navn = params.name[language.slice(0,3)];
+        this.navn = params.name[language.slice(0, 3)];
+        this.subkategorier = subkategorier[this.kategori];
         this.img = params.src;
         this.debug = debug;
     }

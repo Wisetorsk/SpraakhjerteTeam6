@@ -25,7 +25,7 @@ Språkhjerte kategorihus spill
 
 ## Problemer som må fikses:
 - [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres
-- [ ] Det er mulig å plassere kort med hovedkategori "food" i hus med kategori grønnsaker og frukt.
+- [x] Det er mulig å plassere kort med hovedkategori "food" i hus med kategori grønnsaker og frukt.
 
 ## Updates:
 - Lagt til mer informasjon i imgJson
