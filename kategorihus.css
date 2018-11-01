@@ -1,6 +1,8 @@
 ﻿#header {
-    text-align: center;
     height: 100px;
+    width: 700px;
+    margin: 0px;
+    padding-right: 50%;
     font-size: 100px;
     background-image: url(img/overskrift.png);
     background-size: 700px 100px; /*FIX ME!*/
@@ -13,7 +15,6 @@
     text-align: center;
     font-size: 200%;
 }
-
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
     .grid-container {
@@ -171,6 +172,7 @@
 
 #beskrivelse {
     font-size: 200%;
+    padding-top: 0px;
 }
 
 .roof {
@@ -210,9 +212,9 @@
 
 .flagButton {
     background-repeat: no-repeat;
-    width: 50px;
+    width: 55px;
     height: 35px;
-    background-size: contain;
+    background-size: cover;
 }
 
 #norButton {
@@ -221,4 +223,13 @@
 
 #engButton {
     background-image: url(img/eng.png);
+}
+
+#kortholder:hover {
+    cursor: pointer;
+}
+
+.button:hover {
+    cursor: pointer;
+    box-shadow: rgba(0,0,0,.8) 0px 5px 15px;
 }

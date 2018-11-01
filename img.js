@@ -1,35 +1,26 @@
 // JavaScript source code
 var titleImages =
 {
-    clothes: 'img/clothesTitle.png'
-    ,
-
-    people: 'img/peopleTitle.png'
-    ,
-
-    tools: 'img/toolTitle.png'
-    ,
-
-    animal: 'img/animalsTitle.png'
-    ,
-
-    fruit: 'img/fruitTitle.png'
-    ,
-
-    school: 'img/schoolTitle.png'
-    ,
-
-    vegetables: 'img/vegetablesTitle.png'
-    ,
-
-    vehicle: 'img/vehicleTitle.png'
-    ,
-
+    clothes: 'img/clothesTitle.png',
+    people: 'img/peopleTitle.png',
+    tools: 'img/toolTitle.png',
+    animal: 'img/animalsTitle.png',
+    fruit: 'img/fruitTitle.png',
+    school: 'img/schoolTitle.png',
+    vegetables: 'img/vegetablesTitle.png',
+    vehicle: 'img/vehicleTitle.png',
     food: 'img/foodTitle.png'
 };
 
 
 var imagesJson = [
+/**
+ * kategori: Category title
+ * src: Image source link
+ * audio: Audio source link
+ * name: Element name object
+ * name.nor: Element name in norwegian
+ * name.eng: Element name in english */
     { kategori: 'fruit', src: 'img/bananas.png', name: {nor: 'Banan', eng: 'Banana'}, audio: '' },
     { kategori: 'animal', src: 'img/bear.png', name: { nor: 'Bj\u00F8rn', eng: 'Bear' }, audio: '' },
     { kategori: 'animal', src: 'img/sloth.png', name: { nor: 'Dovendyr', eng: 'Sloth' }, audio: ''  },

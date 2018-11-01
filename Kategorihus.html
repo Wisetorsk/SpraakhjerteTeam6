@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,22 +8,19 @@
     <script src="kategorihus.js"></script>
     <link rel="stylesheet" type="text/css" href="kategorihus.css" />
 </head>
-
 <body>
     <div class="container" id="content">
-        <div id="headerDiv"><button id="norButton" class="flagButton" onclick="setLanguage('norwegian')"></button><button id="engButton" class="flagButton" onclick="setLanguage('english')"></button><h1 id="header"></h1></div>
+        <div id="headerDiv">
+            <button id="norButton" class="flagButton button" onclick="setLanguage('norwegian')"></button>
+            <button id="engButton" class="flagButton button" onclick="setLanguage('english')"></button>
+            <h1 id="header"></h1>
+        </div>
         <p id="beskrivelse">
-            Slik spiller man:
-            Klikk og dra bildet over til ett tomt rom i riktig kategori. Hvis det er riktig kategori, vil kortet flyttes inn i rommet og ett nytt kort dukker opp. Hvis det ikke finner noen hus med riktig kategori, kan du trekke nytt kort ved å trekke på "TREKK""
-        </p>
-
+            Trykk på en av språkknappene for å starte spillet.
+            </p>
         <div class="main-wrapper" id="dynamicContent">
-
             <div class="grid-container" id="houses">
-
-
             </div>
-
             <div class="dataPanel" id="dataPanel">
                 <span id="dataPanelHeader">KORTSTOKK</span>
                 <ul class="noDecoration" id="panelList">
@@ -35,9 +31,8 @@
                             </div>
                         </div>
                     </li>
-
-                    <li id="trekk"><button class="panelButton" id="drawButton" onclick="drawCard()">TREKK</button></li>
-                    <li id="reset"><button class="panelButton" id="resetButton" onclick="resetHouses()">RESET</button></li>
+                    <li id="trekk"><button class="panelButton button" id="drawButton" onclick="drawCard()">TREKK</button></li>
+                    <li id="reset"><button class="panelButton button" id="resetButton" onclick="resetHouses()">RESET</button></li>
                 </ul>
             </div>
         </div>
