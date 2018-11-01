@@ -1,9 +1,14 @@
 ﻿// JavaScript source code
 //this.touch = "ontouchstart" in window || (window.DocumentTouch && document instanceof DocumentTouch);
-
 //----------------------------------------------------------------------
 // Objects
 //----------------------------------------------------------------------
+
+var audio = new Howl({
+    src: ['click.wav']
+
+});
+
 
 var hDim = {
     width: 400,
@@ -195,6 +200,7 @@ function corPair(x, y, end = false) {
 }
 
 function drawCard() { 
+    audio.play();
     var index = Math.floor(Math.random() * antallKort);
     if(debug) console.log('NEW CARD!');
     var card = document.getElementById('trukketKort');
