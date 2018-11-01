@@ -324,20 +324,22 @@ function checkFull() {
     for (var house = 0; house < houses.length; house++) {
         var rooms = houses[house].getElementsByClassName("empty");
         if (rooms.length === 0) {
-            if(debug) console.log("FULL HOUSE");
-            if (debug) console.log("Hus: " + houses[house].id + " Full");
-            switch (language) {
-                case "norwegian":
-                    document.getElementById('panelList').innerHTML += '<li>Hus: "' + dict[houses[house].id].nor + '" er fullt!</li>';
-                    break;
-                case "english":
-                    document.getElementById('panelList').innerHTML += '<li>House: "' + dict[houses[house].id].eng + '" is full!</li>';
-                    break;
-                default:
-                    throw "Error in language selection";
-                    break;
+            if (!houses[house].classList.contains('full')) {
+                houses[house].classList.add('full');
+                if (debug) console.log("FULL HOUSE");
+                if (debug) console.log("Hus: " + houses[house].id + " Full");
+                switch (language) {
+                    case "norwegian":
+                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">Hus: "' + dict[houses[house].id].nor + '" er fullt!</li>';
+                        break;
+                    case "english":
+                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">House: "' + dict[houses[house].id].eng + '" is full!</li>';
+                        break;
+                    default:
+                        throw "Error in language selection";
+                        break;
+                }
             }
-            
         }
     }
 }

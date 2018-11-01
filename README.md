@@ -24,6 +24,7 @@ Språkhjerte kategorihus spill
 - [ ] Endre strukturen på katekorisystemet slik at hvert kort inneholder mer informasjon om seg selv. (kategoriliste/classList)
 - [ ] Endre fra pop-up prompts til knapper på nettsiden for valg av språk og hus
 - [x] Legge til feedback når ett hus er fullt.
+- [ ] Legge til feedback når alle hus er fulle.
 - [ ] Forbedre feedback når hus er fullt.
 - [ ] Bilder(kort) må også inneholde "personlige" underkategorier. f.eks. ett bilde av en gutt som leser kan være hovedkategori mennesker og underkategori skole
 
