@@ -155,8 +155,9 @@
 
 .panelButton {
     width: 85%;
-    padding-top: 20px;
+    padding-top: 15px;
     padding-bottom: 20px;
+    padding-left: 40px;
     font-size: 200%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border-radius: 15px;
@@ -191,4 +192,18 @@
 
 #kortstokkSpan {
     font-size: 150%;
+}
+
+#drawButton {
+    background-image: url('img/card.png');
+    z-index: 1;
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+#resetButton {
+    background-image: url('img/reset.png');
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-size: 75px;
 }
