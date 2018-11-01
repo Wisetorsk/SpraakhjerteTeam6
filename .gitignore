@@ -1,1 +1,5 @@
 .vs/*
+.vs/VSWorkspaceState.json
+.vs/SpraakhjerteTeam6/v15/.suo
+.vs/slnx.sqlite
+*.sqlite
