@@ -85,7 +85,6 @@ class Kategori {
          */
         this.kategori = kategori;
         this.subkategorier = subkategorier; //array
-
     }
 }
 
