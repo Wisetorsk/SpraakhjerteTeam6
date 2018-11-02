@@ -21,6 +21,10 @@ var fullHouse = new Howl({
     src: ['audio/house.wav']
 });
 
+var applause = new Howl({
+    src: ['audio/applause.wav']
+});
+
 var hDim = {
     width: 400,
     height: 400,
@@ -64,7 +68,7 @@ var endsvg = '</svg>';
 var kategorier = ['clothes', 'food', 'vehicle', 'school', 'tools', 'people', 'animal', 'vegetables', 'fruit'];
 var antallKort = imagesJson.length;
 var kortstokk = [];
-var houses;
+var numHouses;
 var currentCard, selected = NaN;
 var drawnCards = [];
 var debug = true;
@@ -353,6 +357,12 @@ function checkFull() {
                 if (debug) console.log("FULL HOUSE");
                 if (debug) console.log("Hus: " + houses[house].id + " Full");
                 fullHouse.play();
+                var img = document.createElement("img");
+                img.src = 'img/approved.svg';
+                img.style.position = 'absolute';
+                img.style.top = '50%';
+                img.style.width = '20%';
+                houses[house].appendChild(img);
                 switch (language) {
                     case "norwegian":
                         document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">Hus: "' + dict[houses[house].id].nor + '" er fullt!</li>';
@@ -367,6 +377,11 @@ function checkFull() {
             }
         }
     }
+    var full = 0;
+    for (var x = 0; x < houses.length; x++) {
+        if (houses[x].classList.contains('full')) { full++; }
+    }
+    if (full === houses.length) { applause.play(); if(debug) console.log("all full");}
 }
 
 function selectLanguage() {
@@ -388,12 +403,12 @@ function main() {
             if (housesString == null || housesString == "") { //Controls if the input is a valid string
                 throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
             } else {
-                houses = parseInt(housesString); //Convert from string to integer
-                if (houses > 0 && houses < 7) {
-                    for (var i = 0; i < houses; i++) { showHouse(i); } //Generate houses 
+                numHouses = parseInt(housesString); //Convert from string to integer
+                if (numHouses > 0 && numHouses < 7) {
+                    for (var i = 0; i < numHouses; i++) { showHouse(i); } //Generate houses 
                     break;
                 } else {
-                    if (houses <= 0) {
+                    if (numHouses <= 0) {
                         throw "Alt for få hus"; //Throw error
                     } else {
                         throw "Alt for mange hus"; //Throw error 
