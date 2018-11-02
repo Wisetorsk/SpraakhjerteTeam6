@@ -19,7 +19,7 @@ Språkhjerte kategorihus spill
 - [x] Symbol i tilegg til tekst på "trekk-knappen" (kort)
 - [ ] Visuell forklaring av hvordan man spiller
 - [ ] Opplesing  av korttittel
-- [ ] Lyd som feedback
+- [x] Lyd som feedback
 - [ ] Testing på Ipad
 - [ ] Endre strukturen på katekorisystemet slik at hvert kort inneholder mer informasjon om seg selv. (kategoriliste/classList)
 - [ ] Endre fra pop-up prompts til knapper på nettsiden for valg av språk og hus
