@@ -3,18 +3,28 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <script src="Spraakhjerte\libraries\jQuery\jquery-3.3.1.min.js"></script>
+    <script src="..\libraries\jQuery\jquery-3.3.1.min.js"></script>
     <title>jQuery Test</title>
+    <style>
+        p {
+            border:2px solid black;
+            width: 200px;
+        }
+    </style>
 </head>
 <body>
-    <p id="no1" onclick="hideMe(this)">Number 1</p>
-    <p id="no2" onclick="hideMe(this)">Number 2</p>
-    <p id="no3" onclick="hideMe(this)">Number 3</p>
-    <p id="no4" onclick="hideMe(this)">Number 4</p>
+    <p id="no1" onclick="fadeMe(this)" ondblclick="hideMe(this)">Number 1</p>
+    <p id="no2" onclick="fadeMe(this)" ondblclick="hideMe(this)">Number 2</p>
+    <p id="no3" onclick="fadeMe(this)" ondblclick="hideMe(this)">Number 3</p>
+    <p id="no4" onclick="fadeMe(this)" ondblclick="hideMe(this)">Number 4</p>
     <script>
         $(document).ready(function () {
             $(hideMe = function (element) {
                 $('#' + element.id).hide();
+            });
+
+            $(fadeMe = function (element) {
+                $('#' + element.id).fadeOut();
             });
         });
     </script>
