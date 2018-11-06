@@ -15,10 +15,10 @@ Språkhjerte kategorihus spill
 - [ ] Ferdigstille/videreutvikle dynamisk css for mobile enheter
 - [x] Kategoribilde på hustak
 - [x] Korttekst 
-- [ ] Ramme rundt kortene
+- [x] Ramme rundt kortene
 - [x] Symbol i tilegg til tekst på "trekk-knappen" (kort)
 - [ ] Visuell forklaring av hvordan man spiller
-- [ ] Opplesing  av korttittel
+- [x] Opplesing  av korttittel
 - [x] Lyd som feedback
 - [ ] Testing på Ipad
 - [ ] Endre strukturen på katekorisystemet slik at hvert kort inneholder mer informasjon om seg selv. (kategoriliste/classList)
