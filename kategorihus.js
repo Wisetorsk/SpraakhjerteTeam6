@@ -228,6 +228,7 @@ function drawCard() {
     currentCard = drawn;
     drawnCards.push(drawn);
     checkFull();
+    speak(drawn.navn);
 }
 
 function resetHouses() {
@@ -381,6 +382,20 @@ function checkFull() {
         if (houses[x].classList.contains('full')) { full++; }
     }
     if (full === houses.length) { applause.play(); if(debug) console.log("all full");}
+}
+
+function speak(word) {
+    let audio = new Audio();
+    switch (language) {
+        case "norwegian":
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word;
+            break;
+        case "english":
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word;
+            break;
+    }
+    
+    audio.play();
 }
 
 function selectLanguage() {
