@@ -37,3 +37,5 @@ Språkhjerte kategorihus spill
 - Lagt til mer informasjon i imgJson
 - Lagt til mulighet for flere språk. Norsk og Engelsk er 90% implementert.
 - Fikset skalering på bilder når de flyttes inn
+- Lagt til mappe for demofiler
+- Lagt til mappe for testing via Jest

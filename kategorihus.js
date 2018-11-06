@@ -190,7 +190,6 @@ function showHouse(houseNumber) {
     }
 }
 
-
 function div(cls, identity = "", name = false) {
     if (name) {
         var DivStr = '<div class="' + cls + '" id="' + identity + '" value = "' + name + '">';
@@ -200,7 +199,6 @@ function div(cls, identity = "", name = false) {
     }
     return DivStr;
 }
-
 
 function corPair(x, y, end = false) {
     var assembledString = '';
