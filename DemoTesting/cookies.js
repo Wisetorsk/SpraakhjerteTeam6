@@ -21,7 +21,7 @@ class Cookies {
 
     set(cookie, value) {
         // Set the value of a cookie. If the cookie already exists update it, else create new cookie
-        console.log("Set this cookie: " + cookie + "Value: " + value);
+        console.log("Set \ncookie: " + cookie + "\nValue: " + value);
         this.cookies[cookie] = value;
     }
 
@@ -40,8 +40,11 @@ class Cookies {
     list() {
         // Displays all cookies loaded 
         console.log("List all cookies");
+        console.log("Cookies in memory:");
         console.table(this.cookies);
-        console.log(document.cookie);
+        console.log("Cookies in page:");
+        console.log(document.cookie, "\n\n\n");
+        
     }
 
     update() {
@@ -53,10 +56,10 @@ class Cookies {
                 // Do something with this.cookies[key]
                 //console.log("cookie name: " + key);
                 //console.log("cookie value: " + this.cookies[key]);
-                cookieString += key + "=" + this.cookies[key] + "; ";
+                cookieString += key + "=" + this.cookies[key] + ";";
             }
         }
-        console.log(cookieString);
+        console.log("All cookies currently stored in memory as string:\n" + cookieString);
         document.cookie = cookieString;
     }
 
