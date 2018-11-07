@@ -66,7 +66,6 @@ class Cookies {
     load() {
         // Get all cookies from page
         console.log("Load cookies");
-        var cookieString = document.cookie;
-        this.cookies;
+        
     }
 }
