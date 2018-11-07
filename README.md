@@ -28,6 +28,7 @@ Språkhjerte kategorihus spill
 - [x] Forbedre feedback når hus er fullt.
 - [ ] Bilder(kort) må også inneholde "personlige" underkategorier. f.eks. ett bilde av en gutt som leser kan være hovedkategori mennesker og underkategori skole
 - [ ] Fyrverkerianimasjon
+- [ ] Unit testing
 
 ## Problemer som må fikses:
 - [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres
@@ -38,4 +39,4 @@ Språkhjerte kategorihus spill
 - Lagt til mulighet for flere språk. Norsk og Engelsk er 90% implementert.
 - Fikset skalering på bilder når de flyttes inn
 - Lagt til mappe for demofiler
-- Lagt til mappe for testing via Jest
+- Lagt til mappe for testing via Jest eller QUnit
