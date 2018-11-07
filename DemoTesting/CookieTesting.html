@@ -9,8 +9,12 @@
 <body>
     <h2>Cookie Testing</h2>
     <script>
-
         var handler = new Cookies();
+        handler.set("test", 00);
+        document.cookie = "denneSatteJegInn=Naa";
+        handler.list();
+        handler.load();
+        handler.list();
 
     </script>
 </body>
