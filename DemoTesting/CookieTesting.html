@@ -8,6 +8,7 @@
 </head>
 <body>
     <h2>Cookie Testing</h2>
+    <div id="input"></div>
     <script>
         var handler = new Cookies();
         handler.set("test", 00);
@@ -15,7 +16,18 @@
         handler.list();
         handler.load();
         handler.list();
-
+        if (handler.cookies["name"]) {
+            alert("Hei, " + handler.cookies["name"]);
+            document.getElementById("input").innerHTML = '<button onclick="removeIt()">Remove Cookies</button><p>For å fjerne cookies. Last siden på nytt både uten å fjene cookies, og med</p>'
+        } else {
+            document.getElementById("input").innerHTML = '<input type="text" value="Navn" id="navnInput" /><button onclick="sendIt()">COOKIEFY!</button><p>Skriv inn navnet ditt, trykk på knappen og last siden på nytt</p>';
+        }
+        function sendIt() {
+            handler.set('name', document.getElementById('navnInput').value);
+        }
+        function removeIt() {
+            Cookies.remove();
+        }
     </script>
 </body>
 </html>
