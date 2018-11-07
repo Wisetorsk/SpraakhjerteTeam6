@@ -9,13 +9,11 @@ class Cookies {
         /* Save the cookies in object
 
          */
-        document.cookie = "";
         this.load();
         this.set("testCookie", "testValue");
         this.set("cookie", 23);
         this.set("lkj", 999);
         this.set("expires", 999);
-        this.update();
         this.list();
     }
 
@@ -23,6 +21,7 @@ class Cookies {
         // Set the value of a cookie. If the cookie already exists update it, else create new cookie
         console.log("Set \ncookie: " + cookie + "\nValue: " + value);
         this.cookies[cookie] = value;
+        document.cookie = cookie + "=" + value;
     }
 
     get(cookie) {
@@ -47,25 +46,9 @@ class Cookies {
         
     }
 
-    update() {
-        // Saves all cookies to page by formating object and properties to string and storing document.cookies;
-        console.log("Update page cookies");
-        var cookieString = "";
-        for (var key in this.cookies) {
-            if (this.cookies.hasOwnProperty(key)) {
-                // Do something with this.cookies[key]
-                //console.log("cookie name: " + key);
-                //console.log("cookie value: " + this.cookies[key]);
-                cookieString += key + "=" + this.cookies[key] + ";";
-            }
-        }
-        console.log("All cookies currently stored in memory as string:\n" + cookieString);
-        document.cookie = cookieString;
-    }
-
     load() {
         // Get all cookies from page
         console.log("Load cookies");
-        
+        this.cookieString = document.cookie;
     }
 }
