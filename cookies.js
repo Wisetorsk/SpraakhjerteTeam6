@@ -6,11 +6,7 @@ class Cookies {
     constructor() {
         this.cookies = {};
         this.load();
-        /*this.set("testCookie", "testValue");
-        this.set("cookie", 23);
-        this.set("lkj", 999);
-        this.set("expires", 0);
-        this.list();*/
+        console.log("Cookie Handler started at: " + Date.now() + " Epoch Time")
     }
 
     set(cookie, value) {
@@ -36,7 +32,7 @@ class Cookies {
             var cookie = cookies[i];
             var eqPos = cookie.indexOf("=");
             var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT"; // Set expepration date to 0 epoch time
         }
     }
 

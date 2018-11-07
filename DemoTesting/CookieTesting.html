@@ -3,7 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <script src="cookies.js"></script>
+    <script src="..\cookies.js"></script>
     <title>Cookie test</title>
 </head>
 <body>
@@ -11,11 +11,7 @@
     <div id="input"></div>
     <script>
         var handler = new Cookies();
-        handler.set("test", 00);
-        document.cookie = "denneSatteJegInn=Naa";
-        handler.list();
-        handler.load();
-        handler.list();
+        //handler.load();
         if (handler.cookies["name"]) {
             alert("Velkommen tilbake, " + handler.cookies["name"] + "!");
             document.getElementById("input").innerHTML = '<button onclick="removeIt()">Remove Cookies</button><p>For å fjerne cookies. Last siden på nytt både uten å fjene cookies, og med</p>'

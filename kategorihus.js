@@ -3,6 +3,7 @@
 //----------------------------------------------------------------------
 // Objects
 //----------------------------------------------------------------------
+var handler = new Cookies(); // Import Cookie handler
 
 var draw = new Howl({
     src: ['audio/click.wav']

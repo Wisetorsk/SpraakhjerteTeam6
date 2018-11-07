@@ -28,6 +28,7 @@ Språkhjerte kategorihus spill
 - [x] Forbedre feedback når hus er fullt.
 - [ ] Bilder(kort) må også inneholde "personlige" underkategorier. f.eks. ett bilde av en gutt som leser kan være hovedkategori mennesker og underkategori skole
 - [ ] Fyrverkerianimasjon
+- [ ] Implementere cookies
 - [ ] Unit testing
 
 ## Problemer som må fikses:
