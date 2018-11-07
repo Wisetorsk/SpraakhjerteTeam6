@@ -21,7 +21,7 @@ class Cookies {
         // Set the value of a cookie. If the cookie already exists update it, else create new cookie
         console.log("Set \ncookie: " + cookie + "\nValue: " + value);
         this.cookies[cookie] = value;
-        document.cookie = cookie + "=" + value;
+        document.cookie = '"' + cookie + '=' + value + '"';
     }
 
     get(cookie) {
