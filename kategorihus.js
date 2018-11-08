@@ -325,20 +325,26 @@ function speak(word) {
             audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word;
             break;
     }
-    var playPromise = audio.play();
 
-    // In browsers that don’t yet support this functionality,
-    // playPromise won’t be defined.
+    var playPromise = audio.play();
     if (playPromise !== undefined) {
         playPromise.then(function () {
-            // Automatic playback started!
+            // Playback started!
         }).catch(function (error) {
-            // Automatic playback failed.
-            // Show a UI element to let the user manually start playback.
-            console.log("FAILED")
+            // Playback failed.
+            console.log("Promise failed. Reformatting and submitting new request");
+            switch (language) {
+                case "norwegian":
+                    audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=%22' + word + '%22';
+                    break;
+                case "english":
+                    audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=%22' + word + '%22';
+                    break;
+            }
+            audio.play();
+            console.log(error);
         });
     }
-    //audio.play();
 }
 
 function selectLanguage() {
