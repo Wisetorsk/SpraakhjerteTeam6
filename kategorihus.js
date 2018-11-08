@@ -4,28 +4,30 @@
 // Objects
 //----------------------------------------------------------------------
 var handler = new Cookies(); // Import Cookie handler
+try {
+    var draw = new Howl({
+        src: ['audio/click.wav']
 
-var draw = new Howl({
-    src: ['audio/click.wav']
+    });
 
-});
+    var wrong = new Howl({
+        src: ['audio/wrong.wav']
+    });
 
-var wrong = new Howl({
-    src: ['audio/wrong.wav']
-});
+    var correct = new Howl({
+        src: ['audio/correct.wav']
+    });
 
-var correct = new Howl({
-    src: ['audio/correct.wav']
-});
+    var fullHouse = new Howl({
+        src: ['audio/house.wav']
+    });
 
-var fullHouse = new Howl({
-    src: ['audio/house.wav']
-});
-
-var applause = new Howl({
-    src: ['audio/applause.wav']
-});
-
+    var applause = new Howl({
+        src: ['audio/applause.wav']
+    });
+} catch (err) {
+    console.log("Howler is misbehaving, and is being punished");
+}
 var hDim = {
     width: 400,
     height: 400,
