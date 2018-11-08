@@ -102,7 +102,7 @@ var imagesJson = [
     { kategori: 'food', src: 'img/cheese.png', name: { nor: 'Ost', eng: 'Cheese' }, audio: '' },
     { kategori: 'food', src: 'img/icecream.png', name: { nor: 'Iskrem', eng: 'Icecream' }, audio: '' },
     { kategori: 'food', src: 'img/fries.png', name: { nor: 'Pommes Frittes', eng: 'French Fries' }, audio: '' },
-    { kategori: 'tools', src: 'img/saw.png', name: { nor: 'Sag', eng: 'Sag' }, audio: '' },
+    { kategori: 'tools', src: 'img/saw.png', name: { nor: 'Sag', eng: 'Saw' }, audio: '' },
     { kategori: 'tools', src: 'img/pliers2.png', name: { nor: 'Tang', eng: 'Pliers' }, audio: '' },
     { kategori: 'tools', src: 'img/tapemeasure.png', name: { nor: 'M\u00E5leb\u00E5nd', eng: 'Tape Measure' }, audio: '' },
     { kategori: 'tools', src: 'img/pliers3.png', name: { nor: 'Tang', eng: 'Pliers' }, audio: '' },
