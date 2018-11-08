@@ -412,10 +412,10 @@ function speak(word) {
     let audio = new Audio();
     switch (language) {
         case "norwegian":
-            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word.toLowerCase();
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word;
             break;
         case "english":
-            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word.toLowerCase();
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word;
             break;
     }
     
