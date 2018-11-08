@@ -265,6 +265,68 @@ function select(element) {
     selected = element;
 }
 
+function resetCardPosition() {
+    document.getElementById('kortholder').setAttribute('data-x', 0);
+    document.getElementById('kortholder').setAttribute('data-y', 0);
+    document.getElementById('kortholder').style.transform = 'translate(' + 0 + 'px, ' + 0 + 'px)';
+}
+
+function checkFull() {
+    /*Checks if any of the houses are full*/
+    var houses = document.getElementsByClassName("house");
+    for (var house = 0; house < houses.length; house++) {
+        var rooms = houses[house].getElementsByClassName("empty");
+        if (rooms.length === 0) {
+            if (!houses[house].classList.contains('full')) {
+                houses[house].classList.add('full');
+                if (debug) console.log("FULL HOUSE");
+                if (debug) console.log("Hus: " + houses[house].id + " Full");
+                fullHouse.play();
+                var img = document.createElement("img");
+                img.src = 'img/approved.svg';
+                img.style.position = 'absolute';
+                img.style.top = '50%';
+                img.style.width = '20%';
+                houses[house].appendChild(img);
+                switch (language) {
+                    case "norwegian":
+                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">Hus: "' + dict[houses[house].id].nor + '" er fullt!</li>';
+                        break;
+                    case "english":
+                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">House: "' + dict[houses[house].id].eng + '" is full!</li>';
+                        break;
+                    default:
+                        throw "Error in language selection";
+                        break;
+                }
+            }
+        }
+    }
+    var full = 0;
+    for (var x = 0; x < houses.length; x++) {
+        if (houses[x].classList.contains('full')) { full++; }
+    }
+    if (full === houses.length) { applause.play(); if (debug) console.log("all full"); }
+}
+
+function speak(word) {
+    let audio = new Audio();
+    switch (language) {
+        case "norwegian":
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word;
+            break;
+        case "english":
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word;
+            break;
+    }
+
+    audio.play();
+}
+
+function selectLanguage() {
+    language = (confirm('Norsk?')) ? 'norwegian' : 'english';
+}
+
 //----------------------------------------------------------------------
 // Drag and drop functions
 //----------------------------------------------------------------------
@@ -364,67 +426,6 @@ function dragMoveListener(event) {
     target.setAttribute('data-y', y);
 }
 
-function resetCardPosition() {
-    document.getElementById('kortholder').setAttribute('data-x', 0);
-    document.getElementById('kortholder').setAttribute('data-y', 0);
-    document.getElementById('kortholder').style.transform = 'translate(' + 0 + 'px, ' + 0 + 'px)';
-}
-
-function checkFull() {
-    /*Checks if any of the houses are full*/
-    var houses = document.getElementsByClassName("house");
-    for (var house = 0; house < houses.length; house++) {
-        var rooms = houses[house].getElementsByClassName("empty");
-        if (rooms.length === 0) {
-            if (!houses[house].classList.contains('full')) {
-                houses[house].classList.add('full');
-                if (debug) console.log("FULL HOUSE");
-                if (debug) console.log("Hus: " + houses[house].id + " Full");
-                fullHouse.play();
-                var img = document.createElement("img");
-                img.src = 'img/approved.svg';
-                img.style.position = 'absolute';
-                img.style.top = '50%';
-                img.style.width = '20%';
-                houses[house].appendChild(img);
-                switch (language) {
-                    case "norwegian":
-                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">Hus: "' + dict[houses[house].id].nor + '" er fullt!</li>';
-                        break;
-                    case "english":
-                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">House: "' + dict[houses[house].id].eng + '" is full!</li>';
-                        break;
-                    default:
-                        throw "Error in language selection";
-                        break;
-                }
-            }
-        }
-    }
-    var full = 0;
-    for (var x = 0; x < houses.length; x++) {
-        if (houses[x].classList.contains('full')) { full++; }
-    }
-    if (full === houses.length) { applause.play(); if(debug) console.log("all full");}
-}
-
-function speak(word) {
-    let audio = new Audio();
-    switch (language) {
-        case "norwegian":
-            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word;
-            break;
-        case "english":
-            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word;
-            break;
-    }
-    
-    audio.play();
-}
-
-function selectLanguage() {
-    language = (confirm('Norsk?')) ? 'norwegian' : 'english';
-}
 
 //----------------------------------------------------------------------
 // MAIN
