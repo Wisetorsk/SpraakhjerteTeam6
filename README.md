@@ -30,6 +30,7 @@ Språkhjerte kategorihus spill
 - [ ] Fyrverkerianimasjon
 - [ ] Implementere cookies
 - [ ] Unit testing
+- [ ] Legg til ikon for konstruksjon av hus
 
 ## Problemer som må fikses:
 - [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres
