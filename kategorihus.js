@@ -317,28 +317,28 @@ function checkFull() {
 
 function speak(word) {
     let audio = new Audio();
-    try {
-        switch (language) {
-            case "norwegian":
-                audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word;
-                break;
-            case "english":
-                audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word;
-                break;
-        }
+    switch (language) {
+        case "norwegian":
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word;
+            break;
+        case "english":
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word;
+            break;
     }
-    catch (err) {
-        console.log(err);
-        switch (language) {
-            case "norwegian":
-                audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word.toLowerCase();
-                break;
-            case "english":
-                audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word.toLowerCase();
-                break;
-        }
+    var playPromise = audio.play();
+
+    // In browsers that don’t yet support this functionality,
+    // playPromise won’t be defined.
+    if (playPromise !== undefined) {
+        playPromise.then(function () {
+            // Automatic playback started!
+        }).catch(function (error) {
+            // Automatic playback failed.
+            // Show a UI element to let the user manually start playback.
+            console.log("FAILED")
+        });
     }
-    audio.play();
+    //audio.play();
 }
 
 function selectLanguage() {
