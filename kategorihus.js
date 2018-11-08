@@ -137,9 +137,6 @@ function selectNumberOfHouses() {
         setTimeout(
             function () {
             modal.style.display = "none";
-
-            model.style.animationDuration = "0.3s";
-
             modal.style.animationDuration = "0.3s";
             },
             500); // Wait for the closing animation to finish
