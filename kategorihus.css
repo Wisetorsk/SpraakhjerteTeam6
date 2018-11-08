@@ -244,10 +244,13 @@
     display: none;
     position: relative;
     z-index: 1;
-    width: 100%;
     background-color: lightgray;
     animation-name: movedown;
     animation-duration: 0.5s;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    font-size: 150%;
 }
 
 .modal-content {
@@ -256,6 +259,26 @@
 }
 
 @keyframes movedown {
-    from {height: 0; opacity: 0}
-    to {height: 100%; opacity: 1}
+    from {
+        height: 0; 
+        opacity: 0
+
+    }
+    to {
+        height: 100%;
+        opacity: 1
+
+    }
+}
+
+@keyframes moveup {
+    from {
+        height: 100%;
+        opacity: 1
+    }
+
+    to {
+        height: 0;
+        opacity: 0
+    }
 }

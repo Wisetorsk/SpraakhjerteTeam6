@@ -133,7 +133,13 @@ function setLanguage(lang) {
 function selectNumberOfHouses() {
     numHouses = document.getElementById("houseModalInput").value;
     if (numHouses && numHouses > 0 && numHouses < 7) {
-        modal.style.display = "none";
+        modal.style.animationName = "moveup";
+        setTimeout(
+            function () {
+            modal.style.display = "none";
+            model.style.animationDuration = "0.3s";
+            },
+            500); // Wait for the closing animation to finish
         main();
     }
 }
