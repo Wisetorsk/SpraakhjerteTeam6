@@ -238,6 +238,7 @@
     display: none;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* code that is here, until the first @media block, will apply to any screen size */
 #somethingorother {
   width: 800px ;
@@ -264,6 +265,8 @@
 
 /* code that is here will apply to any screen size */
 =======
+=======
+>>>>>>> a41787675913ae29e997c9f162a623d7144309d5
 
 
 /* MODAL! */
@@ -278,7 +281,13 @@
     margin: 10px;
     text-align: center;
     font-size: 150%;
+<<<<<<< HEAD
 }
+=======
+    border-radius: 5px;
+}
+ 
+>>>>>>> a41787675913ae29e997c9f162a623d7144309d5
 
 .modal-content {
     width: 100%;
@@ -309,4 +318,7 @@
         opacity: 0
     }
 }
+<<<<<<< HEAD
 >>>>>>> ed816395ff64bf078799a4dcb79887f0c29ec1cc
+=======
+>>>>>>> a41787675913ae29e997c9f162a623d7144309d5

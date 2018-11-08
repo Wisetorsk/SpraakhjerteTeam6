@@ -137,7 +137,11 @@ function selectNumberOfHouses() {
         setTimeout(
             function () {
             modal.style.display = "none";
+<<<<<<< HEAD
             model.style.animationDuration = "0.3s";
+=======
+            modal.style.animationDuration = "0.3s";
+>>>>>>> a41787675913ae29e997c9f162a623d7144309d5
             },
             500); // Wait for the closing animation to finish
         main();
@@ -444,3 +448,4 @@ function main() {
     for (var i = 0; i < numHouses; i++) { showHouse(i); } //Generate houses 
     drawCard();
 }
+ 
