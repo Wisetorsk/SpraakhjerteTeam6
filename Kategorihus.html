@@ -5,7 +5,7 @@
     <title>Sråkhjerte KategoriHus</title>
     <!-- Dependencies -->
     <script src="libraries/DragDropTouch.js"></script>
-    <script src="cookies.js"></script>
+    <script src="libraries/cookies.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/howler@2.0.15/dist/howler.min.js"></script>
     <script src="https://unpkg.com/interactjs@1.3/dist/interact.min.js"></script>
     <script src="img.js"></script>
@@ -20,8 +20,18 @@
             <button id="engButton" class="flagButton button" onclick="setLanguage('english')"></button>
             <h1 id="header"></h1>
         </div>
+
+        <div id="houseSelect" class="modal">
+            <div class="modal-content">
+                <div id="howTo"></div>
+                <input type="number" id="houseModalInput" value="3"/>
+                <button onclick="selectNumberOfHouses()" id="buildButton">BYGG!</button>
+            </div>
+        </div>
+
         <p id="beskrivelse">
-            Trykk på en av språkknappene for å starte spillet.
+            Trykk på en av språkknappene for å starte spillet.<br />
+            Start the game by pressing one of the language buttons.
             </p>
         <div class="main-wrapper" id="dynamicContent">
             <div class="grid-container" id="houses">
@@ -42,6 +52,6 @@
             </div>
         </div>
     </div>
-    <input type="text" oninput="speak(this.value)" class="hidden"/>
+    <input type="text" oninput="speak(this.value)" class="hidden"/> <!-- Poosible XSS? -->
 </body>
 </html>

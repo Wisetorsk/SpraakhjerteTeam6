@@ -4,28 +4,30 @@
 // Objects
 //----------------------------------------------------------------------
 var handler = new Cookies(); // Import Cookie handler
+try {
+    var draw = new Howl({
+        src: ['audio/click.wav']
 
-var draw = new Howl({
-    src: ['audio/click.wav']
+    });
 
-});
+    var wrong = new Howl({
+        src: ['audio/wrong.wav']
+    });
 
-var wrong = new Howl({
-    src: ['audio/wrong.wav']
-});
+    var correct = new Howl({
+        src: ['audio/correct.wav']
+    });
 
-var correct = new Howl({
-    src: ['audio/correct.wav']
-});
+    var fullHouse = new Howl({
+        src: ['audio/house.wav']
+    });
 
-var fullHouse = new Howl({
-    src: ['audio/house.wav']
-});
-
-var applause = new Howl({
-    src: ['audio/applause.wav']
-});
-
+    var applause = new Howl({
+        src: ['audio/applause.wav']
+    });
+} catch (err) {
+    console.log("Howler is misbehaving, and is being punished");
+}
 var hDim = {
     width: 400,
     height: 400,
@@ -62,7 +64,7 @@ var dict = {
 //----------------------------------------------------------------------
 // Variables
 //----------------------------------------------------------------------
-
+var running = false;
 var language = 'norwegian'; //'english'; // Angi språk.
 var enddiv = '</div>';
 var endsvg = '</svg>';
@@ -73,7 +75,7 @@ var numHouses;
 var currentCard, selected = NaN;
 var drawnCards = [];
 var debug = true;
-
+var modal;
 //----------------------------------------------------------------------
 // Object definitions
 //----------------------------------------------------------------------
@@ -109,8 +111,37 @@ class Kort {
 //----------------------------------------------------------------------
 
 function setLanguage(lang) {
+    if (running) location.reload();
     language = lang;
-    main();
+    modal = document.getElementById("houseSelect");
+    modal.style.display = "block";
+    switch (language) {
+        case "norwegian":
+            document.getElementById("howTo").innerHTML = "Velg anntall hus";
+            document.getElementById("buildButton").innerHTML = "BYGG";
+            break;
+        case "english":
+            document.getElementById("howTo").innerHTML = "Select number of houses";
+            document.getElementById("buildButton").innerHTML = "BUILD";
+            break;
+        default:
+            console.log(language + " Has not been implemented correctly");
+    }
+    running = true; 
+}
+
+function selectNumberOfHouses() {
+    numHouses = document.getElementById("houseModalInput").value;
+    if (numHouses && numHouses > 0 && numHouses < 7) {
+        modal.style.animationName = "moveup";
+        setTimeout(
+            function () {
+            modal.style.display = "none";
+            model.style.animationDuration = "0.3s";
+            },
+            500); // Wait for the closing animation to finish
+        main();
+    }
 }
 
 function init() {
@@ -240,6 +271,68 @@ function select(element) {
     selected = element;
 }
 
+function resetCardPosition() {
+    document.getElementById('kortholder').setAttribute('data-x', 0);
+    document.getElementById('kortholder').setAttribute('data-y', 0);
+    document.getElementById('kortholder').style.transform = 'translate(' + 0 + 'px, ' + 0 + 'px)';
+}
+
+function checkFull() {
+    /*Checks if any of the houses are full*/
+    var houses = document.getElementsByClassName("house");
+    for (var house = 0; house < houses.length; house++) {
+        var rooms = houses[house].getElementsByClassName("empty");
+        if (rooms.length === 0) {
+            if (!houses[house].classList.contains('full')) {
+                houses[house].classList.add('full');
+                if (debug) console.log("FULL HOUSE");
+                if (debug) console.log("Hus: " + houses[house].id + " Full");
+                fullHouse.play();
+                var img = document.createElement("img");
+                img.src = 'img/approved.svg';
+                img.style.position = 'absolute';
+                img.style.top = '50%';
+                img.style.width = '20%';
+                houses[house].appendChild(img);
+                switch (language) {
+                    case "norwegian":
+                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">Hus: "' + dict[houses[house].id].nor + '" er fullt!</li>';
+                        break;
+                    case "english":
+                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">House: "' + dict[houses[house].id].eng + '" is full!</li>';
+                        break;
+                    default:
+                        throw "Error in language selection";
+                        break;
+                }
+            }
+        }
+    }
+    var full = 0;
+    for (var x = 0; x < houses.length; x++) {
+        if (houses[x].classList.contains('full')) { full++; }
+    }
+    if (full === houses.length) { applause.play(); if (debug) console.log("all full"); }
+}
+
+function speak(word) {
+    let audio = new Audio();
+    switch (language) {
+        case "norwegian":
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word;
+            break;
+        case "english":
+            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word;
+            break;
+    }
+
+    audio.play();
+}
+
+function selectLanguage() {
+    language = (confirm('Norsk?')) ? 'norwegian' : 'english';
+}
+
 //----------------------------------------------------------------------
 // Drag and drop functions
 //----------------------------------------------------------------------
@@ -339,100 +432,15 @@ function dragMoveListener(event) {
     target.setAttribute('data-y', y);
 }
 
-function resetCardPosition() {
-    document.getElementById('kortholder').setAttribute('data-x', 0);
-    document.getElementById('kortholder').setAttribute('data-y', 0);
-    document.getElementById('kortholder').style.transform = 'translate(' + 0 + 'px, ' + 0 + 'px)';
-}
-
-function checkFull() {
-    /*Checks if any of the houses are full*/
-    var houses = document.getElementsByClassName("house");
-    for (var house = 0; house < houses.length; house++) {
-        var rooms = houses[house].getElementsByClassName("empty");
-        if (rooms.length === 0) {
-            if (!houses[house].classList.contains('full')) {
-                houses[house].classList.add('full');
-                if (debug) console.log("FULL HOUSE");
-                if (debug) console.log("Hus: " + houses[house].id + " Full");
-                fullHouse.play();
-                var img = document.createElement("img");
-                img.src = 'img/approved.svg';
-                img.style.position = 'absolute';
-                img.style.top = '50%';
-                img.style.width = '20%';
-                houses[house].appendChild(img);
-                switch (language) {
-                    case "norwegian":
-                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">Hus: "' + dict[houses[house].id].nor + '" er fullt!</li>';
-                        break;
-                    case "english":
-                        document.getElementById('panelList').innerHTML += '<li id="' + houses[house].id + 'Full">House: "' + dict[houses[house].id].eng + '" is full!</li>';
-                        break;
-                    default:
-                        throw "Error in language selection";
-                        break;
-                }
-            }
-        }
-    }
-    var full = 0;
-    for (var x = 0; x < houses.length; x++) {
-        if (houses[x].classList.contains('full')) { full++; }
-    }
-    if (full === houses.length) { applause.play(); if(debug) console.log("all full");}
-}
-
-function speak(word) {
-    let audio = new Audio();
-    switch (language) {
-        case "norwegian":
-            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=nb-NO&client=tw-ob&q=' + word.toLowerCase();
-            break;
-        case "english":
-            audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=' + word.toLowerCase();
-            break;
-    }
-    
-    audio.play();
-}
-
-function selectLanguage() {
-    language = (confirm('Norsk?')) ? 'norwegian' : 'english';
-}
 
 //----------------------------------------------------------------------
 // MAIN
 //----------------------------------------------------------------------
 
 function main() {
-    //selectLanguage();
     if(debug) console.log('main');
     init();
 
-    while (true) {
-        try {
-            var housesString = prompt("Hvor mange Hus: (1 - 6)", "3"); //Prompt user to enter number of houses to generate
-            if (housesString == null || housesString == "") { //Controls if the input is a valid string
-                throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
-            } else {
-                numHouses = parseInt(housesString); //Convert from string to integer
-                if (numHouses > 0 && numHouses < 7) {
-                    for (var i = 0; i < numHouses; i++) { showHouse(i); } //Generate houses 
-                    break;
-                } else {
-                    if (numHouses <= 0) {
-                        throw "Alt for få hus"; //Throw error
-                    } else {
-                        throw "Alt for mange hus"; //Throw error 
-                    }
-                }
-            }
-        }
-        catch (err) { //Catch any errors from main code, display content to user in console and main heading
-            console.log(err);
-            window.alert(err + "Angi 1, 2, 3, 4 eller 5 hus"); //Alert user if given number is too low or too high
-        }
-    }
+    for (var i = 0; i < numHouses; i++) { showHouse(i); } //Generate houses 
     drawCard();
 }

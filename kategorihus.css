@@ -218,11 +218,11 @@
 }
 
 #norButton {
-   background-image: url(img/nor.png);
+    background-image: url(img/nor.png);
 }
 
 #engButton {
-   background-image: url(img/eng.png);
+    background-image: url(img/eng.png);
 }
 
 #kortholder:hover {
@@ -237,6 +237,7 @@
 .hidden {
     display: none;
 }
+<<<<<<< HEAD
 /* code that is here, until the first @media block, will apply to any screen size */
 #somethingorother {
   width: 800px ;
@@ -262,3 +263,50 @@
 }
 
 /* code that is here will apply to any screen size */
+=======
+
+
+/* MODAL! */
+.modal {
+    display: none;
+    position: relative;
+    z-index: 1;
+    background-color: lightgray;
+    animation-name: movedown;
+    animation-duration: 0.5s;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    font-size: 150%;
+}
+
+.modal-content {
+    width: 100%;
+    height: 20%;
+}
+
+@keyframes movedown {
+    from {
+        height: 0; 
+        opacity: 0
+
+    }
+    to {
+        height: 100%;
+        opacity: 1
+
+    }
+}
+
+@keyframes moveup {
+    from {
+        height: 100%;
+        opacity: 1
+    }
+
+    to {
+        height: 0;
+        opacity: 0
+    }
+}
+>>>>>>> ed816395ff64bf078799a4dcb79887f0c29ec1cc
