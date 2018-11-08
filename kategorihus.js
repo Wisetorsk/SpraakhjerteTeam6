@@ -62,7 +62,7 @@ var dict = {
 //----------------------------------------------------------------------
 // Variables
 //----------------------------------------------------------------------
-
+var running = false;
 var language = 'norwegian'; //'english'; // Angi språk.
 var enddiv = '</div>';
 var endsvg = '</svg>';
@@ -73,7 +73,7 @@ var numHouses;
 var currentCard, selected = NaN;
 var drawnCards = [];
 var debug = true;
-
+var modal;
 //----------------------------------------------------------------------
 // Object definitions
 //----------------------------------------------------------------------
@@ -109,8 +109,31 @@ class Kort {
 //----------------------------------------------------------------------
 
 function setLanguage(lang) {
+    if (running) location.reload();
     language = lang;
-    main();
+    modal = document.getElementById("houseSelect");
+    modal.style.display = "block";
+    switch (language) {
+        case "norwegian":
+            document.getElementById("howTo").innerHTML = "Velg anntall hus";
+            document.getElementById("buildButton").innerHTML = "BYGG";
+            break;
+        case "english":
+            document.getElementById("howTo").innerHTML = "Select number of houses";
+            document.getElementById("buildButton").innerHTML = "BUILD";
+            break;
+        default:
+            console.log(language + " Has not been implemented correctly");
+    }
+    running = true; 
+}
+
+function selectNumberOfHouses() {
+    numHouses = document.getElementById("houseModalInput").value;
+    if (numHouses && numHouses > 0 && numHouses < 7) {
+        modal.style.display = "none";
+        main();
+    }
 }
 
 function init() {
@@ -406,33 +429,9 @@ function selectLanguage() {
 //----------------------------------------------------------------------
 
 function main() {
-    //selectLanguage();
     if(debug) console.log('main');
     init();
 
-    while (true) {
-        try {
-            var housesString = prompt("Hvor mange Hus: (1 - 6)", "3"); //Prompt user to enter number of houses to generate
-            if (housesString == null || housesString == "") { //Controls if the input is a valid string
-                throw "Vennligst spesefiser anntal hus"; //if the input is null, or has no content, altert user.
-            } else {
-                numHouses = parseInt(housesString); //Convert from string to integer
-                if (numHouses > 0 && numHouses < 7) {
-                    for (var i = 0; i < numHouses; i++) { showHouse(i); } //Generate houses 
-                    break;
-                } else {
-                    if (numHouses <= 0) {
-                        throw "Alt for få hus"; //Throw error
-                    } else {
-                        throw "Alt for mange hus"; //Throw error 
-                    }
-                }
-            }
-        }
-        catch (err) { //Catch any errors from main code, display content to user in console and main heading
-            console.log(err);
-            window.alert(err + "Angi 1, 2, 3, 4 eller 5 hus"); //Alert user if given number is too low or too high
-        }
-    }
+    for (var i = 0; i < numHouses; i++) { showHouse(i); } //Generate houses 
     drawCard();
 }

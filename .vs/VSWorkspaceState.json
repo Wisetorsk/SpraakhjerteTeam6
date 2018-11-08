@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\audio"
+    "\\DemoTesting",
+    "\\libraries"
   ],
-  "SelectedNode": "\\img",
+  "SelectedNode": "\\kategorihus.js",
   "PreviewInSolutionExplorer": false
 }
