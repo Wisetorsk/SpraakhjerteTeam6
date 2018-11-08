@@ -21,8 +21,8 @@ Språkhjerte kategorihus spill
 - [x] Opplesing  av korttittel
 - [x] Lyd som feedback
 - [ ] Testing på Ipad
-- [ ] Endre strukturen på katekorisystemet slik at hvert kort inneholder mer informasjon om seg selv. (kategoriliste/classList)
-- [ ] Endre fra pop-up prompts til knapper på nettsiden for valg av språk og hus
+- [x] Endre strukturen på katekorisystemet slik at hvert kort inneholder mer informasjon om seg selv. (kategoriliste/classList)
+- [x] Endre fra pop-up prompts til knapper på nettsiden for valg av språk og hus
 - [x] Legge til feedback når ett hus er fullt.
 - [x] Legge til feedback når alle hus er fulle.
 - [x] Forbedre feedback når hus er fullt.

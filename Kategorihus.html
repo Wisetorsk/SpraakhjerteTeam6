@@ -28,7 +28,8 @@
             </div>
         </div>
         <p id="beskrivelse">
-            Trykk på en av språkknappene for å starte spillet.
+            Trykk på en av språkknappene for å starte spillet.<br />
+            Start the game by pressing one of the language buttons.
             </p>
         <div class="main-wrapper" id="dynamicContent">
             <div class="grid-container" id="houses">
@@ -49,6 +50,6 @@
             </div>
         </div>
     </div>
-    <input type="text" oninput="speak(this.value)" class="hidden"/>
+    <input type="text" oninput="speak(this.value)" class="hidden"/> <!-- Poosible XSS? -->
 </body>
 </html>
