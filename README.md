@@ -31,6 +31,7 @@ Språkhjerte kategorihus spill
 - [ ] Implementere cookies
 - [ ] Unit testing
 - [ ] Legg til ikon for konstruksjon av hus
+- [ ] Bytte over til bruk av ResponsiveVoice.js https://responsivevoice.com/ eller Speak.js https://github.com/kripken/speak.js
 
 ## Problemer som må fikses:
 - [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres

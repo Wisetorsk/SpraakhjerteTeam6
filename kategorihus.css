@@ -308,3 +308,15 @@
         opacity: 0
     }
 }
+
+.noFancy {
+    text-decoration: none;
+}
+
+.noFancy:active, .noFancy:visited, .noFancy:link {
+    color: black;
+}
+
+.noFancy:hover {
+    font-size: 110%;
+}
