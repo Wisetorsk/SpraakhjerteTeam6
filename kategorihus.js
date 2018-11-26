@@ -420,7 +420,7 @@ interact('.drag-drop').draggable({
 interact('.draggable')
     .draggable({
         // enable inertial throwing
-        inertia: false,
+        inertia: true,
         // keep the element within the area of it's parent
         restrict: {
             restriction: "#dynamicContent",
