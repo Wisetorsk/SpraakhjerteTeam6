@@ -1,4 +1,10 @@
-﻿
+﻿.noDecoration {
+    list-style: none;
+}
+
+.hidden {
+    display: none;
+}
 
 .modal {
     position: relative;
@@ -162,10 +168,6 @@
         padding: 10px;
         border-radius: 15px;
         margin-left: 20%;
-    }
-
-    .noDecoration {
-        list-style: none;
     }
 
     .panelButton {
