@@ -31,6 +31,39 @@
         padding: 20px;
     }
 
+    .plot {
+        display: grid;
+        grid-template-columns: 400px;
+        grid-template-rows: 100px 400px 100px;
+    }
+
+    .house {
+        display: grid;
+        grid-template-columns: 35px 35px 35px;
+        grid-template-rows: 35px 35px 35px;
+        grid-gap: 25px;
+        background-color: cornflowerblue;
+        border: solid 2px black;
+        padding: 20px;
+    }
+
+    .roof {
+        position: relative;
+        display: block;
+    }
+
+    .titleImg {
+        position: relative;
+        z-index: 1;
+        top: -75px;
+        left: 80px;
+    }
+
+    .roofSVG {
+        position: relative;
+        z-index: -1;
+    }
+
     .main-wrapper {
         display: grid;
         grid-template-columns: 1fr;
@@ -54,6 +87,39 @@
         border: 2px solid black;
         border-radius: 5px;
         padding: 20px;
+    }
+
+    .plot {
+        display: grid;
+        grid-template-columns: 400px;
+        grid-template-rows: 100px 400px 100px;
+    }
+
+    .house {
+        display: grid;
+        grid-template-columns: 35px 35px 35px;
+        grid-template-rows: 35px 35px 35px;
+        grid-gap: 25px;
+        background-color: cornflowerblue;
+        border: solid 2px black;
+        padding: 20px;
+    }
+
+    .roof {
+        position: relative;
+        display: block;
+    }
+
+    .titleImg {
+        position: relative;
+        z-index: 1;
+        top: -75px;
+        left: 80px;
+    }
+
+    .roofSVG {
+        position: relative;
+        z-index: -1;
     }
 
     .main-wrapper {
@@ -199,7 +265,7 @@
     .titleImg {
         position: relative;
         z-index: 1;
-        top: -100px;
+        top: -150px;
         left: 160px;
     }
 

@@ -76,6 +76,7 @@ var currentCard, selected = NaN;
 var drawnCards = [];
 var debug = true;
 var modal;
+var scale = 1;
 //----------------------------------------------------------------------
 // Object definitions
 //----------------------------------------------------------------------
@@ -198,9 +199,9 @@ function showHouse(houseNumber) {
         houseString = '';
         houseString += div('plot');
         houseString += div('roof');
-        houseString += '<svg class="roofSVG" width=400 height=100>';
-        houseString += '<polygon points="' + corPair(50, 0) + corPair((50 + hDim.roofWidth), 0) + corPair((100 + hDim.roofWidth), hDim.roofHeight) + corPair(0, hDim.roofHeight, true) + '"  fill="red" stroke="black" />';
-        houseString += '<polyline points="' + corPair(100, 70) + corPair(100, 20) + corPair(150, 20) + corPair(150, 70, true) + '" stroke="black" stroke-width="5px" fill="red"/>';
+        houseString += '<svg class="roofSVG" width=' + 400*scale + 'height=' + 100*scale + '>';
+        houseString += '<polygon points="' + corPair(50*scale, 0) + corPair((50 + hDim.roofWidth)*scale, 0) + corPair((100 + hDim.roofWidth)*scale, hDim.roofHeight*scale) + corPair(0, hDim.roofHeight*scale, true) + '"  fill="red" stroke="black" />';
+        houseString += '<polyline points="' + corPair(100*scale, 70*scale) + corPair(100*scale, 20*scale) + corPair(150*scale, 20*scale) + corPair(150*scale, 70*scale, true) + '" stroke="black" stroke-width="5px" fill="red"/>';
         houseString += endsvg;
         if(debug) console.log(currKategori);
         if(debug) console.log(titleImages[currKategori]);
