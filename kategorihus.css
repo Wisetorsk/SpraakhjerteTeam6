@@ -22,19 +22,12 @@
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
     .grid-container {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr;
-        grid-gap: 50px;
-        grid-row-gap: 0px;
-        border: 2px solid black;
-        border-radius: 5px;
-        padding: 20px;
+
     }
 
     .plot {
         display: grid;
-        grid-template-columns: 400px;
-        grid-template-rows: 100px 400px 100px;
+
     }
 
     .house {
@@ -68,31 +61,24 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 5fr 1fr;
+        border: 2px dashed red;
     }
 
     #content {
         max-width: 1024px;
         max-height: 768px;
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
     .grid-container {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr;
-        grid-gap: 50px;
-        grid-row-gap: 0px;
-        border: 2px solid black;
-        border-radius: 5px;
-        padding: 20px;
     }
 
     .plot {
         display: grid;
-        grid-template-columns: 400px;
-        grid-template-rows: 100px 400px 100px;
+
     }
 
     .house {
@@ -126,13 +112,13 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 5fr 1fr;
-        /*border: 2px dashed black;*/
+        border: 2px dashed black;
     }
 
     #content {
         max-height: 768px;
         max-width: 1024px;
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 }
 
