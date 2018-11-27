@@ -32,6 +32,10 @@ Språkhjerte kategorihus spill
 - [ ] Unit testing
 - [ ] Legg til ikon for konstruksjon av hus
 - [ ] Bytte over til bruk av ResponsiveVoice.js https://responsivevoice.com/ eller Speak.js https://github.com/kripken/speak.js
+- [ ] Endre så det står "velg flagg" istedet for språkknapp. Sett til Norsk som default. 
+- [ ] Kanskje bruke en modal box til å velge språk
+- [ ] Legge til mulighet til å trekke kort ved å "bla" i kortstokken (shortpress / mouseUp -event)
+- [ ] Legge til mulighet til å ombestemme seg 
 
 ## Problemer som må fikses:
 - [x] Problemer med encoding fører til at en oversettelsesmekasnisme må implementeres

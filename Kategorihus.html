@@ -17,12 +17,11 @@
     <script src="kategorihus.js"></script>
     <link rel="stylesheet" type="text/css" href="kategorihus.css" />
 </head>
-<body>
+<body onload="langPopup()">
 
     <div class="container" id="content">
         <div id="headerDiv">
-            <button id="norButton" class="flagButton button" onclick="setLanguage('norwegian')"></button>
-            <button id="engButton" class="flagButton button" onclick="setLanguage('english')"></button>
+           
             <h1 id="header"></h1>
         </div>
 
@@ -63,6 +62,13 @@
                 <li>Voice synthesizer using <a class="noFancy" href="">synth...</a></li>
                 <li>Drag and drop interaction using <a class="noFancy" href="http://interactjs.io">Interact.js</a></li>
             </ul>
+        </div>
+    </div>
+    <div id="langModal" class="modal langModal">
+        <div class="modal-content">            
+             <button id="norButton" class="flagButton button" onclick="setLanguage('norwegian')"></button>
+            <button id="engButton" class="flagButton button" onclick="setLanguage('english')"></button>
+            <p>Velg språk</p>
         </div>
     </div>
     <script>

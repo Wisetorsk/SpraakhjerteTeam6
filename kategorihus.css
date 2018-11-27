@@ -1,19 +1,16 @@
-﻿#header {
-    height: 100px;
-    width: 700px;
-    margin: 0px;
-    padding-right: 50%;
-    font-size: 100px;
-    background-image: url(img/overskrift.png);
-    background-size: 700px 100px; /*FIX ME!*/
-    background-repeat: no-repeat;
-    background-position-x: center;
-    text-transform: uppercase;
-}
+﻿
 
-#dataPanelHeader {
+.modal {
+    position: relative;
+    z-index: 1;
+    background-color: lightgray;
+    animation-name: movedown;
+    animation-duration: 0.5s;
+    padding: 5px;
+    margin: 10px;
     text-align: center;
-    font-size: 200%;
+    font-size: 150%;
+    border-radius: 5px;
 }
 
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
@@ -37,6 +34,7 @@
     #content {
         max-width: 1024px;
         max-height: 768px;
+        overflow: hidden;
     }
 }
 
@@ -60,17 +58,16 @@
     }
 
     #content {
-        max-width: 768px;
-        max-height: 1024px;
+        max-height: 768px;
+        max-width: 1024px;
+        overflow: hidden;
     }
 }
 
 @media (min-width: 1024px) { /*HD*/
     .grid-container {
         display: grid;
-        /*grid-template-columns: 400px 400px 400px;*/
         grid-template-columns: 1fr 1fr 1fr;
-        /*grid-template-rows: 500px 500px;*/
         grid-template-rows: 1fr;
         grid-gap: 50px;
         grid-row-gap: 50px;
@@ -84,239 +81,258 @@
         grid-template-columns: 5fr 1fr;
         /*border: 2px dashed black;*/
     }
-}
 
-.dataPanel {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(100px, max-content);
-    border: 2px solid black;
-    border-radius: 5px;
-}
+    #header {
+        height: 100px;
+        width: 700px;
+        margin: 0px;
+        padding-right: 50%;
+        font-size: 100px;
+        background-image: url(img/overskrift.png);
+        background-size: 700px 100px; /*FIX ME!*/
+        background-repeat: no-repeat;
+        background-position-x: center;
+        text-transform: uppercase;
+    }
 
-.plot {
-    display: grid;
-    grid-template-columns: 400px;
-    grid-template-rows: 100px 400px 100px;
-}
+    #dataPanelHeader {
+        text-align: center;
+        font-size: 200%;
+    }
 
-.house {
-    display: grid;
-    grid-template-columns: 70px 70px 70px;
-    grid-template-rows: 70px 70px 70px;
-    grid-gap: 50px;
-    background-color: cornflowerblue;
-    border: solid 2px black;
-    padding: 40px;
-}
+    .dataPanel {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(100px, max-content);
+        border: 2px solid black;
+        border-radius: 5px;
+    }
 
-.grid-element {
-    background-color: lightblue;
-    border: dashed 2px black;
-}
+    .plot {
+        display: grid;
+        grid-template-columns: 400px;
+        grid-template-rows: 100px 400px 100px;
+    }
 
-.dropzone {
-    background-color: khaki;
-    width: 70px;
-    height: 70px;
-}
+    .house {
+        display: grid;
+        grid-template-columns: 70px 70px 70px;
+        grid-template-rows: 70px 70px 70px;
+        grid-gap: 50px;
+        background-color: cornflowerblue;
+        border: solid 2px black;
+        padding: 40px;
+    }
 
-.kategori {
-    text-align: center;
-    font-family: Calibri;
-    text-transform: uppercase;
-    padding-top: 10px;
-    font-size: 150%;
-}
+    .grid-element {
+        background-color: lightblue;
+        border: dashed 2px black;
+    }
 
-.kortstokk {
-    width: auto;
-    height: 250px;
-    vertical-align: middle;
-    margin-right: 50px;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.8) 5px 10px 20px;
-    margin-bottom: 20px;
-    background-color: paleturquoise;
-    border-radius: 15px;
-}
+    .dropzone {
+        background-color: khaki;
+        width: 70px;
+        height: 70px;
+    }
 
-.kort {
-    width: auto;
-    height: 100px;
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 15px;
-    margin-left: 20%;
-}
+    .kategori {
+        text-align: center;
+        font-family: Calibri;
+        text-transform: uppercase;
+        padding-top: 10px;
+        font-size: 150%;
+    }
 
-.noDecoration {
-    list-style: none;
-}
+    .kortstokk {
+        width: auto;
+        height: 250px;
+        vertical-align: middle;
+        margin-right: 50px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.8) 5px 10px 20px;
+        margin-bottom: 20px;
+        background-color: paleturquoise;
+        border-radius: 15px;
+    }
 
-.panelButton {
-    width: 85%;
-    padding-top: 15px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-    font-size: 200%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 15px;
-    text-align: center;
-}
+    .kort {
+        width: auto;
+        height: 100px;
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 15px;
+        margin-left: 20%;
+    }
 
-.drag-drop {
-    width: 100px;
-    height: 100px;
-}
+    .noDecoration {
+        list-style: none;
+    }
 
-#beskrivelse {
-    font-size: 200%;
-    padding-top: 0px;
-}
+    .panelButton {
+        width: 85%;
+        padding-top: 15px;
+        padding-bottom: 20px;
+        padding-left: 40px;
+        font-size: 200%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-radius: 15px;
+        text-align: center;
+    }
 
-.roof {
-    position: relative;
-    display: block;
-}
+    .drag-drop {
+        width: 100px;
+        height: 100px;
+    }
 
-.titleImg {
-    position: relative;
-    z-index: 1;
-    top: -100px;
-    left: 160px;
-}
+    #beskrivelse {
+        font-size: 200%;
+        padding-top: 0px;
+    }
 
-.roofSVG {
-    position: relative;
-    z-index: -1;
-}
+    .roof {
+        position: relative;
+        display: block;
+    }
 
-#kortstokkSpan {
-    font-size: 150%;
-}
+    .titleImg {
+        position: relative;
+        z-index: 1;
+        top: -100px;
+        left: 160px;
+    }
 
-#drawButton {
-    background-image: url('img/card.png');
-    z-index: 1;
-    background-size: 100px;
-    background-repeat: no-repeat;
-}
+    .roofSVG {
+        position: relative;
+        z-index: -1;
+    }
 
-#resetButton {
-    background-image: url('img/reset.png');
-    z-index: 1;
-    background-repeat: no-repeat;
-    background-size: 75px;
-}
+    #kortstokkSpan {
+        font-size: 150%;
+    }
 
-.flagButton {
-    background-repeat: no-repeat;
-    width: 55px;
-    height: 35px;
-    background-size: cover;
-}
+    #drawButton {
+        background-image: url('img/card.png');
+        z-index: 1;
+        background-size: 100px;
+        background-repeat: no-repeat;
+    }
 
-#norButton {
-    background-image: url(img/nor.png);
-}
+    #resetButton {
+        background-image: url('img/reset.png');
+        z-index: 1;
+        background-repeat: no-repeat;
+        background-size: 75px;
+    }
 
-#engButton {
-    background-image: url(img/eng.png);
-}
+    .flagButton {
+        background-repeat: no-repeat;
+        width: 550px;
+        height: 350px;
+        background-size: cover;
+        margin-top: 15%;
+    }
 
-#kortholder:hover {
-    cursor: pointer;
-}
+    #norButton {
+        background-image: url(img/nor.png);
+    }
 
-.button:hover {
-    cursor: pointer;
-    box-shadow: rgba(0,0,0,.8) 0px 5px 15px;
-}
+    #engButton {
+        background-image: url(img/eng.png);
+    }
 
-.hidden {
-    display: none;
-}
-/* code that is here, until the first @media block, will apply to any screen size */
-#somethingorother {
+    #kortholder:hover {
+        cursor: pointer;
+    }
+
+    .button:hover {
+        cursor: pointer;
+        box-shadow: rgba(0,0,0,.8) 0px 5px 15px;
+    }
+
+    .hidden {
+        display: none;
+    }
+    /* code that is here, until the first @media block, will apply to any screen size */
+    /*
+#content {
   width: 800px ;
 }
 
 @media screen and (max-width: 320px) {
-  /* comes into effect for screens less than or equal to 320 pixels */
-  #somethingorother {
+  
+  #content {
     width: 120px ;
   }
 }
 @media screen and (min-width: 321px) and (max-width: 480px) {
-  /* comes into effect for screens between 321 and 480 pixels (inclusive) */
-  #somethingorother {
+  #content {
     width: 320px ;
   }
 }
 @media screen and (min-width: 481px) {
-  /* comes into effect for screens larger than or equal to 481 pixels */
-  #somethingorother {
+  #content {
     width: 480px ;
   }
 }
+*/
 
-/* code that is here will apply to any screen size */
+    /* MODAL! */
 
-/* MODAL! */
-.modal {
-    display: none;
-    position: relative;
-    z-index: 1;
-    background-color: lightgray;
-    animation-name: movedown;
-    animation-duration: 0.5s;
-    padding: 5px;
-    margin: 10px;
-    text-align: center;
-    font-size: 150%;
-    border-radius: 5px;
-}
- 
 
-.modal-content {
-    width: 100%;
-    height: 20%;
-}
-
-@keyframes movedown {
-    from {
-        height: 0; 
-        opacity: 0
-
+    #houseSelect {
+        display: none;
     }
-    to {
+
+    #langModal {
+        display: none;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 2;
+        width: 100%;
         height: 100%;
-        opacity: 1
-
+        background-color: grey;
     }
-}
 
-@keyframes moveup {
-    from {
+    .modal-content {
+        width: 100%;
         height: 100%;
-        opacity: 1
     }
 
-    to {
-        height: 0;
-        opacity: 0
+    @keyframes movedown {
+        from {
+            height: 0;
+            opacity: 0
+        }
+
+        to {
+            height: 100%;
+            opacity: 1
+        }
     }
+
+    @keyframes moveup {
+        from {
+            height: 100%;
+            opacity: 1
+        }
+
+        to {
+            height: 0;
+            opacity: 0
+        }
+    }
+
+    .noFancy {
+        text-decoration: none;
+    }
+
+        .noFancy:active, .noFancy:visited, .noFancy:link {
+            color: black;
+        }
+
+        .noFancy:hover {
+            font-size: 110%;
+        }
 }
 
-.noFancy {
-    text-decoration: none;
-}
-
-.noFancy:active, .noFancy:visited, .noFancy:link {
-    color: black;
-}
-
-.noFancy:hover {
-    font-size: 110%;
-}

@@ -110,9 +110,16 @@ class Kort {
 // Page functions
 //----------------------------------------------------------------------
 
+function langPopup() {
+    var modal2 = document.getElementById('langModal');
+    console.log('language popup');
+    modal2.style.display = 'block';
+}
+
 function setLanguage(lang) {
     if (running) location.reload();
     language = lang;
+    document.getElementById('langModal').style.display = 'none';
     modal = document.getElementById("houseSelect");
     modal.style.display = "block";
     switch (language) {
