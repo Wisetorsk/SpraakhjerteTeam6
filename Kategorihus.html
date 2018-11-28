@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name=viewport content='width=700'>
+    <meta name="viewport" content='width=700'>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sråkhjerte KategoriHus</title>
     <!-- Dependencies -->
@@ -63,15 +63,12 @@
         </div>
     </div>
     <div id="langModal" class="modal langModal">
-        <div class="modal-content">            
+        <div class="modal-content">
+            <div class="hidden" id="mobileHeader"></div>
              <button id="norButton" class="flagButton button" onclick="setLanguage('norwegian')"></button>
             <button id="engButton" class="flagButton button" onclick="setLanguage('english')"></button>
             <p>Velg språk</p>
         </div>
     </div>
-    <script>
-        //$('#kortholder').draggable();
-    </script>
-    <!--<input type="text" oninput="speak(this.value)" class="hidden"/> <!-- Poosible XSS? -->
 </body>
 </html>
