@@ -1,4 +1,5 @@
-﻿.noDecoration {
+﻿/* General */
+.noDecoration {
     list-style: none;
 }
 
@@ -19,7 +20,8 @@
     border-radius: 5px;
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+/* iPad */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) { /* Landscape */
     .grid-container {
         display: grid;
 
@@ -71,7 +73,7 @@
     }
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) { /* Portrait */
     .grid-container {
         display: grid;
     }
@@ -122,6 +124,7 @@
     }
 }
 
+/* Widescreen HD*/
 @media (min-width: 1024px) { /*HD*/
     .grid-container {
         display: grid;
