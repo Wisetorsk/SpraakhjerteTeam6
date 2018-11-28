@@ -16,6 +16,11 @@ body {
 
 /* iPad */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) { /* Landscape */
+    body{
+        width: 1024px;
+        height: 750px;
+    }
+                                                                                                              
     .grid-container {
         display: grid;
 
@@ -117,14 +122,12 @@ body {
 
     .main-wrapper {
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 5fr 1fr;
         border: 2px dashed red;
     }
 
     #content {
         max-width: 1024px;
-        max-height: 768px;
+        max-height: 750px;
         /*overflow: hidden;*/
     }
 }
@@ -133,7 +136,7 @@ body {
     
     body{
         width: 768px;
-        height: 1024px;
+        height: 1000px;
     }
 
 
@@ -230,14 +233,12 @@ body {
 
     .main-wrapper {
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 5fr 1fr;
         border: 2px dashed black;
     }
 
     #content {
-        max-height: 768px;
-        max-width: 1024px;
+        max-width: 768px;
+        max-height: 1000px;
         /*overflow: hidden;*/
     }
 }
