@@ -126,11 +126,11 @@ function setLanguage(lang) {
     switch (language) {
         case "norwegian":
             document.getElementById("howTo").innerHTML = "Velg anntall hus";
-            document.getElementById("buildButton").innerHTML = "BYGG";
+            //document.getElementById("buildButton").innerHTML = "BYGG";
             break;
         case "english":
             document.getElementById("howTo").innerHTML = "Select number of houses";
-            document.getElementById("buildButton").innerHTML = "BUILD";
+            //document.getElementById("buildButton").innerHTML = "BUILD";
             break;
         default:
             console.log(language + " Has not been implemented correctly");
@@ -138,8 +138,8 @@ function setLanguage(lang) {
     running = true; 
 }
 
-function selectNumberOfHouses() {
-    numHouses = document.getElementById("houseModalInput").value;
+function selectNumberOfHouses(num) {
+    numHouses = num;
     if (numHouses && numHouses > 0 && numHouses < 7) {
         modal.style.animationName = "moveup";
         setTimeout(

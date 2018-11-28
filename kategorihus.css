@@ -12,18 +12,7 @@ body {
     display: none;
 }
 
-.modal {
-    position: relative;
-    z-index: 1;
-    background-color: lightgray;
-    animation-name: movedown;
-    animation-duration: 0.5s;
-    padding: 5px;
-    margin: 10px;
-    text-align: center;
-    font-size: 150%;
-    border-radius: 5px;
-}
+
 
 /* iPad */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) { /* Landscape */
@@ -50,6 +39,20 @@ body {
         margin: 0px;
     }
 
+    .modal {
+        position: relative;
+        z-index: 1;
+        background-color: lightgray;
+        animation-name: movedown;
+        animation-duration: 0.5s;
+        padding: 5px;
+        margin: 10px;
+        text-align: center;
+        font-size: 150%;
+        border-radius: 5px;
+        height: 50px;
+    }
+
     #headerDiv {
         display: none;
     }
@@ -60,7 +63,8 @@ body {
         background-image: url(img/overskrift.png);
         width: 700px;
         height: 100px;
-        left: 100px;
+        left: 162px;
+        top: 250px;
     }
 
     .modal-content {
@@ -73,7 +77,7 @@ body {
         width: 110px;
         height: 70px;
         background-size: cover;
-        margin-top: 250px;
+        margin-top: 270px;
     }
 
     #norButton {
@@ -153,6 +157,19 @@ body {
 
     .plot {
         display: grid;
+    }
+
+    .modal {
+        position: relative;
+        z-index: 1;
+        background-color: lightgray;
+        animation-name: movedown;
+        animation-duration: 0.5s;
+        padding: 5px;
+        margin: 10px;
+        text-align: center;
+        font-size: 150%;
+        border-radius: 5px;
     }
 
     #langModal {
@@ -435,7 +452,18 @@ body {
 */
 
     /* MODAL! */
-
+    .modal {
+        position: relative;
+        z-index: 1;
+        background-color: lightgray;
+        animation-name: movedown;
+        animation-duration: 0.5s;
+        padding: 5px;
+        margin: 10px;
+        text-align: center;
+        font-size: 150%;
+        border-radius: 5px;
+    }
 
     #houseSelect {
         display: none;
