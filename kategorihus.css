@@ -1,15 +1,5 @@
 /* General */
-body {
-body,
-html{
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-}
-body {
-    margin: 0px;
-    padding: 0px;
-}
+
 .noDecoration {
     list-style: none;
 }
@@ -23,9 +13,13 @@ body {
 /* iPad */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
     /* Landscape */
-    body{
-        width: 1024px;
-        height: 750px;
+    body {
+        max-width: 1024px;
+        max-height: 768px;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
     }
 
     .kort {
@@ -156,10 +150,14 @@ body {
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait) { 
     /* Portrait */
-    
-    body{
-        width: 768px;
-        height: 1000px;
+
+    html, body {
+        max-width: 768px;
+        max-height: 1024px;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+        border: none;
     }
 
     .kort {
