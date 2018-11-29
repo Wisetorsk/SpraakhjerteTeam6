@@ -20,10 +20,20 @@ body {
         width: 1024px;
         height: 750px;
     }
-                                                                                                              
+
+    .dropzone {
+        background-color: khaki;
+    }
+
     .grid-container {
         display: grid;
-
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-gap: 25px;
+        grid-row-gap: 25px;
+        border: 2px solid black;
+        border-radius: 2.5px;
+        padding: 10px;
     }
 
     .plot {
@@ -294,15 +304,15 @@ body {
         grid-template-rows: 100px 400px 100px;
     }
 
-    .house {
+    /*.house {
         display: grid;
-        grid-template-columns: 70px 70px 70px;
-        grid-template-rows: 70px 70px 70px;
+        grid-template-columns: repeat(3, 70px);
+        grid-template-rows: repeat(3, 70px);
         grid-gap: 50px;
         background-color: cornflowerblue;
         border: solid 2px black;
         padding: 40px;
-    }
+    }*/
 
     .grid-element {
         background-color: lightblue;
@@ -311,8 +321,6 @@ body {
 
     .dropzone {
         background-color: khaki;
-        width: 70px;
-        height: 70px;
     }
 
     .kategori {
@@ -428,29 +436,6 @@ body {
     .hidden {
         display: none;
     }
-    /* code that is here, until the first @media block, will apply to any screen size */
-    /*
-#content {
-  width: 800px ;
-}
-
-@media screen and (max-width: 320px) {
-  
-  #content {
-    width: 120px ;
-  }
-}
-@media screen and (min-width: 321px) and (max-width: 480px) {
-  #content {
-    width: 320px ;
-  }
-}
-@media screen and (min-width: 481px) {
-  #content {
-    width: 480px ;
-  }
-}
-*/
 
     /* MODAL! */
     .modal {

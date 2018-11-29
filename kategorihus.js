@@ -152,6 +152,20 @@ function selectNumberOfHouses(num) {
     }
 }
 
+function getScale() {
+    /* Get the width & height of the window and set scale factor accordingly */
+    var w = window.innerWidth;
+    console.log(w);
+    console.log(w);
+    if (w <= 1039 && w > 768) {
+        scale = .5;
+    } else if (w <= 768) {
+        scale = .3;
+    } else {
+        scale = 1;
+    }
+}
+
 function init() {
     initPage();
     for (index in kategorier) {
@@ -199,16 +213,23 @@ function showHouse(houseNumber) {
         houseString = '';
         houseString += div('plot');
         houseString += div('roof');
-        houseString += '<svg class="roofSVG" width=' + 400*scale + 'height=' + 100*scale + '>';
+        houseString += '<svg class="roofSVG" width="' + 400*scale + '" height="' + 100*scale + '">';
         houseString += '<polygon points="' + corPair(50*scale, 0) + corPair((50 + hDim.roofWidth)*scale, 0) + corPair((100 + hDim.roofWidth)*scale, hDim.roofHeight*scale) + corPair(0, hDim.roofHeight*scale, true) + '"  fill="red" stroke="black" />';
         houseString += '<polyline points="' + corPair(100*scale, 70*scale) + corPair(100*scale, 20*scale) + corPair(150*scale, 20*scale) + corPair(150*scale, 70*scale, true) + '" stroke="black" stroke-width="5px" fill="red"/>';
         houseString += endsvg;
         if(debug) console.log(currKategori);
         if(debug) console.log(titleImages[currKategori]);
-        houseString += '<img class="titleImg" src="' + titleImages[currKategori] + '" width="auto" height="90px"/>';
+        houseString += '<img class="titleImg" src="' + titleImages[currKategori] + '" width="auto" height="'+90*scale+'px"/>';
         houseString += enddiv;
-        houseString += div('house', currKategori, currKategori);
-        for (var i = 0; i < 9; i++) { houseString += '<div style="" class="dropzone empty" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
+        //houseString += div('house', currKategori, currKategori);
+        houseString += '<div style="background-color: cornflowerblue; border: solid 2px black; display: grid; grid-template-columns: repeat(3, ' + 70*scale +
+            'px); grid-template-rows: repeat(3, ' + 70 * scale +
+            'px); grid-gap: ' + 50 * scale +
+            'px; padding: ' + 40 * scale +
+            'px; width: ' + 310*scale + 'px" class="house" id="' + currKategori +
+            '" value="' + currKategori +
+            '">';
+        for (var i = 0; i < 9; i++) { houseString += '<div style="width:'+70*scale+'px; height: '+ 70*scale +'px" class="dropzone empty" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
         houseString += enddiv;
         houseString += div('kategori', 'kategori');
         switch (language) {
@@ -466,7 +487,7 @@ function dragMoveListener(event) {
 function main() {
     if(debug) console.log('main');
     init();
-
+    getScale();
     for (var i = 0; i < numHouses; i++) { showHouse(i); } //Generate houses 
     drawCard();
 }
