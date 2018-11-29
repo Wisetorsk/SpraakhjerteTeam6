@@ -149,6 +149,9 @@ body {
         height: 1000px;
     }
 
+    .dropzone {
+        background-color: khaki;
+    }
 
     .grid-container {
         display: grid;

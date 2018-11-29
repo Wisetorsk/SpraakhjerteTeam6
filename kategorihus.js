@@ -226,7 +226,8 @@ function showHouse(houseNumber) {
             'px); grid-template-rows: repeat(3, ' + 70 * scale +
             'px); grid-gap: ' + 50 * scale +
             'px; padding: ' + 40 * scale +
-            'px; width: ' + 310*scale + 'px" class="house" id="' + currKategori +
+            'px; width: ' + 310 * scale +
+            'px" class="house" id="' + currKategori +
             '" value="' + currKategori +
             '">';
         for (var i = 0; i < 9; i++) { houseString += '<div style="width:'+70*scale+'px; height: '+ 70*scale +'px" class="dropzone empty" id="hus' + houseNumber + 'rom' + i + '" ></div>'; }
