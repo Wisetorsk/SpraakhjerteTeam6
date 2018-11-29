@@ -15,10 +15,16 @@ body {
 
 
 /* iPad */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) { /* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
+    /* Landscape */
     body{
         width: 1024px;
         height: 750px;
+    }
+
+    .kort {
+        width: 50px;
+        height: auto;
     }
 
     .dropzone {
@@ -142,11 +148,17 @@ body {
     }
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait) { /* Portrait */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait) { 
+    /* Portrait */
     
     body{
         width: 768px;
         height: 1000px;
+    }
+
+    .kort {
+        width: 50px;
+        height: auto;
     }
 
     .dropzone {
@@ -155,11 +167,15 @@ body {
 
     .grid-container {
         display: grid;
+        max-width: 1024px; 
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
     }
 
     #headerDiv {
         display: none;
     }
+
 
     #mobileHeader {
         display: block;
