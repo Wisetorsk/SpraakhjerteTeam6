@@ -1,6 +1,9 @@
 ﻿/* General */
-body {
+body,
+html{
     overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 body {
     margin: 0px;
