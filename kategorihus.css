@@ -32,6 +32,7 @@
     .dropzone {
         position:  relative;
         background-color: khaki;
+        touch-action: none;
     }
 
     .plot {
@@ -513,8 +514,6 @@
     .drag-drop {
         width: 100px;
         height: 100px;
-        -ms-touch-action: none;
-        touch-action: none;
     }
 
     #beskrivelse {
