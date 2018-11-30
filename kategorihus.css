@@ -23,11 +23,14 @@
     }
 
     .kort {
-        width: 50px;
+        position: relative;
+        width: 75px;
         height: auto;
+        z-index: 5;
     }
 
     .dropzone {
+        position:  relative;
         background-color: khaki;
     }
 
@@ -52,16 +55,26 @@
     .modal {
         position: relative;
         z-index: 1;
-        background-color: lightgray;
         animation-name: movedown;
         animation-duration: 0.5s;
-        padding: 5px;
-        margin: 10px;
         text-align: center;
         font-size: 150%;
         border-radius: 5px;
         height: 50px;
+        width: 500px;
     }
+
+    .buildButton {
+        width: 75px;
+        height: 75px;
+        font-size: 200%;
+        border-radius: 10px;
+    }
+
+    .buildButton:hover {
+        box-shadow: rgba(0, 0, 0, 0.8) 5px 10px 20px;
+        
+    } 
 
     #headerDiv {
         display: none;
@@ -117,7 +130,7 @@
     .titleImg {
         position: relative;
         z-index: 1;
-        top: -75px;
+        top: -50px;
         left: 80px;
     }
 
@@ -143,7 +156,7 @@
         #beskrivelse {
             /*p*/
             grid-area: beskrivelse;
-            margin: 20px 30px 0px 30px;
+            margin: 10px 30px 0px 30px;
             font-size: 150%;
         }
 
@@ -151,8 +164,8 @@
             /*div wrapper*/
             grid-area: dynamicContent;
             display: grid;
-            grid-template-columns: 5fr 1fr;
-            padding: 50px 10px 0px 10px;
+            grid-template-columns: 6fr 2fr;
+            padding: 10px 10px 0px 10px;
             
         }
 
@@ -176,6 +189,7 @@
 
                 #dataPanelHeader {
                     /*span*/
+                    padding: 20px;
                 }
 
                 #panelList {
@@ -188,6 +202,7 @@
 
                         #kortstokkSpan {
                             /*span*/
+                            padding: 20px;
                         }
 
                         #kortholder {
@@ -197,6 +212,15 @@
                             #trukketKort {
                                 /*img*/
                             }
+
+                #drawButton {
+
+                }
+
+                #resetButton {
+
+                }
+
         #footer {
             grid-area: footer;
         }

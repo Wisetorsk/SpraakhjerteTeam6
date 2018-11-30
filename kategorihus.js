@@ -413,6 +413,7 @@ interact('.dropzone').dropzone({
                 roomImg.setAttribute('width', '80');
                 roomImg.setAttribute('height', 'auto');
                 roomImg.setAttribute('object-fit', 'cover');
+                roomImg.setAttribute('style', 'z-index: 3');
                 room.appendChild(roomImg);
                 card.setAttribute('data-x', 0);
                 card.setAttribute('data-y', 0);
