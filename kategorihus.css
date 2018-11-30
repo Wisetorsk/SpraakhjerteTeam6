@@ -31,20 +31,9 @@
         background-color: khaki;
     }
 
-    .grid-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr;
-        grid-gap: 25px;
-        grid-row-gap: 25px;
-        border: 2px solid black;
-        border-radius: 2.5px;
-        padding: 10px;
-    }
-
     .plot {
         display: grid;
-
+        width: 200px;
     }
 
     #langModal {
@@ -122,6 +111,7 @@
     .roof {
         position: relative;
         display: block;
+        height: 50px;
     }
 
     .titleImg {
@@ -136,17 +126,80 @@
         z-index: -1;
     }
 
+    #kategori {
+        text-align: center;
+        font-size: 120%;
+        text-transform: uppercase;
+    }
+
     #content {
         display: grid;
         max-width: 1024px;
         max-height: 750px;
         /*overflow: hidden;*/
+        grid-template-areas: "dynamicContent" "beskrivelse" "footer";
     }
 
-    #dynamicContent {
-        display: grid;
-        border: 2px dashed red;
-    }
+        #beskrivelse {
+            /*p*/
+            grid-area: beskrivelse;
+            margin: 20px 30px 0px 30px;
+            font-size: 150%;
+        }
+
+        #dynamicContent {
+            /*div wrapper*/
+            grid-area: dynamicContent;
+            display: grid;
+            grid-template-columns: 5fr 1fr;
+            padding: 50px 10px 0px 10px;
+            
+        }
+
+            #houses {
+                /*div wrapper*/
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr;
+                grid-gap: 25px;
+                grid-row-gap: 25px;
+                border: 2px solid black;
+                border-radius: 10px;
+                padding: 25px;
+            }
+
+            #dataPanel {
+                /*div*/
+                border: 2px solid black;
+                border-radius: 10px;
+            }
+
+                #dataPanelHeader {
+                    /*span*/
+                }
+
+                #panelList {
+                    /*ul*/
+                }
+
+                    #kortstokk {
+                        /*div*/
+                    }
+
+                        #kortstokkSpan {
+                            /*span*/
+                        }
+
+                        #kortholder {
+                            /*div*/
+                        }
+                            
+                            #trukketKort {
+                                /*img*/
+                            }
+        #footer {
+            grid-area: footer;
+        }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait) { 
@@ -271,10 +324,56 @@
     }
 
     #content {
+        display: grid;
         max-width: 768px;
         max-height: 1000px;
         /*overflow: hidden;*/
     }
+
+        #beskrivelse {
+            /*p*/
+        }
+
+        #dynamicContent {
+            /*div wrapper*/
+            display: grid;
+            border: 2px dashed red;
+        }
+
+            #houses {
+                /*div wrapper*/
+            }
+
+            #dataPanel {
+                /*div*/
+            }
+
+                #dataPanelHeader {
+                    /*span*/
+                }
+
+                #panelList {
+                    /*ul*/
+                }
+
+                    #kortstokk {
+                        /*div*/
+                    }
+
+                        #kortstokkSpan {
+                            /*span*/
+                        }
+
+                        #kortholder {
+                            /*div*/
+                        }
+
+                            #trukketKort {
+                                /*img*/
+                            }
+
+        #footer {
+        }
 }
 
 /* Widescreen HD*/

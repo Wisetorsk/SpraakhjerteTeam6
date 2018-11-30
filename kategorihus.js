@@ -155,7 +155,8 @@ function selectNumberOfHouses(num) {
 function getScale() {
     /* Get the width & height of the window and set scale factor accordingly */
     var w = window.innerWidth;
-    if (w <= 1039 && w > 768) {
+    console.log(w);
+    if (w <= 1100 && w > 768) {
         scale = .5;
     } else if (w <= 768) {
         scale = .3;
@@ -484,9 +485,10 @@ function dragMoveListener(event) {
 //----------------------------------------------------------------------
 
 function main() {
-    if(debug) console.log('main');
-    init();
+    if (debug) console.log('main');
     getScale();
+    init();
+    
     for (var i = 0; i < numHouses; i++) { showHouse(i); } //Generate houses 
     drawCard();
 }
