@@ -155,8 +155,6 @@ function selectNumberOfHouses(num) {
 function getScale() {
     /* Get the width & height of the window and set scale factor accordingly */
     var w = window.innerWidth;
-    console.log(w);
-    console.log(w);
     if (w <= 1039 && w > 768) {
         scale = .5;
     } else if (w <= 768) {

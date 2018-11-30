@@ -136,15 +136,16 @@
         z-index: -1;
     }
 
-    .main-wrapper {
-        display: grid;
-        border: 2px dashed red;
-    }
-
     #content {
+        display: grid;
         max-width: 1024px;
         max-height: 750px;
         /*overflow: hidden;*/
+    }
+
+    #dynamicContent {
+        display: grid;
+        border: 2px dashed red;
     }
 }
 
