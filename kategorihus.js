@@ -389,6 +389,7 @@ interact('.dropzone').dropzone({
     overlap: 0.05,
     ondropactivate: function (event) {
         event.target.classList.add('drop-active');
+        touch-action: none;
     },
     ondragenter: function (event) {
         var draggableElement = event.relatedTarget,
