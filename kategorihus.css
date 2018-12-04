@@ -240,8 +240,8 @@
     }
 
     .kort {
-        width: 50px;
-        height: auto;
+        max-width: 200px;
+        max-height: 300px;
     }
 
     .dropzone {
@@ -272,19 +272,45 @@
 
     .plot {
         display: grid;
+        justify-content: center;
     }
 
     .modal {
-        position: relative;
-        z-index: 1;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 3;
         background-color: lightgray;
         animation-name: movedown;
-        animation-duration: 0.5s;
-        padding: 5px;
-        margin: 10px;
+        animation-duration: 0.1s;
+        padding: 0px;
+        margin: 0px;
         text-align: center;
         font-size: 150%;
         border-radius: 5px;
+    }
+
+    .buildButton {
+        border-radius: 15px;
+        background-color: white;
+        font-size: 200%;
+    
+    }
+
+    #howTo {
+        font-size: 250%;
+        padding-top: 50px;
+    }
+
+    #portraitWrapper {
+        margin-top: 150px;
+        padding-top: 50px;
+        text-align: center;
+        grid-gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 100px);
+        grid-template-rows: repeat(3, 100px);
+        justify-content: center;
     }
 
     #langModal {
@@ -316,6 +342,19 @@
         background-image: url(img/eng.png);
     }
 
+    .panelButton {
+        height: 50px;
+        border-radius: 10px;
+        margin-left: 20px;
+    }
+
+    #drawButton {
+    }
+
+    #resetButton {
+
+    }
+
     .house {
         display: grid;
         grid-template-columns: 35px 35px 35px;
@@ -324,18 +363,32 @@
         background-color: cornflowerblue;
         border: solid 2px black;
         padding: 20px;
+        margin-left: 25px;
     }
 
     .roof {
         position: relative;
         display: block;
+        max-height: 35px;
+        margin-left: 25px;
+        z-index: 1;
+    }
+
+    .kategori {
+        font-size: 150%;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .drag-drop {
+        max-width: 200px;
     }
 
     .titleImg {
         position: relative;
         z-index: 1;
-        top: -75px;
-        left: 80px;
+        top: 0px;
+        left: -55px;
     }
 
     .roofSVG {
@@ -348,29 +401,47 @@
         border: 2px dashed black;
     }
 
+    .kort {
+        z-index: 2;
+    }
+
+    li {
+        float: left;
+    }
+
     #content {
         display: grid;
         max-width: 768px;
         max-height: 1000px;
         /*overflow: hidden;*/
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 4fr 1fr;
     }
 
         #beskrivelse {
             /*p*/
+            font-size: 175%;
+            padding: 0px 20px 0px 20px;
         }
 
         #dynamicContent {
             /*div wrapper*/
             display: grid;
             border: 2px dashed red;
+            justify-content: center;
+
         }
 
             #houses {
                 /*div wrapper*/
+                background-color: sandybrown;
+                border-radius: 10px;
+                padding-top: 20px;
             }
 
             #dataPanel {
                 /*div*/
+                border: 1px solid black;
             }
 
                 #dataPanelHeader {
@@ -379,10 +450,12 @@
 
                 #panelList {
                     /*ul*/
+                    
                 }
 
                     #kortstokk {
                         /*div*/
+                        max-width: 100px;
                     }
 
                         #kortstokkSpan {
@@ -395,9 +468,12 @@
 
                             #trukketKort {
                                 /*img*/
+                                max-width: 100px;
                             }
 
         #footer {
+            display: none;
+            border: 2px dashed green;
         }
 }
 
