@@ -387,6 +387,7 @@ function selectLanguage() {
 interact('.dropzone').dropzone({
     accept: '#kortholder',
     overlap: 0.05,
+    
     ondropactivate: function (event) {
         event.target.classList.add('drop-active');
         //touchAction: none;
