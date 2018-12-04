@@ -1,5 +1,7 @@
 ﻿// JavaScript source code
 //this.touch = "ontouchstart" in window || (window.DocumentTouch && document instanceof DocumentTouch);
+
+
 //----------------------------------------------------------------------
 // Objects
 //----------------------------------------------------------------------
@@ -78,7 +80,7 @@ var debug = true;
 var modal;
 var scale = 1;
 //----------------------------------------------------------------------
-// Object definitions
+// Object class definitions
 //----------------------------------------------------------------------
 
 class Kategori {
@@ -322,6 +324,7 @@ function checkFull() {
                 img.style.position = 'absolute';
                 img.style.top = '50%';
                 img.style.width = '20%';
+                img.style.zIndex = '3';
                 houses[house].appendChild(img);
                 switch (language) {
                     case "norwegian":
@@ -370,7 +373,12 @@ function speak(word) {
                     audio.src = 'https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=%22' + word + '%22';
                     break;
             }
-            audio.play();
+            try {
+                audio.play();
+            } catch(err) {
+                console.log('Unable to get audio file from Translate.');
+                console.log(err);
+            }
             console.log(error);
         });
     }
@@ -480,6 +488,16 @@ function dragMoveListener(event) {
     // update the posiion attributes
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
+}
+
+//----------------------------------------------------------------------
+// Code that will run on script import!
+//----------------------------------------------------------------------
+
+if (typeof (Storage) !== "undefined") {
+    // Code for localStorage/sessionStorage.
+} else {
+    // Sorry! No Web Storage support..
 }
 
 
