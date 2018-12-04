@@ -55,15 +55,22 @@
     }
 
     .modal {
-        position: relative;
-        z-index: 1;
+        position: fixed;
+        background-color: white;
+        width: 100%;
+        padding-top: 200px;
+        height: 100%;
+        z-index: 2;
         animation-name: movedown;
         animation-duration: 0.5s;
         text-align: center;
         font-size: 150%;
         border-radius: 5px;
-        height: 50px;
-        width: 500px;
+
+    }
+
+    #howTo {
+        padding: 50px;
     }
 
     .buildButton {
@@ -392,7 +399,7 @@
         position: relative;
         z-index: 1;
         top: 0px;
-        left: -55px;
+        left: -60px;
     }
 
     .roofSVG {
@@ -402,7 +409,7 @@
 
     .main-wrapper {
         display: grid;
-        border: 2px dashed black;
+        /*border: 2px dashed black;*/
     }
 
     .kort {
