@@ -77,7 +77,8 @@ var kategorier = ['clothes', 'food', 'vehicle', 'school', 'tools', 'people', 'an
 var antallKort = imagesJson.length;
 var kortstokk = [];
 var numHouses;
-var currentCard, selected = NaN;
+var currentCard = NaN;
+var selected = NaN;
 var drawnCards = [];
 var debug = true;
 var modal;
