@@ -285,7 +285,6 @@ function corPair(x, y, end = false) {
 function drawCard() { 
     draw.play();
     var index = Math.floor(Math.random() * antallKort);
-    if(debug) console.log('NEW CARD!');
     var card = document.getElementById('trukketKort');
     var cardName = document.getElementById('kortstokkSpan');
     var drawn = kortstokk[index];
@@ -356,6 +355,7 @@ function checkFull() {
 }
 
 function speak(word) {
+    setTimeout(100);
     var lang = (language === "norwegian") ? 'Norwegian Female' : 'UK English Female';
     responsiveVoice.speak(word, lang);
 }
