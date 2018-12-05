@@ -494,7 +494,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr;
-        grid-gap: 50px;
+        grid-gap: 20px;
         grid-row-gap: 50px;
         border: 2px solid black;
         border-radius: 5px;
@@ -568,6 +568,7 @@
 
     .kortstokk {
         width: auto;
+        min-width: 250px;
         height: 250px;
         vertical-align: middle;
         margin-right: 50px;
@@ -579,8 +580,8 @@
     }
 
     .kort {
-        width: auto;
-        height: 100px;
+        max-width: 200px;
+        max-height: 200px;
         border: 1px solid black;
         padding: 10px;
         border-radius: 15px;
