@@ -3,9 +3,10 @@
 
 
 //----------------------------------------------------------------------
-// Objects
+// #region Objects
 //----------------------------------------------------------------------
 var handler = new Cookies(); // Import Cookie handler
+
 try {
     var draw = new Howl({
         src: ['audio/click.wav']
@@ -63,8 +64,10 @@ var dict = {
     'fruit': { eng: 'fruit', nor: 'frukt' }    
 }
 
+// #endregion
+
 //----------------------------------------------------------------------
-// Variables
+// #region Variables
 //----------------------------------------------------------------------
 var running = false;
 var language = 'norwegian'; //'english'; // Angi språk.
@@ -79,8 +82,11 @@ var drawnCards = [];
 var debug = true;
 var modal;
 var scale = 1;
+
+// #endregion
+
 //----------------------------------------------------------------------
-// Object class definitions
+// #region Object class definitions
 //----------------------------------------------------------------------
 
 class Kategori {
@@ -109,8 +115,10 @@ class Kort {
     }
 }
 
+// #endregion
+
 //----------------------------------------------------------------------
-// Page functions
+// #region Page functions
 //----------------------------------------------------------------------
 
 function langPopup() {
@@ -348,6 +356,11 @@ function checkFull() {
 }
 
 function speak(word) {
+    var lang = (language === "norwegian") ? 'Norwegian Female' : 'UK English Female';
+    responsiveVoice.speak(word, lang);
+}
+
+/*function speak(word) {
     let audio = new Audio();
     switch (language) {
         case "norwegian":
@@ -382,14 +395,16 @@ function speak(word) {
             console.log(error);
         });
     }
-}
+}*/
 
 function selectLanguage() {
     language = (confirm('Norsk?')) ? 'norwegian' : 'english';
 }
 
+// #endregion
+
 //----------------------------------------------------------------------
-// Drag and drop functions
+// #region Drag and drop functions
 //----------------------------------------------------------------------
 
 interact('.dropzone').dropzone({
@@ -489,6 +504,8 @@ function dragMoveListener(event) {
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
 }
+
+// #endregion
 
 //----------------------------------------------------------------------
 // Code that will run on script import!

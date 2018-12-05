@@ -616,7 +616,7 @@
     .titleImg {
         position: relative;
         z-index: 1;
-        top: -150px;
+        top: -100px;
         left: 160px;
     }
 
