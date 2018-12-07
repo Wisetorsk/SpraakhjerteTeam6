@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test Promises and callbacks</title>
+    <style>
+        .pizzaBox {
+            width: 275px;
+            height: 300px;
+            border: 2px solid black;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div id="pizza" class="pizzaBox"></div>
+
+    <script>
+        function makePizza(callback) {
+            console.log('Making a pizza, please wait');
+            setTimeout(function () {
+                if (typeof callback == "function") callback();
+            }, 2000);
+        }
+
+        makePizza(function () {
+            document.getElementById('pizza').style.backgroundImage = 'url(' + 'https://icon2.kisspng.com/20180223/ajq/kisspng-pizza-hut-italian-cuisine-take-out-restaurant-pizza-5a909c760140b5.2474206515194266780051.jpg' + ')';
+            console.log('Pizza is done!');
+        });
+
+
+        let promise = new Promise(function (resolve, reject) {
+            console.log('Promise set');
+            setTimeout(function () { resolve('Resolved') }, 1000);
+            //reject('Rejected');
+        });
+
+        promise.then(
+            result => console.log(result),
+            error => console.log(error)
+        );
+    </script>
+
+    <script>
+        let isSheHappy = false;
+
+        // Promise 
+        let willIGetPhone = new Promise(
+            function (resolve, reject) {
+                if (isSheHappy) {
+                    let phone = {
+                        brand: 'Samsung',
+                        color: 'black'
+                    };
+                    resolve(phone);
+                } else {
+                    let reason = new Error('Mom is not happy');
+                    reject(reason);
+                }
+            }
+        );
+
+        let show = function (phone) {
+            return new Promise(
+                function (resolve, reject) {
+                    let message = 'Hey buddy, I\'ve got a new ' + phone.color + ' ' + phone.brand + ' phone';
+                    resolve(message);
+                }
+            )
+        }
+
+        // Calling and consuming the promise
+        let ask = function () {
+            willIGetPhone
+                .then(show)
+                .then(function (fulfilled) {
+                    console.log(fulfilled);
+                })
+                .catch(function (error) {
+                    console.log(error.message);
+                });
+
+        };
+
+        ask();
+
+
+
+    </script>
+
+    <script> //ES7 Syntax
+        console.log('\n\n\n', 'ES7 SYNTAX with async and await');
+        const isMomHappy = true;
+
+        // Promise
+        const willIGetNewPhone = new Promise(
+            (resolve, reject) => {
+                if (isMomHappy) {
+                    const phone = {
+                        brand: 'Samsung',
+                        color: 'black'
+                    };
+                    resolve(phone);
+                } else {
+                    const reason = new Error('Mom is not happy');
+                    reject(reason);
+                }
+            }
+        );
+
+        // 2nd Promise
+        async function showOff(phone) {
+            return new Promise(
+                (resolve, reject) => {
+                    var message = 'Hey buddy, I have a new ' + phone.color + ' ' + phone.brand + ' phone';
+                    resolve(message);
+                }
+            );
+        };
+
+        // Call the promise
+        async function askMom() {
+            try {
+                console.log('Before asking mom');
+                let phone = await willIGetNewPhone;
+                let message = await showOff(phone);
+
+                console.log(message);
+                console.log('after asking mom');
+            }
+            catch (error) {
+                console.log(error.message);
+            }
+        }
+
+        (async () => {
+            await askMom();
+        })();
+    </script>
+</body>
+</html>
