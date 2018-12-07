@@ -43,7 +43,7 @@
     </script>
 
     <script>
-        let isSheHappy = false;
+        let isSheHappy = true;
 
         // Promise 
         let willIGetPhone = new Promise(
@@ -137,6 +137,21 @@
         (async () => {
             await askMom();
         })();
+    </script>
+
+    <script>
+        let result = true;
+        let promise2 = new Promise(function (resolve, reject) {
+            if (result) {
+                setTimeout(function () { resolve(function () { console.log('This segment is executed when "then" is called on the promise object, and ONLY AFTER the promise has been fulfilled'); console.log(promise2); }) }, 5000);
+            } else {
+                reject(new Error("Promise rejected")); // Throws an error
+            }
+        });
+
+
+        console.log(promise2);
+        promise2.then(value => value());
     </script>
 </body>
 </html>
