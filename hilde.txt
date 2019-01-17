@@ -1,0 +1,20 @@
+REF Hilde Språkhjerte
+
+Spillet så langt.
+
+- Vi har implementert basic drag and drop for kort.
+- Mulighet for flere språk
+- Layout for flere platformer
+- Spillet leser opp kortene og kommer med feedback via lyd.
+- Antall hus kan velges før spillet starter.
+- Fullskjerm for valg av språk og hus.
+
+Mangler
+
+- Layout for mindre platformer er ikke optimalisert, noe om innebærer at det er problemer med drag and drop plasseringen i rom.
+- Bedre design for kort og kortholder.
+- Mulighet for å "ombestemme seg" om hvor kortet skal ligge.
+- Enkel måte for å legge til nye kort og kategorier.
+- Innebygget testing og vanskelighetsgrader.
+- Mulighet for å trekke fort ved å fysisk trykke på kortstokken.
+- Mer fleksibel CSS og SVG generering.
